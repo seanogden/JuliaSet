@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<LOG_ROOT>
+	<PROJECT NAME="juliaset">
+		<CBX_INST_ENTRY INSTANCE_NAME="|juliaset|VGA_PLL:p1|altpll:altpll_component" CBX_FILE_NAME="VGA_PLL_altpll.v"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|juliaset|video_buffer:display|altsyncram:altsyncram_component" CBX_FILE_NAME="altsyncram_r6i2.tdf"/>
+	</PROJECT>
+</LOG_ROOT>

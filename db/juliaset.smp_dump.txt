@@ -1,0 +1,6 @@
+
+State Machine - |juliaset|state
+Name state.draw_walker2 state.draw_walker state.draw_walker1 
+state.draw_walker 0 0 0 
+state.draw_walker1 0 1 1 
+state.draw_walker2 1 1 0 
