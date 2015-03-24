@@ -80,36 +80,15 @@ wire [9:0]  Coord_X, Coord_Y;	//display coods
 //DLA state machine variables
 wire reset;
 reg [3:0] state;	//state machine
-reg [30:0] x_rand;	//shift registers for random number gen  
-reg [28:0] y_rand;
-wire seed_low_bit, x_low_bit, y_low_bit; //rand low bits for SR
-reg [9:0] x_walker; //particle coords of random walker
-reg [8:0] y_walker;
-reg [3:0] sum; //neighbor sum
-
-//assign LEDG = sum;
-////////////////////////////////////
-/*From megaWizard:
-	module vga_buffer (
-	address_a, // use a for state machine
-	address_b, // use b for VGA refresh
-	clock_a,
-	clock_b,
-	data_a,
-	data_b,
-	wren_a,
-	wren_b,
-	q_a,
-	q_b);*/
-// Show m4k on the VGA
-// -- use m4k a for state machine
-// -- use m4k b for VGA refresh
 wire [7:0] mem_bit ; //current data from m4k to VGA
 reg [7:0] disp_bit ; // registered data from m4k to VGA
 wire [7:0] state_bit ; // current data from m4k to state machine
 reg we ; // write enable for a
 reg [18:0] addr_reg ; // for a
 reg [7:0] data_reg ; // for a
+reg [9:0] x_cursor;
+reg [8:0] y_cursor;
+reg [7:0] i; //iteration.
 
 video_buffer display(
 	.address_a (addr_reg) , 
@@ -122,7 +101,7 @@ video_buffer display(
 	.q_a (state_bit),
 	.q_b (mem_bit) ); // data used to update VGA
 
-// make the color white
+// Color translation
 assign  mVGA_R = {disp_bit[7:5],5'b1};
 assign  mVGA_G = {disp_bit[4:2],5'b1} ;
 assign  mVGA_B = {disp_bit[1:0],6'b1} ;
@@ -130,15 +109,14 @@ assign  mVGA_B = {disp_bit[1:0],6'b1} ;
 // DLA state machine
 assign reset = ~KEY[0];
 
-//right-most bit for rand number shift regs
-//your basic XOR random # gen
-assign x_low_bit = x_rand[27] ^ x_rand[30];
-assign y_low_bit = y_rand[26] ^ y_rand[28];
-
 //state names
-parameter init=4'd0, test1=4'd1, test2=4'd2, test3=4'd3, test4=4'd4, test5=4'd5, test6=4'd6, 
-	draw_walker=4'd7, update_walker=4'd8, new_walker=4'd9,
-	init1=4'd10, init2=4'd11, draw_walker1=4'd12, draw_walker2=4'd13 ;
+parameter
+   compute_pixel=4'd1,
+	draw_pixel=4'd7,
+	draw_pixel1=4'd12, 
+	draw_pixel2=4'd13,
+   done= 4'd14	;
+	
 always @ (negedge VGA_CTRL_CLK)
 begin
 	// register the m4k output for better timing on VGA
@@ -148,69 +126,91 @@ end
 
 always @ (posedge VGA_CTRL_CLK) //VGA_CTRL_CLK
 begin
-	// register the m4k output for better timing on VGA
-	//disp_bit <= mem_bit;
-	
+
 	if (reset)		//synch reset assumes KEY0 is held down 1/60 second
 	begin
 		//clear the screen
 		addr_reg <= {Coord_X[9:0],Coord_Y[8:0]} ;	// [17:0]
 		we <= 1'b1;								//write some memory
-		data_reg <= x_walker[7:0];	//write all zeros (black)		
-		//init random number generators to alternating bits
-		x_rand <= 31'h55555555;
-		y_rand <= 29'h55555555;
+		data_reg <= 8'd0;	//write all zeros (black)	
 		//init a randwalker to just left of center
-		x_walker <= 10'd0;
-		y_walker <= 9'd240;
-		//
-		state <= draw_walker;	//first state in regular state machine 
+		x_cursor <= 10'd0;
+		y_cursor <= 9'd0;
+		state <= compute_pixel;	//first state in regular state machine 
 	end
 	
 	//begin state machine to modify display 
 	else if ( KEY[3])  // KEY3 is pause
 	begin
 		case(state)
-			
-			// the next three states draw the walker in memory
-			draw_walker: //draw the walker
+		
+			/**************************************************
+			 * This section is the set of states we use to loop
+			 * up to n times in order to compute the value for
+			 * the pixel at x_cursor, y_cursor
+			 ***************************************************/
+			compute_pixel:
 			begin
-				addr_reg <= {x_walker,9'd240};
-				data_reg <= x_walker[7:0];//Coord_Y[8:1] ;
-				state <= draw_walker1 ;	
+				i <= 8'd0;
+				state <= draw_pixel;
 			end
 			
-			draw_walker1:
+			
+			/**************************************************
+			 * This section is for drawing a fully computed pixel
+			 * by writing it to the proper M9K block.
+			 ***************************************************/
+			draw_pixel: //register address and data for write.
+			begin
+			   we <= 1'b0;
+				addr_reg <= {x_cursor, y_cursor};
+				data_reg <= i;  //number of iterations.
+				state <= draw_pixel1 ;	
+			end
+			
+			draw_pixel1: //initiate the write.
 			begin
 				we <= 1'b1; // memory write enable 
-				state <= draw_walker2 ;
+				state <= draw_pixel2 ;
 			end
 			
-			draw_walker2:
+			draw_pixel2: // finish the write and increment the cursor
 			begin
-				we <= 1'b0; // finish memory write 
+				we <= 1'b0; 
 				
-				if (x_walker < 10'd330)
+				//Move cursor
+				if (x_cursor < 10'd637)
 				begin
-					x_walker <= x_walker + 10'd1;
+					x_cursor <= x_cursor + 10'd1;
 				end
 				else
 				begin
-					x_walker <= 10'd0;
+					x_cursor <= 10'd0;
+					if (y_cursor < 9'd479)
+					begin
+						y_cursor <= y_cursor + 9'd1;
+					end
 				end
-				state <= draw_walker ;
-			end		
+				
+				//Compute new pixel at updated cursor, if there are more pixels
+				//otherwise just go to done and wait for reset.
+				if (x_cursor == 637 && y_cursor == 9'd479)
+				begin
+					state <= done;
+				end
+				else
+				begin
+					state <= compute_pixel;
+				end
+			end
+			
+			done:  //after computing all pixels in the block, just wait here.
+			begin
+			    state <= done;
+			end
 		endcase
 	end // else if ( KEY[3]) 
 	
-	else
-	begin
-		//update the x,y random number gens
-		// this allows the pause key to change the pattern
-		// generated
-		x_rand <= {x_rand[29:0], x_low_bit} ;
-		y_rand <= {y_rand[27:0], y_low_bit} ;
-	end
 end // always @ (posedge VGA_CTRL_CLK)
 
 

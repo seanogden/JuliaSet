@@ -1,5 +1,5 @@
 Flow report for juliaset
-Mon Mar 23 14:48:16 2015
+Tue Mar 24 05:24:05 2015
 Quartus II 64-Bit Version 11.0 Build 157 04/27/2011 SJ Full Version
 
 
@@ -38,17 +38,17 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------+
 ; Flow Summary                                                                   ;
 +------------------------------------+-------------------------------------------+
-; Flow Status                        ; Successful - Mon Mar 23 14:48:16 2015     ;
+; Flow Status                        ; Successful - Tue Mar 24 05:24:05 2015     ;
 ; Quartus II 64-Bit Version          ; 11.0 Build 157 04/27/2011 SJ Full Version ;
 ; Revision Name                      ; juliaset                                  ;
 ; Top-level Entity Name              ; juliaset                                  ;
 ; Family                             ; Cyclone IV E                              ;
 ; Device                             ; EP4CE115F29C7                             ;
 ; Timing Models                      ; Final                                     ;
-; Total logic elements               ; 520 / 114,480 ( < 1 % )                   ;
-;     Total combinational functions  ; 501 / 114,480 ( < 1 % )                   ;
-;     Dedicated logic registers      ; 132 / 114,480 ( < 1 % )                   ;
-; Total registers                    ; 132                                       ;
+; Total logic elements               ; 529 / 114,480 ( < 1 % )                   ;
+;     Total combinational functions  ; 518 / 114,480 ( < 1 % )                   ;
+;     Dedicated logic registers      ; 135 / 114,480 ( < 1 % )                   ;
+; Total registers                    ; 135                                       ;
 ; Total pins                         ; 71 / 529 ( 13 % )                         ;
 ; Total virtual pins                 ; 0                                         ;
 ; Total memory bits                  ; 2,457,600 / 3,981,312 ( 62 % )            ;
@@ -62,7 +62,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 03/23/2015 14:47:22 ;
+; Start date & time ; 03/24/2015 05:23:10 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; juliaset            ;
 +-------------------+---------------------+
@@ -73,7 +73,7 @@ applicable agreement for further details.
 +-------------------------------------+---------------------------------+---------------+-------------+------------+
 ; Assignment Name                     ; Value                           ; Default Value ; Entity Name ; Section Id ;
 +-------------------------------------+---------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 132683363797205.142713644201496 ; --            ; --          ; --         ;
+; COMPILER_SIGNATURE_ID               ; 132683363797205.142718899001268 ; --            ; --          ; --         ;
 ; IP_TOOL_NAME                        ; ALTPLL                          ; --            ; --          ; --         ;
 ; IP_TOOL_NAME                        ; RAM: 2-PORT                     ; --            ; --          ; --         ;
 ; IP_TOOL_VERSION                     ; 11.0                            ; --            ; --          ; --         ;
@@ -90,9 +90,9 @@ applicable agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:08     ; 1.0                     ; 388 MB              ; 00:00:07                           ;
-; Fitter                    ; 00:00:36     ; 3.0                     ; 749 MB              ; 00:00:50                           ;
-; TimeQuest Timing Analyzer ; 00:00:08     ; 2.5                     ; 468 MB              ; 00:00:09                           ;
+; Analysis & Synthesis      ; 00:00:08     ; 1.0                     ; 385 MB              ; 00:00:07                           ;
+; Fitter                    ; 00:00:36     ; 2.9                     ; 748 MB              ; 00:00:51                           ;
+; TimeQuest Timing Analyzer ; 00:00:08     ; 1.9                     ; 466 MB              ; 00:00:08                           ;
 ; Assembler                 ; 00:00:08     ; 1.0                     ; 591 MB              ; 00:00:07                           ;
 ; Total                     ; 00:01:00     ; --                      ; --                  ; 00:01:13                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+

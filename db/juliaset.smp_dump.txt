@@ -1,6 +1,8 @@
 
 State Machine - |juliaset|state
-Name state.draw_walker2 state.draw_walker state.draw_walker1 
-state.draw_walker 0 0 0 
-state.draw_walker1 0 1 1 
-state.draw_walker2 1 1 0 
+Name state.done state.draw_pixel2 state.draw_pixel1 state.draw_pixel state.compute_pixel 
+state.compute_pixel 0 0 0 0 0 
+state.draw_pixel 0 0 0 1 1 
+state.draw_pixel1 0 0 1 0 1 
+state.draw_pixel2 0 1 0 0 1 
+state.done 1 0 0 0 1 
