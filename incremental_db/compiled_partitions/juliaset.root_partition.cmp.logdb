@@ -1,1 +1,10 @@
 v1
+PORT_SWAPPING,PORT_SWAP_TYPE_DSPMULT,signed_mult:zcs|lpm_mult:Mult0_rtl_0|mult_f6t:auto_generated|mac_mult15,
+PORT_SWAPPING,PORT_SWAP_TYPE_DSPMULT,signed_mult:zcs|lpm_mult:Mult0_rtl_0|mult_f6t:auto_generated|mac_mult13,
+PORT_SWAPPING,PORT_SWAP_TYPE_DSPMULT,signed_mult:zcs|lpm_mult:Mult0_rtl_0|mult_f6t:auto_generated|mac_mult3,
+PORT_SWAPPING,PORT_SWAP_TYPE_DSPMULT,signed_mult:zrs|lpm_mult:Mult0_rtl_1|mult_f6t:auto_generated|mac_mult15,
+PORT_SWAPPING,PORT_SWAP_TYPE_DSPMULT,signed_mult:zrs|lpm_mult:Mult0_rtl_1|mult_f6t:auto_generated|mac_mult13,
+PORT_SWAPPING,PORT_SWAP_TYPE_DSPMULT,signed_mult:zcr|lpm_mult:Mult0_rtl_3|mult_f6t:auto_generated|mac_mult3,
+PORT_SWAPPING,PORT_SWAP_TYPE_DSPMULT,signed_mult:zcr|lpm_mult:Mult0_rtl_3|mult_f6t:auto_generated|mac_mult13,
+PORT_SWAPPING,PORT_SWAP_TYPE_DSPMULT,signed_mult:zcr|lpm_mult:Mult0_rtl_3|mult_f6t:auto_generated|mac_mult1,
+PORT_SWAPPING,PORT_SWAP_TYPE_DSPMULT,signed_mult:zcr|lpm_mult:Mult0_rtl_3|mult_f6t:auto_generated|mac_mult15,

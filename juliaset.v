@@ -85,11 +85,23 @@ reg [7:0] disp_bit ; // registered data from m4k to VGA
 wire [7:0] state_bit ; // current data from m4k to state machine
 reg we ; // write enable for a
 reg [18:0] addr_reg ; // for a
-reg [7:0] data_reg ; // for a
-reg [9:0] x_cursor;
-reg [8:0] y_cursor;
-reg [7:0] i; //iteration.
+reg signed [7:0] data_reg ; // for a
+reg signed [9:0] x_cursor;
+reg signed [8:0] y_cursor;
+reg signed [9:0] i; //iteration.
+reg signed 	[36:0] z_real;  //real part of z 3.33 fixed point
+reg signed [36:0] z_comp;  //complex part of z 3.33 fixed point
+reg signed [36:0] c_real;
+reg signed [36:0] c_comp;
+wire signed [36:0] z_real_real;
+wire signed [36:0] z_comp_comp;
+wire signed [36:0] z_real_comp;
 
+//TODO:  We only need to store 4 bits, because we just want 
+//       log of the # of iterations, and there are only up to
+//       1000 iterations.  We will approximate the log by taking
+//       the most significant bit of i.
+//       For now, we can just store the 4 bits in 8 bits and fix later.
 video_buffer display(
 	.address_a (addr_reg) , 
 	.address_b ({Coord_X[9:0],Coord_Y[8:0]}), // vga current address
@@ -111,7 +123,8 @@ assign reset = ~KEY[0];
 
 //state names
 parameter
-   compute_pixel=4'd1,
+   compute_pixel_init=4'd1,
+	compute_pixel_loop=4'd2,
 	draw_pixel=4'd7,
 	draw_pixel1=4'd12, 
 	draw_pixel2=4'd13,
@@ -136,7 +149,9 @@ begin
 		//init a randwalker to just left of center
 		x_cursor <= 10'd0;
 		y_cursor <= 9'd0;
-		state <= compute_pixel;	//first state in regular state machine 
+		c_real <= {-4'd1, 33'd1717986918};  // -0.8
+		c_comp <= 37'd0;
+		state <= compute_pixel_init;	//first state in regular state machine 
 	end
 	
 	//begin state machine to modify display 
@@ -149,10 +164,52 @@ begin
 			 * up to n times in order to compute the value for
 			 * the pixel at x_cursor, y_cursor
 			 ***************************************************/
-			compute_pixel:
+			compute_pixel_init:
 			begin
-				i <= 8'd0;
-				state <= draw_pixel;
+				//compute the 3.33 fp number corresponding to x_cursor
+				//compute the 3.33 fp number corresonding to the y_cursor
+				
+				//The resolution of 3.33 fp is 2^-33.
+				//We want to map integers 0-639 onto -2.0, 2.0 fp, and 0-479 onto -1.0, 1.0
+				//4/640/2^-33 = 53687091.2, so this is our increment on x.
+				//2/480/2^-33 = 35791394.1, so this is our increment on y.
+				//We round it down.  Note that we don't need to do an actual
+				//fixed point multiply because this will never overflow by design.
+				z_real <= {-4'd2, {33{1'b0}}} + 37'd53687091 * x_cursor;  //-2.0 + x*increment
+				z_comp <= {-4'd1, {33{1'b0}}} + 37'd35791394 * y_cursor; //-1.0 + y*increment
+				//NOTE: We can increment this at the bottom to avoid this multiply.
+				//TODO:  Make the increment numbers a function of the range of x and y.
+				
+				i <= 10'd0;
+				state <= compute_pixel_loop;
+			end
+			
+
+			compute_pixel_loop:
+			begin
+				//      We avoid doing the sqrt part of getting the absolute value by squaring the RHS
+				//      of the comparison.
+				//
+				//      We can do this step with 3 fixed point multiplies.
+				//      1.  z_real*z_real
+				//      2.  z_comp*z_comp
+				//      3.  z_real*z_comp
+				
+				//Not finished, do another iteration
+				if (z_real_real + z_comp_comp < $signed({4'b0100, {33{1'b0}}}) 
+						&&  i < 10'd1000) // if (abs(z)*abs(z) < 4 && n < termination)
+				begin
+					z_real <= (z_real_real) + (z_comp_comp) + c_real;
+					z_comp <= (z_real_comp <<< 1) + c_comp;
+					i <= i + 10'd1;
+					state <= compute_pixel_loop;
+				end
+				
+				// Done iterating, go draw the pixel.
+				else
+				begin
+					state <= draw_pixel;
+				end
 			end
 			
 			
@@ -164,7 +221,20 @@ begin
 			begin
 			   we <= 1'b0;
 				addr_reg <= {x_cursor, y_cursor};
-				data_reg <= i;  //number of iterations.
+				
+				//approximate log of i.
+				if (i[9] == 1) data_reg <= 8'd10;
+				else if (i[8] == 1) data_reg <= 8'd9;
+				else if (i[7] == 1) data_reg <= 8'd8;
+				else if (i[6] == 1) data_reg <= 8'd7;
+				else if (i[5] == 1) data_reg <= 8'd6;
+				else if (i[4] == 1) data_reg <= 8'd5;
+				else if (i[3] == 1) data_reg <= 8'd4;
+				else if (i[2] == 1) data_reg <= 8'd3;
+				else if (i[1] == 1) data_reg <= 8'd2;
+				else if (i[0] == 1) data_reg <= 8'd1;
+				else data_reg <= 8'd0;
+				
 				state <= draw_pixel1 ;	
 			end
 			
@@ -200,7 +270,7 @@ begin
 				end
 				else
 				begin
-					state <= compute_pixel;
+					state <= compute_pixel_init;
 				end
 			end
 			
@@ -213,5 +283,26 @@ begin
 	
 end // always @ (posedge VGA_CTRL_CLK)
 
+signed_mult zrs(.out(z_real_real),
+                .a(z_real),
+					 .b(z_real));
+					 
+signed_mult zcs(.out(z_comp_comp),
+                .a(z_comp),
+					 .b(z_comp));
 
+signed_mult zcr(.out(z_real_comp),
+                .a(z_comp),
+					 .b(z_real));
+endmodule
+
+//3.33 fixed point signed multiply.
+module signed_mult (out, a, b);
+	output 		[36:0]	out;
+	input 	signed	[36:0] 	a;
+	input 	signed	[36:0] 	b;
+	wire	signed	[36:0]	out;
+	wire 	signed	[73:0]	mult_out;
+	assign mult_out = a * b;
+	assign out = {mult_out[73], mult_out[66:33]};
 endmodule

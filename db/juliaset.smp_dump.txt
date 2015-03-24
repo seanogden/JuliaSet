@@ -1,8 +1,9 @@
 
 State Machine - |juliaset|state
-Name state.done state.draw_pixel2 state.draw_pixel1 state.draw_pixel state.compute_pixel 
-state.compute_pixel 0 0 0 0 0 
-state.draw_pixel 0 0 0 1 1 
-state.draw_pixel1 0 0 1 0 1 
-state.draw_pixel2 0 1 0 0 1 
-state.done 1 0 0 0 1 
+Name state.done state.draw_pixel2 state.draw_pixel1 state.draw_pixel state.compute_pixel_loop state.compute_pixel_init 
+state.compute_pixel_init 0 0 0 0 0 0 
+state.compute_pixel_loop 0 0 0 0 1 1 
+state.draw_pixel 0 0 0 1 0 1 
+state.draw_pixel1 0 0 1 0 0 1 
+state.draw_pixel2 0 1 0 0 0 1 
+state.done 1 0 0 0 0 1 
