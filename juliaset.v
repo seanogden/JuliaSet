@@ -88,7 +88,7 @@ reg [18:0] addr_reg ; // for a
 reg signed [7:0] data_reg ; // for a
 reg signed [9:0] x_cursor;
 reg signed [8:0] y_cursor;
-reg signed [9:0] i; //iteration.
+reg unsigned [9:0] i; //iteration.
 reg signed 	[36:0] z_real;  //real part of z 3.33 fixed point
 reg signed [36:0] z_comp;  //complex part of z 3.33 fixed point
 reg signed [36:0] c_real;
@@ -99,9 +99,7 @@ wire signed [36:0] z_real_comp;
 
 //TODO:  We only need to store 4 bits, because we just want 
 //       log of the # of iterations, and there are only up to
-//       1000 iterations.  We will approximate the log by taking
-//       the most significant bit of i.
-//       For now, we can just store the 4 bits in 8 bits and fix later.
+//       1000 iterations. log2(1000)=9.9 thus an unsigned i needs 10 bits
 video_buffer display(
 	.address_a (addr_reg) , 
 	.address_b ({Coord_X[9:0],Coord_Y[8:0]}), // vga current address
@@ -223,17 +221,17 @@ begin
 				addr_reg <= {x_cursor, y_cursor};
 				
 				//approximate log of i.
-				if (i[9] == 1) data_reg <= 8'd10;
-				else if (i[8] == 1) data_reg <= 8'd9;
-				else if (i[7] == 1) data_reg <= 8'd8;
-				else if (i[6] == 1) data_reg <= 8'd7;
-				else if (i[5] == 1) data_reg <= 8'd6;
-				else if (i[4] == 1) data_reg <= 8'd5;
-				else if (i[3] == 1) data_reg <= 8'd4;
-				else if (i[2] == 1) data_reg <= 8'd3;
-				else if (i[1] == 1) data_reg <= 8'd2;
-				else if (i[0] == 1) data_reg <= 8'd1;
-				else data_reg <= 8'd0;
+				if (i[9] == 1)      data_reg <= 4'd10;
+				else if (i[8] == 1) data_reg <= 4'd9;
+				else if (i[7] == 1) data_reg <= 4'd8;
+				else if (i[6] == 1) data_reg <= 4'd7;
+				else if (i[5] == 1) data_reg <= 4'd6;
+				else if (i[4] == 1) data_reg <= 4'd5;
+				else if (i[3] == 1) data_reg <= 4'd4;
+				else if (i[2] == 1) data_reg <= 4'd3;
+				else if (i[1] == 1) data_reg <= 4'd2;
+				else if (i[0] == 1) data_reg <= 4'd1;
+				else                data_reg <= 4'd0;
 				
 				state <= draw_pixel1 ;	
 			end
@@ -299,10 +297,10 @@ endmodule
 //3.33 fixed point signed multiply.
 module signed_mult (out, a, b);
 	output 		[36:0]	out;
-	input 	signed	[36:0] 	a;
+	input 	signed	[36:0] 	a;//3.33 37bit
 	input 	signed	[36:0] 	b;
 	wire	signed	[36:0]	out;
-	wire 	signed	[73:0]	mult_out;
+	wire 	signed	[72:0]	mult_out;
 	assign mult_out = a * b;
-	assign out = {mult_out[73], mult_out[66:33]};
+	assign out = {mult_out[72], mult_out[68:33]}; //1+36
 endmodule

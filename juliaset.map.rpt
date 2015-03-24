@@ -1,5 +1,5 @@
 Analysis & Synthesis report for juliaset
-Tue Mar 24 10:12:10 2015
+Tue Mar 24 13:23:07 2015
 Quartus II 64-Bit Version 11.0 Build 157 04/27/2011 SJ Full Version
 
 
@@ -64,19 +64,19 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                   ;
 +------------------------------------+-------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Tue Mar 24 10:12:10 2015     ;
+; Analysis & Synthesis Status        ; Successful - Tue Mar 24 13:23:07 2015     ;
 ; Quartus II 64-Bit Version          ; 11.0 Build 157 04/27/2011 SJ Full Version ;
 ; Revision Name                      ; juliaset                                  ;
 ; Top-level Entity Name              ; juliaset                                  ;
 ; Family                             ; Cyclone IV E                              ;
-; Total logic elements               ; 1,425                                     ;
-;     Total combinational functions  ; 1,403                                     ;
+; Total logic elements               ; 1,393                                     ;
+;     Total combinational functions  ; 1,371                                     ;
 ;     Dedicated logic registers      ; 222                                       ;
 ; Total registers                    ; 222                                       ;
 ; Total pins                         ; 71                                        ;
 ; Total virtual pins                 ; 0                                         ;
 ; Total memory bits                  ; 2,457,600                                 ;
-; Embedded Multiplier 9-bit elements ; 51                                        ;
+; Embedded Multiplier 9-bit elements ; 50                                        ;
 ; Total PLLs                         ; 1                                         ;
 +------------------------------------+-------------------------------------------+
 
@@ -243,17 +243,17 @@ applicable agreement for further details.
 +---------------------------------------------+-----------------------------------------------------------------------------------+
 ; Resource                                    ; Usage                                                                             ;
 +---------------------------------------------+-----------------------------------------------------------------------------------+
-; Estimated Total logic elements              ; 1,425                                                                             ;
+; Estimated Total logic elements              ; 1,393                                                                             ;
 ;                                             ;                                                                                   ;
-; Total combinational functions               ; 1403                                                                              ;
+; Total combinational functions               ; 1371                                                                              ;
 ; Logic element usage by number of LUT inputs ;                                                                                   ;
-;     -- 4 input functions                    ; 369                                                                               ;
-;     -- 3 input functions                    ; 689                                                                               ;
-;     -- <=2 input functions                  ; 345                                                                               ;
+;     -- 4 input functions                    ; 368                                                                               ;
+;     -- 3 input functions                    ; 674                                                                               ;
+;     -- <=2 input functions                  ; 329                                                                               ;
 ;                                             ;                                                                                   ;
 ; Logic elements by mode                      ;                                                                                   ;
-;     -- normal mode                          ; 590                                                                               ;
-;     -- arithmetic mode                      ; 813                                                                               ;
+;     -- normal mode                          ; 585                                                                               ;
+;     -- arithmetic mode                      ; 786                                                                               ;
 ;                                             ;                                                                                   ;
 ; Total registers                             ; 222                                                                               ;
 ;     -- Dedicated logic registers            ; 222                                                                               ;
@@ -261,14 +261,14 @@ applicable agreement for further details.
 ;                                             ;                                                                                   ;
 ; I/O pins                                    ; 71                                                                                ;
 ; Total memory bits                           ; 2457600                                                                           ;
-; Embedded Multiplier 9-bit elements          ; 51                                                                                ;
+; Embedded Multiplier 9-bit elements          ; 50                                                                                ;
 ; Total PLLs                                  ; 1                                                                                 ;
 ;     -- PLLs                                 ; 1                                                                                 ;
 ;                                             ;                                                                                   ;
 ; Maximum fan-out node                        ; VGA_PLL:p1|altpll:altpll_component|VGA_PLL_altpll:auto_generated|wire_pll1_clk[0] ;
 ; Maximum fan-out                             ; 507                                                                               ;
-; Total fan-out                               ; 15499                                                                             ;
-; Average fan-out                             ; 7.26                                                                              ;
+; Total fan-out                               ; 15425                                                                             ;
+; Average fan-out                             ; 7.35                                                                              ;
 +---------------------------------------------+-----------------------------------------------------------------------------------+
 
 
@@ -277,7 +277,7 @@ applicable agreement for further details.
 +------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node                     ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                    ; Library Name ;
 +------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------------------------------------+--------------+
-; |juliaset                                      ; 1403 (207)        ; 222 (139)    ; 2457600     ; 51           ; 3       ; 24        ; 71   ; 0            ; |juliaset                                                                                                                              ;              ;
+; |juliaset                                      ; 1371 (203)        ; 222 (139)    ; 2457600     ; 50           ; 2       ; 24        ; 71   ; 0            ; |juliaset                                                                                                                              ;              ;
 ;    |Reset_Delay:r0|                            ; 28 (28)           ; 21 (21)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|Reset_Delay:r0                                                                                                               ;              ;
 ;    |VGA_Controller:u1|                         ; 76 (76)           ; 50 (50)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|VGA_Controller:u1                                                                                                            ;              ;
 ;    |VGA_PLL:p1|                                ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|VGA_PLL:p1                                                                                                                   ;              ;
@@ -299,15 +299,15 @@ applicable agreement for further details.
 ;             |mpar_add:sub_par_add|             ; 26 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult1_rtl_2|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add                                                 ;              ;
 ;                |lpm_add_sub:adder[0]|          ; 26 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult1_rtl_2|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[0]                            ;              ;
 ;                   |add_sub_pgh:auto_generated| ; 26 (26)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult1_rtl_2|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[0]|add_sub_pgh:auto_generated ;              ;
-;    |signed_mult:zcr|                           ; 188 (0)           ; 0 (0)        ; 0           ; 17           ; 1       ; 8         ; 0    ; 0            ; |juliaset|signed_mult:zcr                                                                                                              ;              ;
-;       |lpm_mult:Mult0_rtl_3|                   ; 188 (0)           ; 0 (0)        ; 0           ; 17           ; 1       ; 8         ; 0    ; 0            ; |juliaset|signed_mult:zcr|lpm_mult:Mult0_rtl_3                                                                                         ;              ;
-;          |mult_f6t:auto_generated|             ; 188 (188)         ; 0 (0)        ; 0           ; 17           ; 1       ; 8         ; 0    ; 0            ; |juliaset|signed_mult:zcr|lpm_mult:Mult0_rtl_3|mult_f6t:auto_generated                                                                 ;              ;
-;    |signed_mult:zcs|                           ; 188 (0)           ; 0 (0)        ; 0           ; 17           ; 1       ; 8         ; 0    ; 0            ; |juliaset|signed_mult:zcs                                                                                                              ;              ;
-;       |lpm_mult:Mult0_rtl_0|                   ; 188 (0)           ; 0 (0)        ; 0           ; 17           ; 1       ; 8         ; 0    ; 0            ; |juliaset|signed_mult:zcs|lpm_mult:Mult0_rtl_0                                                                                         ;              ;
-;          |mult_f6t:auto_generated|             ; 188 (188)         ; 0 (0)        ; 0           ; 17           ; 1       ; 8         ; 0    ; 0            ; |juliaset|signed_mult:zcs|lpm_mult:Mult0_rtl_0|mult_f6t:auto_generated                                                                 ;              ;
-;    |signed_mult:zrs|                           ; 188 (0)           ; 0 (0)        ; 0           ; 17           ; 1       ; 8         ; 0    ; 0            ; |juliaset|signed_mult:zrs                                                                                                              ;              ;
-;       |lpm_mult:Mult0_rtl_1|                   ; 188 (0)           ; 0 (0)        ; 0           ; 17           ; 1       ; 8         ; 0    ; 0            ; |juliaset|signed_mult:zrs|lpm_mult:Mult0_rtl_1                                                                                         ;              ;
-;          |mult_f6t:auto_generated|             ; 188 (188)         ; 0 (0)        ; 0           ; 17           ; 1       ; 8         ; 0    ; 0            ; |juliaset|signed_mult:zrs|lpm_mult:Mult0_rtl_1|mult_f6t:auto_generated                                                                 ;              ;
+;    |signed_mult:zcr|                           ; 168 (0)           ; 0 (0)        ; 0           ; 16           ; 0       ; 8         ; 0    ; 0            ; |juliaset|signed_mult:zcr                                                                                                              ;              ;
+;       |lpm_mult:Mult0_rtl_3|                   ; 168 (0)           ; 0 (0)        ; 0           ; 16           ; 0       ; 8         ; 0    ; 0            ; |juliaset|signed_mult:zcr|lpm_mult:Mult0_rtl_3                                                                                         ;              ;
+;          |mult_f6t:auto_generated|             ; 168 (168)         ; 0 (0)        ; 0           ; 16           ; 0       ; 8         ; 0    ; 0            ; |juliaset|signed_mult:zcr|lpm_mult:Mult0_rtl_3|mult_f6t:auto_generated                                                                 ;              ;
+;    |signed_mult:zcs|                           ; 184 (0)           ; 0 (0)        ; 0           ; 17           ; 1       ; 8         ; 0    ; 0            ; |juliaset|signed_mult:zcs                                                                                                              ;              ;
+;       |lpm_mult:Mult0_rtl_0|                   ; 184 (0)           ; 0 (0)        ; 0           ; 17           ; 1       ; 8         ; 0    ; 0            ; |juliaset|signed_mult:zcs|lpm_mult:Mult0_rtl_0                                                                                         ;              ;
+;          |mult_f6t:auto_generated|             ; 184 (184)         ; 0 (0)        ; 0           ; 17           ; 1       ; 8         ; 0    ; 0            ; |juliaset|signed_mult:zcs|lpm_mult:Mult0_rtl_0|mult_f6t:auto_generated                                                                 ;              ;
+;    |signed_mult:zrs|                           ; 184 (0)           ; 0 (0)        ; 0           ; 17           ; 1       ; 8         ; 0    ; 0            ; |juliaset|signed_mult:zrs                                                                                                              ;              ;
+;       |lpm_mult:Mult0_rtl_1|                   ; 184 (0)           ; 0 (0)        ; 0           ; 17           ; 1       ; 8         ; 0    ; 0            ; |juliaset|signed_mult:zrs|lpm_mult:Mult0_rtl_1                                                                                         ;              ;
+;          |mult_f6t:auto_generated|             ; 184 (184)         ; 0 (0)        ; 0           ; 17           ; 1       ; 8         ; 0    ; 0            ; |juliaset|signed_mult:zrs|lpm_mult:Mult0_rtl_1|mult_f6t:auto_generated                                                                 ;              ;
 ;    |video_buffer:display|                      ; 394 (0)           ; 12 (0)       ; 2457600     ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|video_buffer:display                                                                                                         ;              ;
 ;       |altsyncram:altsyncram_component|        ; 394 (0)           ; 12 (0)       ; 2457600     ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|video_buffer:display|altsyncram:altsyncram_component                                                                         ;              ;
 ;          |altsyncram_r6i2:auto_generated|      ; 394 (152)         ; 12 (12)      ; 2457600     ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated                                          ;              ;
@@ -333,11 +333,11 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +---------------------------------------+-------------+
 ; Statistic                             ; Number Used ;
 +---------------------------------------+-------------+
-; Simple Multipliers (9-bit)            ; 3           ;
+; Simple Multipliers (9-bit)            ; 2           ;
 ; Simple Multipliers (18-bit)           ; 24          ;
 ; Embedded Multiplier Blocks            ; --          ;
-; Embedded Multiplier 9-bit elements    ; 51          ;
-; Signed Embedded Multipliers           ; 3           ;
+; Embedded Multiplier 9-bit elements    ; 50          ;
+; Signed Embedded Multipliers           ; 2           ;
 ; Unsigned Embedded Multipliers         ; 12          ;
 ; Mixed Sign Embedded Multipliers       ; 12          ;
 ; Variable Sign Embedded Multipliers    ; 0           ;
@@ -393,7 +393,7 @@ Encoding Type:  One-Hot
 ; Number of registers using Synchronous Load   ; 49    ;
 ; Number of registers using Asynchronous Clear ; 50    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 168   ;
+; Number of registers using Clock Enable       ; 169   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -404,7 +404,7 @@ Encoding Type:  One-Hot
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered            ; Example Multiplexer Output ;
 +--------------------+-----------+---------------+----------------------+------------------------+-----------------------+----------------------------+
 ; 4:1                ; 19 bits   ; 38 LEs        ; 19 LEs               ; 19 LEs                 ; |juliaset|addr_reg[5] ;                            ;
-; 4:1                ; 72 bits   ; 144 LEs       ; 72 LEs               ; 72 LEs                 ; |juliaset|z_comp[26]  ;                            ;
+; 4:1                ; 73 bits   ; 146 LEs       ; 73 LEs               ; 73 LEs                 ; |juliaset|z_comp[27]  ;                            ;
 ; 5:1                ; 10 bits   ; 30 LEs        ; 10 LEs               ; 20 LEs                 ; |juliaset|x_cursor[3] ;                            ;
 ; 5:1                ; 9 bits    ; 27 LEs        ; 9 LEs                ; 18 LEs                 ; |juliaset|y_cursor[4] ;                            ;
 ; 3:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; |juliaset|state       ;                            ;
@@ -1239,7 +1239,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 11.0 Build 157 04/27/2011 SJ Full Version
-    Info: Processing started: Tue Mar 24 10:11:58 2015
+    Info: Processing started: Tue Mar 24 13:22:56 2015
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off juliaset -c juliaset
 Info: Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info: Found 1 design units, including 1 entities, in source file vga_controller.v
@@ -1552,18 +1552,18 @@ Warning: Design contains 24 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "SW[17]"
     Warning (15610): No output dependent on input pin "UART_CTS"
     Warning (15610): No output dependent on input pin "UART_RXD"
-Info: Implemented 1852 device resources after synthesis - the final resource count might be different
+Info: Implemented 1819 device resources after synthesis - the final resource count might be different
     Info: Implemented 27 input pins
     Info: Implemented 36 output pins
     Info: Implemented 8 bidirectional pins
-    Info: Implemented 1425 logic cells
+    Info: Implemented 1393 logic cells
     Info: Implemented 304 RAM segments
     Info: Implemented 1 PLLs
-    Info: Implemented 51 DSP elements
+    Info: Implemented 50 DSP elements
 Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 68 warnings
-    Info: Peak virtual memory: 434 megabytes
-    Info: Processing ended: Tue Mar 24 10:12:10 2015
-    Info: Elapsed time: 00:00:12
-    Info: Total CPU time (on all processors): 00:00:11
+    Info: Peak virtual memory: 431 megabytes
+    Info: Processing ended: Tue Mar 24 13:23:07 2015
+    Info: Elapsed time: 00:00:11
+    Info: Total CPU time (on all processors): 00:00:10
 
 
