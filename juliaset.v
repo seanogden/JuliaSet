@@ -88,6 +88,7 @@ wire reset;
 reg [3:0] state;	//state machine
 wire [3:0] mem_bit ; //current data from m4k to VGA
 reg [3:0] disp_bit ; // registered data from m4k to VGA
+reg [23:0] color;
 wire [3:0] state_bit ; // current data from m4k to state machine
 reg we ; // write enable for a
 reg [18:0] addr_reg ; // for a
@@ -124,9 +125,9 @@ video_buffer display(
 	.q_b (mem_bit) ); // data used to update VGA
 
 // Color translation
-assign  mVGA_R = {1'b1, disp_bit[3],6'b1};
-assign  mVGA_G = {1'b1, disp_bit[2],6'b1};
-assign  mVGA_B = {1'b1, disp_bit[1:0],5'b1};
+assign  mVGA_R = color[23:16];
+assign  mVGA_G = color[15:8];
+assign  mVGA_B = color[7:0];
 
 // DLA state machine
 assign reset = ~KEY[0];
@@ -144,8 +145,20 @@ always @ (negedge VGA_CTRL_CLK)
 begin
 	// register the m4k output for better timing on VGA
 	// negedge seems to work better than posedge
-	if (reset) disp_bit <= 4'b0;
-	else disp_bit <= mem_bit;
+	if (reset) color <= 24'd0;
+	else case(mem_bit)
+		4'd0: color <= 24'd000000;
+		4'd1: color <= 24'h7f00ff;
+		4'd2: color <= 24'h0000ff;
+		4'd3: color <= 24'h0080ff;
+		4'd4: color <= 24'h00ffff;
+		4'd5: color <= 24'h00ff80;
+		4'd6: color <= 24'h00ff00;
+		4'd7: color <= 24'h80ff00;
+		4'd8: color <= 24'hffff00;
+		4'd9: color <= 24'hff8000;
+		4'd10: color <= 24'hff0000;
+	endcase
 end
 
 always @ (posedge VGA_CTRL_CLK) //VGA_CTRL_CLK

@@ -1,5 +1,5 @@
 Analysis & Synthesis report for juliaset
-Tue Mar 24 18:04:41 2015
+Wed Mar 25 04:39:44 2015
 Quartus II 64-Bit Version 11.0 Build 157 04/27/2011 SJ Full Version
 
 
@@ -17,26 +17,28 @@ Quartus II 64-Bit Version 11.0 Build 157 04/27/2011 SJ Full Version
   9. Analysis & Synthesis DSP Block Usage Summary
  10. Analysis & Synthesis IP Cores Summary
  11. State Machine - |juliaset|state
- 12. General Register Statistics
- 13. Multiplexer Restructuring Statistics (Restructuring Performed)
- 14. Source assignments for video_buffer:display|altsyncram:altsyncram_component|altsyncram_l5e2:auto_generated
- 15. Parameter Settings for User Entity Instance: Top-level Entity: |juliaset
- 16. Parameter Settings for User Entity Instance: VGA_PLL:p1|altpll:altpll_component
- 17. Parameter Settings for User Entity Instance: VGA_Controller:u1
- 18. Parameter Settings for User Entity Instance: video_buffer:display|altsyncram:altsyncram_component
- 19. Parameter Settings for Inferred Entity Instance: signed_mult:zcs|lpm_mult:Mult0_rtl_0
- 20. Parameter Settings for Inferred Entity Instance: signed_mult:zrs|lpm_mult:Mult0_rtl_1
- 21. Parameter Settings for Inferred Entity Instance: lpm_mult:Mult1_rtl_2
- 22. Parameter Settings for Inferred Entity Instance: signed_mult:zcr|lpm_mult:Mult0_rtl_3
- 23. Parameter Settings for Inferred Entity Instance: lpm_mult:Mult0_rtl_4
- 24. altpll Parameter Settings by Entity Instance
- 25. altsyncram Parameter Settings by Entity Instance
- 26. lpm_mult Parameter Settings by Entity Instance
- 27. Port Connectivity Checks: "signed_mult:zcr"
- 28. Port Connectivity Checks: "video_buffer:display"
- 29. Port Connectivity Checks: "VGA_Controller:u1"
- 30. Elapsed Time Per Partition
- 31. Analysis & Synthesis Messages
+ 12. Registers Removed During Synthesis
+ 13. General Register Statistics
+ 14. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 15. Source assignments for video_buffer:display|altsyncram:altsyncram_component|altsyncram_17e2:auto_generated
+ 16. Parameter Settings for User Entity Instance: Top-level Entity: |juliaset
+ 17. Parameter Settings for User Entity Instance: VGA_PLL:p1|altpll:altpll_component
+ 18. Parameter Settings for User Entity Instance: VGA_Controller:u1
+ 19. Parameter Settings for User Entity Instance: video_buffer:display|altsyncram:altsyncram_component
+ 20. Parameter Settings for Inferred Entity Instance: signed_mult:zcs|lpm_mult:Mult0_rtl_0
+ 21. Parameter Settings for Inferred Entity Instance: signed_mult:zrs|lpm_mult:Mult0_rtl_1
+ 22. Parameter Settings for Inferred Entity Instance: lpm_mult:Mult1_rtl_2
+ 23. Parameter Settings for Inferred Entity Instance: signed_mult:zcr|lpm_mult:Mult0_rtl_3
+ 24. Parameter Settings for Inferred Entity Instance: lpm_mult:Mult0_rtl_4
+ 25. altpll Parameter Settings by Entity Instance
+ 26. altsyncram Parameter Settings by Entity Instance
+ 27. lpm_mult Parameter Settings by Entity Instance
+ 28. Port Connectivity Checks: "signed_mult:zcr"
+ 29. Port Connectivity Checks: "video_buffer:display"
+ 30. Port Connectivity Checks: "VGA_Controller:u1"
+ 31. Port Connectivity Checks: "Reset_Delay:r0"
+ 32. Elapsed Time Per Partition
+ 33. Analysis & Synthesis Messages
 
 
 
@@ -62,18 +64,18 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                   ;
 +------------------------------------+-------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Tue Mar 24 18:04:40 2015     ;
+; Analysis & Synthesis Status        ; Successful - Wed Mar 25 04:39:44 2015     ;
 ; Quartus II 64-Bit Version          ; 11.0 Build 157 04/27/2011 SJ Full Version ;
 ; Revision Name                      ; juliaset                                  ;
 ; Top-level Entity Name              ; juliaset                                  ;
 ; Family                             ; Cyclone IV E                              ;
-; Total logic elements               ; 1,373                                     ;
-;     Total combinational functions  ; 1,352                                     ;
-;     Dedicated logic registers      ; 218                                       ;
-; Total registers                    ; 218                                       ;
+; Total logic elements               ; 1,368                                     ;
+;     Total combinational functions  ; 1,349                                     ;
+;     Dedicated logic registers      ; 197                                       ;
+; Total registers                    ; 197                                       ;
 ; Total pins                         ; 71                                        ;
 ; Total virtual pins                 ; 0                                         ;
-; Total memory bits                  ; 1,240,000                                 ;
+; Total memory bits                  ; 1,310,720                                 ;
 ; Embedded Multiplier 9-bit elements ; 50                                        ;
 ; Total PLLs                         ; 1                                         ;
 +------------------------------------+-------------------------------------------+
@@ -206,10 +208,10 @@ applicable agreement for further details.
 ; altrom.inc                       ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/altrom.inc              ;
 ; altram.inc                       ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/altram.inc              ;
 ; altdpram.inc                     ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/altdpram.inc            ;
-; db/altsyncram_l5e2.tdf           ; yes             ; Auto-Generated Megafunction  ; C:/JuliaSet/JuliaSet/db/altsyncram_l5e2.tdf                            ;
-; db/decode_hua.tdf                ; yes             ; Auto-Generated Megafunction  ; C:/JuliaSet/JuliaSet/db/decode_hua.tdf                                 ;
-; db/decode_aaa.tdf                ; yes             ; Auto-Generated Megafunction  ; C:/JuliaSet/JuliaSet/db/decode_aaa.tdf                                 ;
-; db/mux_tob.tdf                   ; yes             ; Auto-Generated Megafunction  ; C:/JuliaSet/JuliaSet/db/mux_tob.tdf                                    ;
+; db/altsyncram_17e2.tdf           ; yes             ; Auto-Generated Megafunction  ; C:/JuliaSet/JuliaSet/db/altsyncram_17e2.tdf                            ;
+; db/decode_aua.tdf                ; yes             ; Auto-Generated Megafunction  ; C:/JuliaSet/JuliaSet/db/decode_aua.tdf                                 ;
+; db/decode_3aa.tdf                ; yes             ; Auto-Generated Megafunction  ; C:/JuliaSet/JuliaSet/db/decode_3aa.tdf                                 ;
+; db/mux_mob.tdf                   ; yes             ; Auto-Generated Megafunction  ; C:/JuliaSet/JuliaSet/db/mux_mob.tdf                                    ;
 ; lpm_mult.tdf                     ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/lpm_mult.tdf            ;
 ; lpm_add_sub.inc                  ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/lpm_add_sub.inc         ;
 ; multcore.inc                     ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/multcore.inc            ;
@@ -243,32 +245,32 @@ applicable agreement for further details.
 +---------------------------------------------+-----------------------------------------------------------------------------------+
 ; Resource                                    ; Usage                                                                             ;
 +---------------------------------------------+-----------------------------------------------------------------------------------+
-; Estimated Total logic elements              ; 1,373                                                                             ;
+; Estimated Total logic elements              ; 1,368                                                                             ;
 ;                                             ;                                                                                   ;
-; Total combinational functions               ; 1352                                                                              ;
+; Total combinational functions               ; 1349                                                                              ;
 ; Logic element usage by number of LUT inputs ;                                                                                   ;
-;     -- 4 input functions                    ; 295                                                                               ;
-;     -- 3 input functions                    ; 694                                                                               ;
-;     -- <=2 input functions                  ; 363                                                                               ;
+;     -- 4 input functions                    ; 306                                                                               ;
+;     -- 3 input functions                    ; 700                                                                               ;
+;     -- <=2 input functions                  ; 343                                                                               ;
 ;                                             ;                                                                                   ;
 ; Logic elements by mode                      ;                                                                                   ;
-;     -- normal mode                          ; 523                                                                               ;
-;     -- arithmetic mode                      ; 829                                                                               ;
+;     -- normal mode                          ; 538                                                                               ;
+;     -- arithmetic mode                      ; 811                                                                               ;
 ;                                             ;                                                                                   ;
-; Total registers                             ; 218                                                                               ;
-;     -- Dedicated logic registers            ; 218                                                                               ;
+; Total registers                             ; 197                                                                               ;
+;     -- Dedicated logic registers            ; 197                                                                               ;
 ;     -- I/O registers                        ; 0                                                                                 ;
 ;                                             ;                                                                                   ;
 ; I/O pins                                    ; 71                                                                                ;
-; Total memory bits                           ; 1240000                                                                           ;
+; Total memory bits                           ; 1310720                                                                           ;
 ; Embedded Multiplier 9-bit elements          ; 50                                                                                ;
 ; Total PLLs                                  ; 1                                                                                 ;
 ;     -- PLLs                                 ; 1                                                                                 ;
 ;                                             ;                                                                                   ;
 ; Maximum fan-out node                        ; VGA_PLL:p1|altpll:altpll_component|VGA_PLL_altpll:auto_generated|wire_pll1_clk[0] ;
-; Maximum fan-out                             ; 351                                                                               ;
-; Total fan-out                               ; 10373                                                                             ;
-; Average fan-out                             ; 5.39                                                                              ;
+; Maximum fan-out                             ; 359                                                                               ;
+; Total fan-out                               ; 10620                                                                             ;
+; Average fan-out                             ; 5.56                                                                              ;
 +---------------------------------------------+-----------------------------------------------------------------------------------+
 
 
@@ -277,9 +279,8 @@ applicable agreement for further details.
 +------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node                     ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                    ; Library Name ;
 +------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------------------------------------+--------------+
-; |juliaset                                      ; 1352 (280)        ; 218 (136)    ; 1240000     ; 50           ; 2       ; 24        ; 71   ; 0            ; |juliaset                                                                                                                              ;              ;
-;    |Reset_Delay:r0|                            ; 28 (28)           ; 21 (21)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|Reset_Delay:r0                                                                                                               ;              ;
-;    |VGA_Controller:u1|                         ; 81 (81)           ; 49 (49)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|VGA_Controller:u1                                                                                                            ;              ;
+; |juliaset                                      ; 1349 (288)        ; 197 (138)    ; 1310720     ; 50           ; 2       ; 24        ; 71   ; 0            ; |juliaset                                                                                                                              ;              ;
+;    |VGA_Controller:u1|                         ; 87 (87)           ; 47 (47)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|VGA_Controller:u1                                                                                                            ;              ;
 ;    |VGA_PLL:p1|                                ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|VGA_PLL:p1                                                                                                                   ;              ;
 ;       |altpll:altpll_component|                ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|VGA_PLL:p1|altpll:altpll_component                                                                                           ;              ;
 ;          |VGA_PLL_altpll:auto_generated|       ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|VGA_PLL:p1|altpll:altpll_component|VGA_PLL_altpll:auto_generated                                                             ;              ;
@@ -308,13 +309,13 @@ applicable agreement for further details.
 ;    |signed_mult:zrs|                           ; 188 (0)           ; 0 (0)        ; 0           ; 17           ; 1       ; 8         ; 0    ; 0            ; |juliaset|signed_mult:zrs                                                                                                              ;              ;
 ;       |lpm_mult:Mult0_rtl_1|                   ; 188 (0)           ; 0 (0)        ; 0           ; 17           ; 1       ; 8         ; 0    ; 0            ; |juliaset|signed_mult:zrs|lpm_mult:Mult0_rtl_1                                                                                         ;              ;
 ;          |mult_f6t:auto_generated|             ; 188 (188)         ; 0 (0)        ; 0           ; 17           ; 1       ; 8         ; 0    ; 0            ; |juliaset|signed_mult:zrs|lpm_mult:Mult0_rtl_1|mult_f6t:auto_generated                                                                 ;              ;
-;    |video_buffer:display|                      ; 285 (0)           ; 12 (0)       ; 1240000     ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|video_buffer:display                                                                                                         ;              ;
-;       |altsyncram:altsyncram_component|        ; 285 (0)           ; 12 (0)       ; 1240000     ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|video_buffer:display|altsyncram:altsyncram_component                                                                         ;              ;
-;          |altsyncram_r6i2:auto_generated|      ; 285 (152)         ; 12 (12)      ; 1240000     ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated                                          ;              ;
-;             |decode_aaa:rden_decode_a|         ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|decode_aaa:rden_decode_a                 ;              ;
+;    |video_buffer:display|                      ; 296 (0)           ; 12 (0)       ; 1310720     ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|video_buffer:display                                                                                                         ;              ;
+;       |altsyncram:altsyncram_component|        ; 296 (0)           ; 12 (0)       ; 1310720     ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|video_buffer:display|altsyncram:altsyncram_component                                                                         ;              ;
+;          |altsyncram_r6i2:auto_generated|      ; 296 (160)         ; 12 (12)      ; 1310720     ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated                                          ;              ;
+;             |decode_aaa:rden_decode_a|         ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|decode_aaa:rden_decode_a                 ;              ;
 ;             |decode_aaa:rden_decode_b|         ; 6 (6)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|decode_aaa:rden_decode_b                 ;              ;
-;             |decode_hua:decode2|               ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|decode_hua:decode2                       ;              ;
-;             |mux_1pb:mux5|                     ; 118 (118)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|mux_1pb:mux5                             ;              ;
+;             |decode_hua:decode2|               ; 6 (6)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|decode_hua:decode2                       ;              ;
+;             |mux_1pb:mux5|                     ; 121 (121)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|mux_1pb:mux5                             ;              ;
 +------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -324,7 +325,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +------------------------------------------------------------------------------------------------+------+----------------+--------------+--------------+--------------+--------------+---------+------+
 ; Name                                                                                           ; Type ; Mode           ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size    ; MIF  ;
 +------------------------------------------------------------------------------------------------+------+----------------+--------------+--------------+--------------+--------------+---------+------+
-; video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM ; M9K  ; True Dual Port ; 310000       ; 4            ; 310000       ; 4            ; 1240000 ; None ;
+; video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM ; M9K  ; True Dual Port ; 327680       ; 4            ; 327680       ; 4            ; 1310720 ; None ;
 +------------------------------------------------------------------------------------------------+------+----------------+--------------+--------------+--------------+--------------+---------+------+
 
 
@@ -371,17 +372,35 @@ Encoding Type:  One-Hot
 +--------------------------+------------+-------------------+-------------------+------------------+--------------------------+--------------------------+
 
 
++--------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                   ;
++---------------------------------------+----------------------------------------------+
+; Register name                         ; Reason for Removal                           ;
++---------------------------------------+----------------------------------------------+
+; color[1..6]                           ; Merged with color[0]                         ;
+; VGA_Controller:u1|Cur_Color_R[1..4]   ; Merged with VGA_Controller:u1|Cur_Color_R[0] ;
+; VGA_Controller:u1|Cur_Color_G[1..4]   ; Merged with VGA_Controller:u1|Cur_Color_G[0] ;
+; color[8,9,11..14]                     ; Merged with color[10]                        ;
+; color[17..22]                         ; Merged with color[16]                        ;
+; VGA_Controller:u1|Cur_Color_B[1..5]   ; Merged with VGA_Controller:u1|Cur_Color_B[0] ;
+; VGA_Controller:u1|Cur_Color_R[0,5]    ; Merged with VGA_Controller:u1|Cur_Color_R[6] ;
+; VGA_Controller:u1|Cur_Color_G[0,5]    ; Merged with VGA_Controller:u1|Cur_Color_G[6] ;
+; VGA_Controller:u1|Cur_Color_B[0]      ; Merged with VGA_Controller:u1|Cur_Color_B[6] ;
+; Total Number of Removed Registers = 0 ;                                              ;
++---------------------------------------+----------------------------------------------+
+
+
 +------------------------------------------------------+
 ; General Register Statistics                          ;
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 218   ;
-; Number of registers using Synchronous Clear  ; 132   ;
+; Total registers                              ; 197   ;
+; Number of registers using Synchronous Clear  ; 134   ;
 ; Number of registers using Synchronous Load   ; 1     ;
-; Number of registers using Asynchronous Clear ; 49    ;
+; Number of registers using Asynchronous Clear ; 47    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 158   ;
+; Number of registers using Clock Enable       ; 145   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -391,15 +410,16 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+-----------------------+----------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered            ; Example Multiplexer Output ;
 +--------------------+-----------+---------------+----------------------+------------------------+-----------------------+----------------------------+
-; 3:1                ; 19 bits   ; 38 LEs        ; 19 LEs               ; 19 LEs                 ; |juliaset|addr_reg[4] ;                            ;
-; 4:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; |juliaset|x_cursor[5] ;                            ;
-; 4:1                ; 9 bits    ; 18 LEs        ; 9 LEs                ; 9 LEs                  ; |juliaset|y_cursor[8] ;                            ;
-; 5:1                ; 72 bits   ; 216 LEs       ; 144 LEs              ; 72 LEs                 ; |juliaset|z_comp[7]   ;                            ;
+; 3:1                ; 19 bits   ; 38 LEs        ; 19 LEs               ; 19 LEs                 ; |juliaset|addr_reg[2] ;                            ;
+; 17:1               ; 6 bits    ; 66 LEs        ; 48 LEs               ; 18 LEs                 ; |juliaset|color[23]   ;                            ;
+; 4:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; |juliaset|x_cursor[1] ;                            ;
+; 4:1                ; 9 bits    ; 18 LEs        ; 9 LEs                ; 9 LEs                  ; |juliaset|y_cursor[1] ;                            ;
+; 5:1                ; 72 bits   ; 216 LEs       ; 144 LEs              ; 72 LEs                 ; |juliaset|z_real[29]  ;                            ;
 +--------------------+-----------+---------------+----------------------+------------------------+-----------------------+----------------------------+
 
 
 +------------------------------------------------------------------------------------------------------------+
-; Source assignments for video_buffer:display|altsyncram:altsyncram_component|altsyncram_l5e2:auto_generated ;
+; Source assignments for video_buffer:display|altsyncram:altsyncram_component|altsyncram_17e2:auto_generated ;
 +---------------------------------+--------------------+------+----------------------------------------------+
 ; Assignment                      ; Value              ; From ; To                                           ;
 +---------------------------------+--------------------+------+----------------------------------------------+
@@ -831,7 +851,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; OPERATION_MODE                     ; BIDIR_DUAL_PORT      ; Untyped                               ;
 ; WIDTH_A                            ; 4                    ; Signed Integer                        ;
 ; WIDTHAD_A                          ; 19                   ; Signed Integer                        ;
-; NUMWORDS_A                         ; 310000               ; Signed Integer                        ;
+; NUMWORDS_A                         ; 327680               ; Signed Integer                        ;
 ; OUTDATA_REG_A                      ; CLOCK0               ; Untyped                               ;
 ; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                               ;
 ; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                               ;
@@ -840,7 +860,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                               ;
 ; WIDTH_B                            ; 4                    ; Signed Integer                        ;
 ; WIDTHAD_B                          ; 19                   ; Signed Integer                        ;
-; NUMWORDS_B                         ; 310000               ; Signed Integer                        ;
+; NUMWORDS_B                         ; 327680               ; Signed Integer                        ;
 ; INDATA_REG_B                       ; CLOCK1               ; Untyped                               ;
 ; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                               ;
 ; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                               ;
@@ -872,7 +892,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; ENABLE_ECC                         ; FALSE                ; Untyped                               ;
 ; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                               ;
 ; DEVICE_FAMILY                      ; Cyclone IV E         ; Untyped                               ;
-; CBXI_PARAMETER                     ; altsyncram_l5e2      ; Untyped                               ;
+; CBXI_PARAMETER                     ; altsyncram_17e2      ; Untyped                               ;
 +------------------------------------+----------------------+---------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
@@ -1078,10 +1098,10 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Entity Instance                           ; video_buffer:display|altsyncram:altsyncram_component ;
 ;     -- OPERATION_MODE                     ; BIDIR_DUAL_PORT                                      ;
 ;     -- WIDTH_A                            ; 4                                                    ;
-;     -- NUMWORDS_A                         ; 310000                                               ;
+;     -- NUMWORDS_A                         ; 327680                                               ;
 ;     -- OUTDATA_REG_A                      ; CLOCK0                                               ;
 ;     -- WIDTH_B                            ; 4                                                    ;
-;     -- NUMWORDS_B                         ; 310000                                               ;
+;     -- NUMWORDS_B                         ; 327680                                               ;
 ;     -- ADDRESS_REG_B                      ; CLOCK1                                               ;
 ;     -- OUTDATA_REG_B                      ; CLOCK1                                               ;
 ;     -- RAM_BLOCK_TYPE                     ; M9K                                                  ;
@@ -1187,17 +1207,17 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; iCursor_R            ; Input  ; Info     ; Stuck at GND                                                                        ;
 ; iCursor_G            ; Input  ; Info     ; Stuck at GND                                                                        ;
 ; iCursor_B            ; Input  ; Info     ; Stuck at GND                                                                        ;
-; iRed[5..1]           ; Input  ; Info     ; Stuck at GND                                                                        ;
-; iRed[7]              ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; iRed[0]              ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; iGreen[5..1]         ; Input  ; Info     ; Stuck at GND                                                                        ;
-; iGreen[7]            ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; iGreen[0]            ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; iBlue[4..1]          ; Input  ; Info     ; Stuck at GND                                                                        ;
-; iBlue[7]             ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; iBlue[0]             ; Input  ; Info     ; Stuck at VCC                                                                        ;
 ; oVGA_CLOCK           ; Output ; Info     ; Explicitly unconnected                                                              ;
 +----------------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Reset_Delay:r0"                                                                       ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; Port   ; Type   ; Severity ; Details                                                                             ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; oRESET ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
 
 
 +-------------------------------+
@@ -1215,7 +1235,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 11.0 Build 157 04/27/2011 SJ Full Version
-    Info: Processing started: Tue Mar 24 18:04:27 2015
+    Info: Processing started: Wed Mar 25 04:39:29 2015
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off juliaset -c juliaset
 Info: Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info: Found 1 design units, including 1 entities, in source file vga_controller.v
@@ -1232,8 +1252,8 @@ Info: Found 2 design units, including 2 entities, in source file juliaset.v
 Info: Found 1 design units, including 1 entities, in source file testbench.v
     Info: Found entity 1: testbench
 Info: Elaborating entity "juliaset" for the top level hierarchy
-Warning (10036): Verilog HDL or VHDL warning at juliaset.v(106): object "z_real_watch" assigned a value but never read
-Warning (10036): Verilog HDL or VHDL warning at juliaset.v(107): object "z_comp_watch" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at juliaset.v(107): object "z_real_watch" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at juliaset.v(108): object "z_comp_watch" assigned a value but never read
 Warning (10034): Output port "LCD_BLON" at juliaset.v(20) has no driver
 Warning (10034): Output port "LCD_EN" at juliaset.v(22) has no driver
 Warning (10034): Output port "LCD_ON" at juliaset.v(23) has no driver
@@ -1324,8 +1344,8 @@ Info: Instantiated megafunction "video_buffer:display|altsyncram:altsyncram_comp
     Info: Parameter "indata_reg_b" = "CLOCK1"
     Info: Parameter "intended_device_family" = "Cyclone IV E"
     Info: Parameter "lpm_type" = "altsyncram"
-    Info: Parameter "numwords_a" = "310000"
-    Info: Parameter "numwords_b" = "310000"
+    Info: Parameter "numwords_a" = "327680"
+    Info: Parameter "numwords_b" = "327680"
     Info: Parameter "operation_mode" = "BIDIR_DUAL_PORT"
     Info: Parameter "outdata_aclr_a" = "NONE"
     Info: Parameter "outdata_aclr_b" = "NONE"
@@ -1342,18 +1362,18 @@ Info: Instantiated megafunction "video_buffer:display|altsyncram:altsyncram_comp
     Info: Parameter "width_byteena_a" = "1"
     Info: Parameter "width_byteena_b" = "1"
     Info: Parameter "wrcontrol_wraddress_reg_b" = "CLOCK1"
-Info: Found 1 design units, including 1 entities, in source file db/altsyncram_l5e2.tdf
-    Info: Found entity 1: altsyncram_l5e2
-Info: Elaborating entity "altsyncram_l5e2" for hierarchy "video_buffer:display|altsyncram:altsyncram_component|altsyncram_l5e2:auto_generated"
-Info: Found 1 design units, including 1 entities, in source file db/decode_hua.tdf
-    Info: Found entity 1: decode_hua
-Info: Elaborating entity "decode_hua" for hierarchy "video_buffer:display|altsyncram:altsyncram_component|altsyncram_l5e2:auto_generated|decode_hua:decode2"
-Info: Found 1 design units, including 1 entities, in source file db/decode_aaa.tdf
-    Info: Found entity 1: decode_aaa
-Info: Elaborating entity "decode_aaa" for hierarchy "video_buffer:display|altsyncram:altsyncram_component|altsyncram_l5e2:auto_generated|decode_aaa:rden_decode_a"
-Info: Found 1 design units, including 1 entities, in source file db/mux_tob.tdf
-    Info: Found entity 1: mux_tob
-Info: Elaborating entity "mux_tob" for hierarchy "video_buffer:display|altsyncram:altsyncram_component|altsyncram_l5e2:auto_generated|mux_tob:mux4"
+Info: Found 1 design units, including 1 entities, in source file db/altsyncram_17e2.tdf
+    Info: Found entity 1: altsyncram_17e2
+Info: Elaborating entity "altsyncram_17e2" for hierarchy "video_buffer:display|altsyncram:altsyncram_component|altsyncram_17e2:auto_generated"
+Info: Found 1 design units, including 1 entities, in source file db/decode_aua.tdf
+    Info: Found entity 1: decode_aua
+Info: Elaborating entity "decode_aua" for hierarchy "video_buffer:display|altsyncram:altsyncram_component|altsyncram_17e2:auto_generated|decode_aua:decode2"
+Info: Found 1 design units, including 1 entities, in source file db/decode_3aa.tdf
+    Info: Found entity 1: decode_3aa
+Info: Elaborating entity "decode_3aa" for hierarchy "video_buffer:display|altsyncram:altsyncram_component|altsyncram_17e2:auto_generated|decode_3aa:rden_decode_a"
+Info: Found 1 design units, including 1 entities, in source file db/mux_mob.tdf
+    Info: Found entity 1: mux_mob
+Info: Elaborating entity "mux_mob" for hierarchy "video_buffer:display|altsyncram:altsyncram_component|altsyncram_17e2:auto_generated|mux_mob:mux4"
 Info: Elaborating entity "signed_mult" for hierarchy "signed_mult:zrs"
 Info: Starting Rapid Recompile for partition "Top"
 Info: Inferred 5 megafunctions from design logic
@@ -1446,66 +1466,53 @@ Warning: Output pins are stuck at VCC or GND
     Warning (13410): Pin "LCD_RW" is stuck at GND
     Warning (13410): Pin "UART_RTS" is stuck at GND
     Warning (13410): Pin "UART_TXD" is stuck at GND
-    Warning (13410): Pin "VGA_B[1]" is stuck at GND
-    Warning (13410): Pin "VGA_B[2]" is stuck at GND
-    Warning (13410): Pin "VGA_B[3]" is stuck at GND
-    Warning (13410): Pin "VGA_B[4]" is stuck at GND
-    Warning (13410): Pin "VGA_G[1]" is stuck at GND
-    Warning (13410): Pin "VGA_G[2]" is stuck at GND
-    Warning (13410): Pin "VGA_G[3]" is stuck at GND
-    Warning (13410): Pin "VGA_G[4]" is stuck at GND
-    Warning (13410): Pin "VGA_G[5]" is stuck at GND
-    Warning (13410): Pin "VGA_R[1]" is stuck at GND
-    Warning (13410): Pin "VGA_R[2]" is stuck at GND
-    Warning (13410): Pin "VGA_R[3]" is stuck at GND
-    Warning (13410): Pin "VGA_R[4]" is stuck at GND
-    Warning (13410): Pin "VGA_R[5]" is stuck at GND
     Warning (13410): Pin "VGA_SYNC_N" is stuck at GND
 Info: Found the following redundant logic cells in design
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis18"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis17"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis15"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis14"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis13"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis16"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis37"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis36"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis35"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis38"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis32"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis33"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis31"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis34"
     Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis20"
     Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis21"
     Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis19"
     Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis22"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis2"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis3"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis1"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis16"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis17"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis15"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis18"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis24"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis23"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis26"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis25"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis28"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis27"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis30"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis29"
     Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis4"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis36"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis35"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis0"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis6"
     Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis5"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis3"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis6"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis0"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis1"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis2"
     Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis8"
     Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis7"
     Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis10"
     Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis9"
     Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis12"
     Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis11"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis32"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis31"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis34"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis33"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis28"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis27"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis30"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis29"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis25"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis24"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis23"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis26"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis14"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis13"
 Info: Generating hard_block partition "hard_block:auto_generated_inst"
     Info: Adding node "VGA_PLL:p1|altpll:altpll_component|VGA_PLL_altpll:auto_generated|pll1"
-Warning: Design contains 25 input pin(s) that do not drive logic
+Warning: Design contains 24 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "CLOCK2_50"
     Warning (15610): No output dependent on input pin "CLOCK3_50"
-    Warning (15610): No output dependent on input pin "KEY[1]"
     Warning (15610): No output dependent on input pin "KEY[2]"
     Warning (15610): No output dependent on input pin "KEY[3]"
     Warning (15610): No output dependent on input pin "SW[0]"
@@ -1528,18 +1535,18 @@ Warning: Design contains 25 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "SW[17]"
     Warning (15610): No output dependent on input pin "UART_CTS"
     Warning (15610): No output dependent on input pin "UART_RXD"
-Info: Implemented 1647 device resources after synthesis - the final resource count might be different
+Info: Implemented 1650 device resources after synthesis - the final resource count might be different
     Info: Implemented 27 input pins
     Info: Implemented 36 output pins
     Info: Implemented 8 bidirectional pins
-    Info: Implemented 1373 logic cells
-    Info: Implemented 152 RAM segments
+    Info: Implemented 1368 logic cells
+    Info: Implemented 160 RAM segments
     Info: Implemented 1 PLLs
     Info: Implemented 50 DSP elements
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 62 warnings
-    Info: Peak virtual memory: 422 megabytes
-    Info: Processing ended: Tue Mar 24 18:04:41 2015
-    Info: Elapsed time: 00:00:14
-    Info: Total CPU time (on all processors): 00:00:13
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 47 warnings
+    Info: Peak virtual memory: 423 megabytes
+    Info: Processing ended: Wed Mar 25 04:39:44 2015
+    Info: Elapsed time: 00:00:15
+    Info: Total CPU time (on all processors): 00:00:14
 
 

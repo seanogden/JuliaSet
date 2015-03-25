@@ -1,5 +1,5 @@
 Flow report for juliaset
-Tue Mar 24 18:05:36 2015
+Wed Mar 25 04:40:29 2015
 Quartus II 64-Bit Version 11.0 Build 157 04/27/2011 SJ Full Version
 
 
@@ -38,20 +38,20 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------+
 ; Flow Summary                                                                   ;
 +------------------------------------+-------------------------------------------+
-; Flow Status                        ; Successful - Tue Mar 24 18:05:36 2015     ;
+; Flow Status                        ; Successful - Wed Mar 25 04:40:29 2015     ;
 ; Quartus II 64-Bit Version          ; 11.0 Build 157 04/27/2011 SJ Full Version ;
 ; Revision Name                      ; juliaset                                  ;
 ; Top-level Entity Name              ; juliaset                                  ;
 ; Family                             ; Cyclone IV E                              ;
 ; Device                             ; EP4CE115F29C7                             ;
 ; Timing Models                      ; Final                                     ;
-; Total logic elements               ; 1,431 / 114,480 ( 1 % )                   ;
-;     Total combinational functions  ; 1,410 / 114,480 ( 1 % )                   ;
-;     Dedicated logic registers      ; 164 / 114,480 ( < 1 % )                   ;
-; Total registers                    ; 164                                       ;
+; Total logic elements               ; 1,413 / 114,480 ( 1 % )                   ;
+;     Total combinational functions  ; 1,403 / 114,480 ( 1 % )                   ;
+;     Dedicated logic registers      ; 143 / 114,480 ( < 1 % )                   ;
+; Total registers                    ; 143                                       ;
 ; Total pins                         ; 71 / 529 ( 13 % )                         ;
 ; Total virtual pins                 ; 0                                         ;
-; Total memory bits                  ; 1,240,000 / 3,981,312 ( 31 % )            ;
+; Total memory bits                  ; 1,310,720 / 3,981,312 ( 33 % )            ;
 ; Embedded Multiplier 9-bit elements ; 50 / 532 ( 9 % )                          ;
 ; Total PLLs                         ; 1 / 4 ( 25 % )                            ;
 +------------------------------------+-------------------------------------------+
@@ -62,7 +62,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 03/24/2015 18:04:27 ;
+; Start date & time ; 03/25/2015 04:39:30 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; juliaset            ;
 +-------------------+---------------------+
@@ -73,7 +73,7 @@ applicable agreement for further details.
 +--------------------------------------+---------------------------------------+---------------+-------------+----------------+
 ; Assignment Name                      ; Value                                 ; Default Value ; Entity Name ; Section Id     ;
 +--------------------------------------+---------------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID                ; 132683363797205.142723466704076       ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID                ; 132683363797205.142727276903984       ; --            ; --          ; --             ;
 ; EDA_DESIGN_INSTANCE_NAME             ; NA                                    ; --            ; --          ; testbench      ;
 ; EDA_NATIVELINK_SIMULATION_TEST_BENCH ; testbench                             ; --            ; --          ; eda_simulation ;
 ; EDA_OUTPUT_DATA_FORMAT               ; Verilog Hdl                           ; --            ; --          ; eda_simulation ;
@@ -106,12 +106,12 @@ applicable agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:13     ; 1.0                     ; 422 MB              ; 00:00:12                           ;
-; Fitter                    ; 00:00:36     ; 2.6                     ; 753 MB              ; 00:00:52                           ;
+; Analysis & Synthesis      ; 00:00:14     ; 1.0                     ; 423 MB              ; 00:00:13                           ;
+; Fitter                    ; 00:00:26     ; 2.2                     ; 721 MB              ; 00:00:32                           ;
 ; Assembler                 ; 00:00:08     ; 1.0                     ; 591 MB              ; 00:00:07                           ;
-; TimeQuest Timing Analyzer ; 00:00:09     ; 2.4                     ; 469 MB              ; 00:00:11                           ;
-; EDA Netlist Writer        ; 00:00:05     ; 1.0                     ; 331 MB              ; 00:00:05                           ;
-; Total                     ; 00:01:11     ; --                      ; --                  ; 00:01:27                           ;
+; TimeQuest Timing Analyzer ; 00:00:09     ; 1.0                     ; 468 MB              ; 00:00:10                           ;
+; EDA Netlist Writer        ; 00:00:05     ; 1.0                     ; 332 MB              ; 00:00:05                           ;
+; Total                     ; 00:01:02     ; --                      ; --                  ; 00:01:07                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
