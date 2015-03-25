@@ -171,10 +171,10 @@ begin
 		we <= 1'b1;								//write some memory
 		data_reg <= 4'd0;	//write all zeros (black)	
 		//init a randwalker to just left of center
-		x_cursor <= 10'd0;
-		y_cursor <= 9'd0;
+		x_cursor <= 10'd279;
+		y_cursor <= 9'd249;
 		c_real <= -37'd6871947673;  // -0.8
-		c_comp <=  37'd1340029796;
+		c_comp <=  37'd1340029796;  //  0.156
 		z_real <= 37'd0;
 		z_comp <= 37'd0;
 		i <= 10'd0;
@@ -202,8 +202,8 @@ begin
 				//4/480/2^-33 = 35791394.1, so this is our increment on y.
 				//We round it down.  Note that we don't need to do an actual
 				//fixed point multiply because this will never overflow by design.
-				z_real <= $signed({-4'd2, {33{1'b0}}}) + $signed(37'd53687091 * x_cursor);  //-2.0 + x*increment
-				z_comp <= $signed({-4'd1, {33{1'b0}}}) + $signed(37'd71582788 * y_cursor); //-1.0 + y*increment
+				z_real <= $signed({-4'd2, {33{1'b0}}}) + $signed(37'd53771108 * x_cursor);  //-2.0 + x*increment
+				z_comp <= $signed({-4'd2, {33{1'b0}}}) + $signed(37'd71732230 * y_cursor); //-1.0 + y*increment
 				//NOTE: We can increment this at the bottom to avoid this multiply.
 				//TODO:  Make the increment numbers a function of the range of x and y.
 				
@@ -226,7 +226,7 @@ begin
 				if (z_real_real + z_comp_comp < $signed({4'b0100, {33{1'b0}}}) 
 						&&  i < 10'd1000) // if (abs(z)*abs(z) < 4 && n < termination)
 				begin
-					z_real <= (z_real_real) + (z_comp_comp) + c_real;
+					z_real <= (z_real_real) - (z_comp_comp) + c_real;
 					z_comp <= (z_real_comp <<< 1) + c_comp;
 					i <= i + 10'd1;
 					state <= compute_pixel_loop;
