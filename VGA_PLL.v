@@ -40,14 +40,12 @@ module VGA_PLL (
 	areset,
 	inclk0,
 	c0,
-	c1,
-	locked);
+	c1);
 
 	input	  areset;
 	input	  inclk0;
 	output	  c0;
 	output	  c1;
-	output	  locked;
 `ifndef ALTERA_RESERVED_QIS
 // synopsys translate_off
 `endif
@@ -57,21 +55,18 @@ module VGA_PLL (
 `endif
 
 	wire [4:0] sub_wire0;
-	wire  sub_wire2;
-	wire [0:0] sub_wire6 = 1'h0;
-	wire [0:0] sub_wire3 = sub_wire0[0:0];
+	wire [0:0] sub_wire5 = 1'h0;
+	wire [0:0] sub_wire2 = sub_wire0[0:0];
 	wire [1:1] sub_wire1 = sub_wire0[1:1];
 	wire  c1 = sub_wire1;
-	wire  locked = sub_wire2;
-	wire  c0 = sub_wire3;
-	wire  sub_wire4 = inclk0;
-	wire [1:0] sub_wire5 = {sub_wire6, sub_wire4};
+	wire  c0 = sub_wire2;
+	wire  sub_wire3 = inclk0;
+	wire [1:0] sub_wire4 = {sub_wire5, sub_wire3};
 
 	altpll	altpll_component (
 				.areset (areset),
-				.inclk (sub_wire5),
+				.inclk (sub_wire4),
 				.clk (sub_wire0),
-				.locked (sub_wire2),
 				.activeclock (),
 				.clkbad (),
 				.clkena ({6{1'b1}}),
@@ -87,6 +82,7 @@ module VGA_PLL (
 				.fbout (),
 				.fref (),
 				.icdrclk (),
+				.locked (),
 				.pfdena (1'b1),
 				.phasecounterselect ({4{1'b1}}),
 				.phasedone (),
@@ -132,7 +128,7 @@ module VGA_PLL (
 		altpll_component.port_fbin = "PORT_UNUSED",
 		altpll_component.port_inclk0 = "PORT_USED",
 		altpll_component.port_inclk1 = "PORT_UNUSED",
-		altpll_component.port_locked = "PORT_USED",
+		altpll_component.port_locked = "PORT_UNUSED",
 		altpll_component.port_pfdena = "PORT_UNUSED",
 		altpll_component.port_phasecounterselect = "PORT_UNUSED",
 		altpll_component.port_phasedone = "PORT_UNUSED",
@@ -163,7 +159,6 @@ module VGA_PLL (
 		altpll_component.port_extclk1 = "PORT_UNUSED",
 		altpll_component.port_extclk2 = "PORT_UNUSED",
 		altpll_component.port_extclk3 = "PORT_UNUSED",
-		altpll_component.self_reset_on_loss_lock = "OFF",
 		altpll_component.width_clock = 5;
 
 
@@ -209,7 +204,7 @@ endmodule
 // Retrieval info: PRIVATE: INCLK1_FREQ_UNIT_COMBO STRING "MHz"
 // Retrieval info: PRIVATE: INTENDED_DEVICE_FAMILY STRING "Cyclone IV E"
 // Retrieval info: PRIVATE: INT_FEEDBACK__MODE_RADIO STRING "1"
-// Retrieval info: PRIVATE: LOCKED_OUTPUT_CHECK STRING "1"
+// Retrieval info: PRIVATE: LOCKED_OUTPUT_CHECK STRING "0"
 // Retrieval info: PRIVATE: LONG_SCAN_RADIO STRING "1"
 // Retrieval info: PRIVATE: LVDS_MODE_DATA_RATE STRING "Not Available"
 // Retrieval info: PRIVATE: LVDS_MODE_DATA_RATE_DIRTY NUMERIC "0"
@@ -292,7 +287,7 @@ endmodule
 // Retrieval info: CONSTANT: PORT_FBIN STRING "PORT_UNUSED"
 // Retrieval info: CONSTANT: PORT_INCLK0 STRING "PORT_USED"
 // Retrieval info: CONSTANT: PORT_INCLK1 STRING "PORT_UNUSED"
-// Retrieval info: CONSTANT: PORT_LOCKED STRING "PORT_USED"
+// Retrieval info: CONSTANT: PORT_LOCKED STRING "PORT_UNUSED"
 // Retrieval info: CONSTANT: PORT_PFDENA STRING "PORT_UNUSED"
 // Retrieval info: CONSTANT: PORT_PHASECOUNTERSELECT STRING "PORT_UNUSED"
 // Retrieval info: CONSTANT: PORT_PHASEDONE STRING "PORT_UNUSED"
@@ -323,20 +318,17 @@ endmodule
 // Retrieval info: CONSTANT: PORT_extclk1 STRING "PORT_UNUSED"
 // Retrieval info: CONSTANT: PORT_extclk2 STRING "PORT_UNUSED"
 // Retrieval info: CONSTANT: PORT_extclk3 STRING "PORT_UNUSED"
-// Retrieval info: CONSTANT: SELF_RESET_ON_LOSS_LOCK STRING "OFF"
 // Retrieval info: CONSTANT: WIDTH_CLOCK NUMERIC "5"
 // Retrieval info: USED_PORT: @clk 0 0 5 0 OUTPUT_CLK_EXT VCC "@clk[4..0]"
 // Retrieval info: USED_PORT: areset 0 0 0 0 INPUT GND "areset"
 // Retrieval info: USED_PORT: c0 0 0 0 0 OUTPUT_CLK_EXT VCC "c0"
 // Retrieval info: USED_PORT: c1 0 0 0 0 OUTPUT_CLK_EXT VCC "c1"
 // Retrieval info: USED_PORT: inclk0 0 0 0 0 INPUT_CLK_EXT GND "inclk0"
-// Retrieval info: USED_PORT: locked 0 0 0 0 OUTPUT GND "locked"
 // Retrieval info: CONNECT: @areset 0 0 0 0 areset 0 0 0 0
 // Retrieval info: CONNECT: @inclk 0 0 1 1 GND 0 0 0 0
 // Retrieval info: CONNECT: @inclk 0 0 1 0 inclk0 0 0 0 0
 // Retrieval info: CONNECT: c0 0 0 0 0 @clk 0 0 1 0
 // Retrieval info: CONNECT: c1 0 0 0 0 @clk 0 0 1 1
-// Retrieval info: CONNECT: locked 0 0 0 0 @locked 0 0 0 0
 // Retrieval info: GEN_FILE: TYPE_NORMAL VGA_PLL.v TRUE
 // Retrieval info: GEN_FILE: TYPE_NORMAL VGA_PLL.ppf TRUE
 // Retrieval info: GEN_FILE: TYPE_NORMAL VGA_PLL.inc FALSE

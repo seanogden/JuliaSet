@@ -1,14 +1,14 @@
-Analysis & Synthesis Status : Successful - Tue Mar 24 13:23:07 2015
+Analysis & Synthesis Status : Successful - Tue Mar 24 18:04:40 2015
 Quartus II 64-Bit Version : 11.0 Build 157 04/27/2011 SJ Full Version
 Revision Name : juliaset
 Top-level Entity Name : juliaset
 Family : Cyclone IV E
-Total logic elements : 1,393
-    Total combinational functions : 1,371
-    Dedicated logic registers : 222
-Total registers : 222
+Total logic elements : 1,373
+    Total combinational functions : 1,352
+    Dedicated logic registers : 218
+Total registers : 218
 Total pins : 71
 Total virtual pins : 0
-Total memory bits : 2,457,600
+Total memory bits : 1,240,000
 Embedded Multiplier 9-bit elements : 50
 Total PLLs : 1

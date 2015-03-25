@@ -41,20 +41,29 @@ module juliaset(
 	output		          		VGA_VS
 );
 
-
+assign LCD_DATA = 8'bzzzzzzzz;
 wire	VGA_CTRL_CLK;
 wire	AUD_CTRL_CLK;
 wire	DLY_RST;
+wire [7:0]	mVGA_R;				//memory output to VGA
+wire [7:0]	mVGA_G;
+wire [7:0]	mVGA_B;
+wire [9:0]  Coord_X, Coord_Y;	//display coods
 
 Reset_Delay			r0	(	.iCLK(CLOCK_50),.oRESET(DLY_RST)	);
 
-VGA_PLL p1 (.areset(~DLY_RST), .inclk0(CLOCK_50), .c0(VGA_CTRL_CLK), .c1(VGA_CLK));
+VGA_PLL p1 (.areset(~KEY[1]), .inclk0(CLOCK_50), .c0(VGA_CTRL_CLK), .c1(VGA_CLK));
 
 VGA_Controller		u1	(	//	Host Side
 							.iCursor_RGB_EN(4'b0111),
-							.oAddress(mVGA_ADDR),
+							.oAddress(),
 							.oCoord_X(Coord_X),
 							.oCoord_Y(Coord_Y),
+							.iCursor_X(10'd0),
+							.iCursor_Y(10'd0),
+							.iCursor_R(8'd0),
+							.iCursor_G(8'd0),
+							.iCursor_B(8'd0),
 							.iRed(mVGA_R),
 							.iGreen(mVGA_G),
 							.iBlue(mVGA_B),
@@ -66,29 +75,26 @@ VGA_Controller		u1	(	//	Host Side
 							.oVGA_V_SYNC(VGA_VS),
 							.oVGA_SYNC(VGA_SYNC_N),
 							.oVGA_BLANK(VGA_BLANK_N),
+							.oVGA_CLOCK(),
 							//	Control Signal
 							.iCLK(VGA_CTRL_CLK),
-							.iRST_N(DLY_RST)	);
+							.iRST_N(KEY[0])	);
 
-wire [9:0]	mVGA_R;				//memory output to VGA
-wire [9:0]	mVGA_G;
-wire [9:0]	mVGA_B;
-wire [18:0]	mVGA_ADDR;			//video memory address
-wire [9:0]  Coord_X, Coord_Y;	//display coods
+
 
 ////////////////////////////////////
 //DLA state machine variables
 wire reset;
 reg [3:0] state;	//state machine
-wire [7:0] mem_bit ; //current data from m4k to VGA
-reg [7:0] disp_bit ; // registered data from m4k to VGA
-wire [7:0] state_bit ; // current data from m4k to state machine
+wire [3:0] mem_bit ; //current data from m4k to VGA
+reg [3:0] disp_bit ; // registered data from m4k to VGA
+wire [3:0] state_bit ; // current data from m4k to state machine
 reg we ; // write enable for a
 reg [18:0] addr_reg ; // for a
-reg signed [7:0] data_reg ; // for a
-reg signed [9:0] x_cursor;
-reg signed [8:0] y_cursor;
-reg unsigned [9:0] i; //iteration.
+reg signed [3:0] data_reg ; // for a
+reg [9:0] x_cursor;
+reg [8:0] y_cursor;
+reg [9:0] i; //iteration.
 reg signed 	[36:0] z_real;  //real part of z 3.33 fixed point
 reg signed [36:0] z_comp;  //complex part of z 3.33 fixed point
 reg signed [36:0] c_real;
@@ -97,24 +103,30 @@ wire signed [36:0] z_real_real;
 wire signed [36:0] z_comp_comp;
 wire signed [36:0] z_real_comp;
 
+wire signed [3:0] z_real_watch;
+wire signed [3:0] z_comp_watch;
+assign z_real_watch = z_real[36:33];
+assign z_comp_watch = z_comp[36:33];
+
 //TODO:  We only need to store 4 bits, because we just want 
 //       log of the # of iterations, and there are only up to
 //       1000 iterations. log2(1000)=9.9 thus an unsigned i needs 10 bits
 video_buffer display(
 	.address_a (addr_reg) , 
 	.address_b ({Coord_X[9:0],Coord_Y[8:0]}), // vga current address
-	.clock (VGA_CTRL_CLK),
+	.clock_a (VGA_CTRL_CLK),
+	.clock_b (VGA_CTRL_CLK),
 	.data_a (data_reg),
-	.data_b (1'b0), // never write on port b
+	.data_b (4'b0), // never write on port b
 	.wren_a (we),
 	.wren_b (1'b0), // never write on port b
 	.q_a (state_bit),
 	.q_b (mem_bit) ); // data used to update VGA
 
 // Color translation
-assign  mVGA_R = {disp_bit[7:5],5'b1};
-assign  mVGA_G = {disp_bit[4:2],5'b1} ;
-assign  mVGA_B = {disp_bit[1:0],6'b1} ;
+assign  mVGA_R = {1'b1, disp_bit[3],6'b1};
+assign  mVGA_G = {1'b1, disp_bit[2],6'b1};
+assign  mVGA_B = {1'b1, disp_bit[1:0],5'b1};
 
 // DLA state machine
 assign reset = ~KEY[0];
@@ -132,7 +144,8 @@ always @ (negedge VGA_CTRL_CLK)
 begin
 	// register the m4k output for better timing on VGA
 	// negedge seems to work better than posedge
-	disp_bit <= mem_bit;
+	if (reset) disp_bit <= 4'b0;
+	else disp_bit <= mem_bit;
 end
 
 always @ (posedge VGA_CTRL_CLK) //VGA_CTRL_CLK
@@ -143,17 +156,20 @@ begin
 		//clear the screen
 		addr_reg <= {Coord_X[9:0],Coord_Y[8:0]} ;	// [17:0]
 		we <= 1'b1;								//write some memory
-		data_reg <= 8'd0;	//write all zeros (black)	
+		data_reg <= 4'd0;	//write all zeros (black)	
 		//init a randwalker to just left of center
 		x_cursor <= 10'd0;
 		y_cursor <= 9'd0;
-		c_real <= {-4'd1, 33'd1717986918};  // -0.8
-		c_comp <= 37'd0;
+		c_real <= -37'd6871947673;  // -0.8
+		c_comp <=  37'd1340029796;
+		z_real <= 37'd0;
+		z_comp <= 37'd0;
+		i <= 10'd0;
 		state <= compute_pixel_init;	//first state in regular state machine 
 	end
 	
 	//begin state machine to modify display 
-	else if ( KEY[3])  // KEY3 is pause
+	else
 	begin
 		case(state)
 		
@@ -170,11 +186,11 @@ begin
 				//The resolution of 3.33 fp is 2^-33.
 				//We want to map integers 0-639 onto -2.0, 2.0 fp, and 0-479 onto -1.0, 1.0
 				//4/640/2^-33 = 53687091.2, so this is our increment on x.
-				//2/480/2^-33 = 35791394.1, so this is our increment on y.
+				//4/480/2^-33 = 35791394.1, so this is our increment on y.
 				//We round it down.  Note that we don't need to do an actual
 				//fixed point multiply because this will never overflow by design.
-				z_real <= {-4'd2, {33{1'b0}}} + 37'd53687091 * x_cursor;  //-2.0 + x*increment
-				z_comp <= {-4'd1, {33{1'b0}}} + 37'd35791394 * y_cursor; //-1.0 + y*increment
+				z_real <= $signed({-4'd2, {33{1'b0}}}) + $signed(37'd53687091 * x_cursor);  //-2.0 + x*increment
+				z_comp <= $signed({-4'd1, {33{1'b0}}}) + $signed(37'd71582788 * y_cursor); //-1.0 + y*increment
 				//NOTE: We can increment this at the bottom to avoid this multiply.
 				//TODO:  Make the increment numbers a function of the range of x and y.
 				
@@ -277,7 +293,7 @@ begin
 			    state <= done;
 			end
 		endcase
-	end // else if ( KEY[3]) 
+	end // else
 	
 end // always @ (posedge VGA_CTRL_CLK)
 
@@ -296,11 +312,11 @@ endmodule
 
 //3.33 fixed point signed multiply.
 module signed_mult (out, a, b);
-	output 		[36:0]	out;
+	output	[36:0]	out;
 	input 	signed	[36:0] 	a;//3.33 37bit
 	input 	signed	[36:0] 	b;
 	wire	signed	[36:0]	out;
-	wire 	signed	[72:0]	mult_out;
+	wire 	signed	[73:0]	mult_out;
 	assign mult_out = a * b;
-	assign out = {mult_out[72], mult_out[68:33]}; //1+36
+	assign out = {mult_out[73], mult_out[68:33]}; //1+36
 endmodule
