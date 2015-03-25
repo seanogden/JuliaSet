@@ -1,5 +1,5 @@
 Analysis & Synthesis report for juliaset
-Wed Mar 25 16:28:19 2015
+Wed Mar 25 17:19:40 2015
 Quartus II 64-Bit Version 11.0 Build 157 04/27/2011 SJ Full Version
 
 
@@ -64,13 +64,13 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                   ;
 +------------------------------------+-------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Mar 25 16:28:19 2015     ;
+; Analysis & Synthesis Status        ; Successful - Wed Mar 25 17:19:40 2015     ;
 ; Quartus II 64-Bit Version          ; 11.0 Build 157 04/27/2011 SJ Full Version ;
 ; Revision Name                      ; juliaset                                  ;
 ; Top-level Entity Name              ; juliaset                                  ;
 ; Family                             ; Cyclone IV E                              ;
-; Total logic elements               ; 1,445                                     ;
-;     Total combinational functions  ; 1,426                                     ;
+; Total logic elements               ; 1,402                                     ;
+;     Total combinational functions  ; 1,383                                     ;
 ;     Dedicated logic registers      ; 197                                       ;
 ; Total registers                    ; 197                                       ;
 ; Total pins                         ; 71                                        ;
@@ -245,17 +245,17 @@ applicable agreement for further details.
 +---------------------------------------------+-----------------------------------------------------------------------------------+
 ; Resource                                    ; Usage                                                                             ;
 +---------------------------------------------+-----------------------------------------------------------------------------------+
-; Estimated Total logic elements              ; 1,445                                                                             ;
+; Estimated Total logic elements              ; 1,402                                                                             ;
 ;                                             ;                                                                                   ;
-; Total combinational functions               ; 1426                                                                              ;
+; Total combinational functions               ; 1383                                                                              ;
 ; Logic element usage by number of LUT inputs ;                                                                                   ;
-;     -- 4 input functions                    ; 339                                                                               ;
-;     -- 3 input functions                    ; 738                                                                               ;
-;     -- <=2 input functions                  ; 349                                                                               ;
+;     -- 4 input functions                    ; 310                                                                               ;
+;     -- 3 input functions                    ; 732                                                                               ;
+;     -- <=2 input functions                  ; 341                                                                               ;
 ;                                             ;                                                                                   ;
 ; Logic elements by mode                      ;                                                                                   ;
-;     -- normal mode                          ; 577                                                                               ;
-;     -- arithmetic mode                      ; 849                                                                               ;
+;     -- normal mode                          ; 544                                                                               ;
+;     -- arithmetic mode                      ; 839                                                                               ;
 ;                                             ;                                                                                   ;
 ; Total registers                             ; 197                                                                               ;
 ;     -- Dedicated logic registers            ; 197                                                                               ;
@@ -269,8 +269,8 @@ applicable agreement for further details.
 ;                                             ;                                                                                   ;
 ; Maximum fan-out node                        ; VGA_PLL:p1|altpll:altpll_component|VGA_PLL_altpll:auto_generated|wire_pll1_clk[0] ;
 ; Maximum fan-out                             ; 359                                                                               ;
-; Total fan-out                               ; 10899                                                                             ;
-; Average fan-out                             ; 5.49                                                                              ;
+; Total fan-out                               ; 10739                                                                             ;
+; Average fan-out                             ; 5.53                                                                              ;
 +---------------------------------------------+-----------------------------------------------------------------------------------+
 
 
@@ -279,27 +279,27 @@ applicable agreement for further details.
 +------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node                     ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                    ; Library Name ;
 +------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------------------------------------+--------------+
-; |juliaset                                      ; 1426 (322)        ; 197 (138)    ; 1310720     ; 50           ; 2       ; 24        ; 71   ; 0            ; |juliaset                                                                                                                              ;              ;
+; |juliaset                                      ; 1383 (330)        ; 197 (138)    ; 1310720     ; 50           ; 2       ; 24        ; 71   ; 0            ; |juliaset                                                                                                                              ;              ;
 ;    |VGA_Controller:u1|                         ; 87 (87)           ; 47 (47)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|VGA_Controller:u1                                                                                                            ;              ;
 ;    |VGA_PLL:p1|                                ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|VGA_PLL:p1                                                                                                                   ;              ;
 ;       |altpll:altpll_component|                ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|VGA_PLL:p1|altpll:altpll_component                                                                                           ;              ;
 ;          |VGA_PLL_altpll:auto_generated|       ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|VGA_PLL:p1|altpll:altpll_component|VGA_PLL_altpll:auto_generated                                                             ;              ;
-;    |lpm_mult:Mult0_rtl_4|                      ; 81 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult0_rtl_4                                                                                                         ;              ;
-;       |multcore:mult_core|                     ; 81 (23)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult0_rtl_4|multcore:mult_core                                                                                      ;              ;
-;          |mpar_add:padder|                     ; 58 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult0_rtl_4|multcore:mult_core|mpar_add:padder                                                                      ;              ;
-;             |lpm_add_sub:adder[0]|             ; 30 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult0_rtl_4|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]                                                 ;              ;
-;                |add_sub_lgh:auto_generated|    ; 30 (30)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult0_rtl_4|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]|add_sub_lgh:auto_generated                      ;              ;
-;             |mpar_add:sub_par_add|             ; 28 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult0_rtl_4|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add                                                 ;              ;
-;                |lpm_add_sub:adder[0]|          ; 28 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult0_rtl_4|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[0]                            ;              ;
-;                   |add_sub_pgh:auto_generated| ; 28 (28)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult0_rtl_4|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[0]|add_sub_pgh:auto_generated ;              ;
-;    |lpm_mult:Mult1_rtl_2|                      ; 96 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult1_rtl_2                                                                                                         ;              ;
-;       |multcore:mult_core|                     ; 96 (39)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult1_rtl_2|multcore:mult_core                                                                                      ;              ;
-;          |mpar_add:padder|                     ; 57 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult1_rtl_2|multcore:mult_core|mpar_add:padder                                                                      ;              ;
-;             |lpm_add_sub:adder[0]|             ; 30 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult1_rtl_2|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]                                                 ;              ;
-;                |add_sub_mgh:auto_generated|    ; 30 (30)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult1_rtl_2|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]|add_sub_mgh:auto_generated                      ;              ;
-;             |mpar_add:sub_par_add|             ; 27 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult1_rtl_2|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add                                                 ;              ;
-;                |lpm_add_sub:adder[0]|          ; 27 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult1_rtl_2|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[0]                            ;              ;
-;                   |add_sub_qgh:auto_generated| ; 27 (27)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult1_rtl_2|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[0]|add_sub_qgh:auto_generated ;              ;
+;    |lpm_mult:Mult0_rtl_4|                      ; 71 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult0_rtl_4                                                                                                         ;              ;
+;       |multcore:mult_core|                     ; 71 (21)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult0_rtl_4|multcore:mult_core                                                                                      ;              ;
+;          |mpar_add:padder|                     ; 50 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult0_rtl_4|multcore:mult_core|mpar_add:padder                                                                      ;              ;
+;             |lpm_add_sub:adder[0]|             ; 26 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult0_rtl_4|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]                                                 ;              ;
+;                |add_sub_lgh:auto_generated|    ; 26 (26)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult0_rtl_4|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]|add_sub_lgh:auto_generated                      ;              ;
+;             |mpar_add:sub_par_add|             ; 24 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult0_rtl_4|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add                                                 ;              ;
+;                |lpm_add_sub:adder[0]|          ; 24 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult0_rtl_4|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[0]                            ;              ;
+;                   |add_sub_pgh:auto_generated| ; 24 (24)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult0_rtl_4|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[0]|add_sub_pgh:auto_generated ;              ;
+;    |lpm_mult:Mult1_rtl_2|                      ; 55 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult1_rtl_2                                                                                                         ;              ;
+;       |multcore:mult_core|                     ; 55 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult1_rtl_2|multcore:mult_core                                                                                      ;              ;
+;          |mpar_add:padder|                     ; 55 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult1_rtl_2|multcore:mult_core|mpar_add:padder                                                                      ;              ;
+;             |lpm_add_sub:adder[0]|             ; 29 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult1_rtl_2|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]                                                 ;              ;
+;                |add_sub_mgh:auto_generated|    ; 29 (29)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult1_rtl_2|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]|add_sub_mgh:auto_generated                      ;              ;
+;             |mpar_add:sub_par_add|             ; 26 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult1_rtl_2|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add                                                 ;              ;
+;                |lpm_add_sub:adder[0]|          ; 26 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult1_rtl_2|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[0]                            ;              ;
+;                   |add_sub_qgh:auto_generated| ; 26 (26)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult1_rtl_2|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[0]|add_sub_qgh:auto_generated ;              ;
 ;    |signed_mult:zcr|                           ; 168 (0)           ; 0 (0)        ; 0           ; 16           ; 0       ; 8         ; 0    ; 0            ; |juliaset|signed_mult:zcr                                                                                                              ;              ;
 ;       |lpm_mult:Mult0_rtl_3|                   ; 168 (0)           ; 0 (0)        ; 0           ; 16           ; 0       ; 8         ; 0    ; 0            ; |juliaset|signed_mult:zcr|lpm_mult:Mult0_rtl_3                                                                                         ;              ;
 ;          |mult_f6t:auto_generated|             ; 168 (168)         ; 0 (0)        ; 0           ; 16           ; 0       ; 8         ; 0    ; 0            ; |juliaset|signed_mult:zcr|lpm_mult:Mult0_rtl_3|mult_f6t:auto_generated                                                                 ;              ;
@@ -397,25 +397,25 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Total registers                              ; 197   ;
 ; Number of registers using Synchronous Clear  ; 115   ;
-; Number of registers using Synchronous Load   ; 22    ;
+; Number of registers using Synchronous Load   ; 20    ;
 ; Number of registers using Asynchronous Clear ; 47    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 146   ;
+; Number of registers using Clock Enable       ; 141   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                      ;
-+--------------------+-----------+---------------+----------------------+------------------------+-----------------------+----------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered            ; Example Multiplexer Output ;
-+--------------------+-----------+---------------+----------------------+------------------------+-----------------------+----------------------------+
-; 3:1                ; 19 bits   ; 38 LEs        ; 19 LEs               ; 19 LEs                 ; |juliaset|addr_reg[8] ;                            ;
-; 17:1               ; 6 bits    ; 66 LEs        ; 48 LEs               ; 18 LEs                 ; |juliaset|color[16]   ;                            ;
-; 4:1                ; 10 bits   ; 20 LEs        ; 20 LEs               ; 0 LEs                  ; |juliaset|x_cursor[1] ;                            ;
-; 4:1                ; 9 bits    ; 18 LEs        ; 9 LEs                ; 9 LEs                  ; |juliaset|y_cursor[1] ;                            ;
-; 5:1                ; 73 bits   ; 219 LEs       ; 146 LEs              ; 73 LEs                 ; |juliaset|z_comp[2]   ;                            ;
-+--------------------+-----------+---------------+----------------------+------------------------+-----------------------+----------------------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                       ;
++--------------------+-----------+---------------+----------------------+------------------------+------------------------+----------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered             ; Example Multiplexer Output ;
++--------------------+-----------+---------------+----------------------+------------------------+------------------------+----------------------------+
+; 3:1                ; 19 bits   ; 38 LEs        ; 19 LEs               ; 19 LEs                 ; |juliaset|addr_reg[12] ;                            ;
+; 17:1               ; 6 bits    ; 66 LEs        ; 48 LEs               ; 18 LEs                 ; |juliaset|color[16]    ;                            ;
+; 4:1                ; 10 bits   ; 20 LEs        ; 20 LEs               ; 0 LEs                  ; |juliaset|x_cursor[3]  ;                            ;
+; 4:1                ; 9 bits    ; 18 LEs        ; 9 LEs                ; 9 LEs                  ; |juliaset|y_cursor[6]  ;                            ;
+; 5:1                ; 68 bits   ; 204 LEs       ; 136 LEs              ; 68 LEs                 ; |juliaset|z_real[36]   ;                            ;
++--------------------+-----------+---------------+----------------------+------------------------+------------------------+----------------------------+
 
 
 +------------------------------------------------------------------------------------------------------------+
@@ -1235,7 +1235,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 11.0 Build 157 04/27/2011 SJ Full Version
-    Info: Processing started: Wed Mar 25 16:28:05 2015
+    Info: Processing started: Wed Mar 25 17:19:26 2015
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off juliaset -c juliaset
 Info: Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info: Found 1 design units, including 1 entities, in source file vga_controller.v
@@ -1252,15 +1252,15 @@ Info: Found 2 design units, including 2 entities, in source file juliaset.v
 Info: Found 1 design units, including 1 entities, in source file testbench.v
     Info: Found entity 1: testbench
 Info: Elaborating entity "juliaset" for the top level hierarchy
-Warning (10230): Verilog HDL assignment warning at juliaset.v(231): truncated value with size 40 to match size of target (37)
-Warning (10230): Verilog HDL assignment warning at juliaset.v(232): truncated value with size 40 to match size of target (37)
-Warning (10034): Output port "LCD_BLON" at juliaset.v(20) has no driver
-Warning (10034): Output port "LCD_EN" at juliaset.v(22) has no driver
-Warning (10034): Output port "LCD_ON" at juliaset.v(23) has no driver
-Warning (10034): Output port "LCD_RS" at juliaset.v(24) has no driver
-Warning (10034): Output port "LCD_RW" at juliaset.v(25) has no driver
-Warning (10034): Output port "UART_RTS" at juliaset.v(29) has no driver
-Warning (10034): Output port "UART_TXD" at juliaset.v(31) has no driver
+Warning (10230): Verilog HDL assignment warning at juliaset.v(237): truncated value with size 40 to match size of target (37)
+Warning (10230): Verilog HDL assignment warning at juliaset.v(238): truncated value with size 40 to match size of target (37)
+Warning (10034): Output port "LCD_BLON" at juliaset.v(26) has no driver
+Warning (10034): Output port "LCD_EN" at juliaset.v(28) has no driver
+Warning (10034): Output port "LCD_ON" at juliaset.v(29) has no driver
+Warning (10034): Output port "LCD_RS" at juliaset.v(30) has no driver
+Warning (10034): Output port "LCD_RW" at juliaset.v(31) has no driver
+Warning (10034): Output port "UART_RTS" at juliaset.v(35) has no driver
+Warning (10034): Output port "UART_TXD" at juliaset.v(37) has no driver
 Info: Elaborating entity "Reset_Delay" for hierarchy "Reset_Delay:r0"
 Warning (10230): Verilog HDL assignment warning at Reset_Delay.v(10): truncated value with size 32 to match size of target (20)
 Info: Elaborating entity "VGA_PLL" for hierarchy "VGA_PLL:p1"
@@ -1375,8 +1375,8 @@ Info: Found 1 design units, including 1 entities, in source file db/mux_mob.tdf
     Info: Found entity 1: mux_mob
 Info: Elaborating entity "mux_mob" for hierarchy "video_buffer:display|altsyncram:altsyncram_component|altsyncram_17e2:auto_generated|mux_mob:mux4"
 Info: Elaborating entity "signed_mult" for hierarchy "signed_mult:zrs"
-Critical Warning (10169): Verilog HDL warning at juliaset.v(330): the port and data declarations for array port "out" do not specify the same range for each dimension
-Warning (10359): HDL warning at juliaset.v(333): see declaration for object "out"
+Critical Warning (10169): Verilog HDL warning at juliaset.v(336): the port and data declarations for array port "out" do not specify the same range for each dimension
+Warning (10359): HDL warning at juliaset.v(339): see declaration for object "out"
 Info: Starting Rapid Recompile for partition "Top"
 Info: Inferred 5 megafunctions from design logic
     Info: Inferred multiplier megafunction ("lpm_mult") from the following logic: "signed_mult:zcs|Mult0~0"
@@ -1537,17 +1537,17 @@ Warning: Design contains 24 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "SW[17]"
     Warning (15610): No output dependent on input pin "UART_CTS"
     Warning (15610): No output dependent on input pin "UART_RXD"
-Info: Implemented 1727 device resources after synthesis - the final resource count might be different
+Info: Implemented 1684 device resources after synthesis - the final resource count might be different
     Info: Implemented 27 input pins
     Info: Implemented 36 output pins
     Info: Implemented 8 bidirectional pins
-    Info: Implemented 1445 logic cells
+    Info: Implemented 1402 logic cells
     Info: Implemented 160 RAM segments
     Info: Implemented 1 PLLs
     Info: Implemented 50 DSP elements
 Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 49 warnings
-    Info: Peak virtual memory: 422 megabytes
-    Info: Processing ended: Wed Mar 25 16:28:19 2015
+    Info: Peak virtual memory: 419 megabytes
+    Info: Processing ended: Wed Mar 25 17:19:40 2015
     Info: Elapsed time: 00:00:14
     Info: Total CPU time (on all processors): 00:00:13
 

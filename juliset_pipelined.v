@@ -191,19 +191,16 @@ begin
 		i <= 10'd0;
 		state <= compute_pixel_init;	//first state in regular state machine 
 	end
-	
-	//begin state machine to modify display 
-	else
-	begin
-		case(state)
-		
+end
+
+//=========================== stage 1 ==================
+always @ (posedge VGA_CTRL_CLK) //VGA_CTRL_CLK
+begin
 			/**************************************************
 			 * This section is the set of states we use to loop
 			 * up to n times in order to compute the value for
 			 * the pixel at x_cursor, y_cursor
 			 ***************************************************/
-			compute_pixel_init:
-			begin
 				//compute the 3.33 fp number corresponding to x_cursor
 				//compute the 3.33 fp number corresonding to the y_cursor
 				
@@ -213,113 +210,21 @@ begin
 				//4/480/2^-33 = 35791394.1, so this is our increment on y.
 				//We round it down.  Note that we don't need to do an actual
 				//fixed point multiply because this will never overflow by design.
-				z_real <= $signed({-4'd2, {33{1'b0}}}) + $signed(37'd13421772 * 4* x_cursor);  //-2.0 + x*(increment=4/640)
-				z_comp <= $signed({-4'd2, {33{1'b0}}}) + $signed(37'd17895697 * 4* y_cursor); //-1.0 + y*(increment=4/480)
+				
+				//pipeline lookahead
+				if (calc_done)
+				begin
+					z_real <= $signed({-4'd2, {33{1'b0}}}) + $signed(37'd13421772 * 4* x_cursor);  //-2.0 + x*(increment=4/640)
+					z_comp <= $signed({-4'd2, {33{1'b0}}}) + $signed(37'd17895697 * 4* y_cursor); //-1.0 + y*(increment=4/480)
+					i <= 10'd0;
+					calc_done <=1'b0;
+				end
 				//NOTE: We can increment this at the bottom to avoid this multiply.
 				//TODO:  Make the increment numbers a function of the range of x and y.
-				
-				i <= 10'd0;
-				state <= compute_pixel_loop;
-			end
-			
+end
 
-			compute_pixel_loop:
-			begin
-				//      We avoid doing the sqrt part of getting the absolute value by squaring the RHS
-				//      of the comparison.
-				//
-				//      We can do this step with 3 fixed point multiplies.
-				//      1.  z_real*z_real
-				//      2.  z_comp*z_comp
-				//      3.  z_real*z_comp
-				
-				//Not finished, do another iteration
-				if (z_real_real + z_comp_comp < $signed({4'b0100, {33{1'b0}}}) 
-						&&  i < 10'd1000) // if (abs(z)*abs(z) < 4 && n < termination)
-				begin
-					z_real <= (z_real_real) - (z_comp_comp) + c_real;
-					z_comp <= (z_real_comp <<< 1) + c_comp;
-					i <= i + 10'd1;
-					state <= compute_pixel_loop;
-				end
-				
-				// Done iterating, go draw the pixel.
-				else
-				begin
-					state <= draw_pixel;
-				end
-			end
-			
-			
-			/**************************************************
-			 * This section is for drawing a fully computed pixel
-			 * by writing it to the proper M9K block.
-			 ***************************************************/
-			draw_pixel: //register address and data for write.
-			begin
-			   we <= 1'b0;
-				addr_reg <= {x_cursor, y_cursor};
-				
-				//approximate log of i.
-				if (i[9] == 1)      data_reg <= 4'd10;
-				else if (i[8] == 1) data_reg <= 4'd9;
-				else if (i[7] == 1) data_reg <= 4'd8;
-				else if (i[6] == 1) data_reg <= 4'd7;
-				else if (i[5] == 1) data_reg <= 4'd6;
-				else if (i[4] == 1) data_reg <= 4'd5;
-				else if (i[3] == 1) data_reg <= 4'd4;
-				else if (i[2] == 1) data_reg <= 4'd3;
-				else if (i[1] == 1) data_reg <= 4'd2;
-				else if (i[0] == 1) data_reg <= 4'd1;
-				else                data_reg <= 4'd0;
-				
-				state <= draw_pixel1 ;	
-			end
-			
-			draw_pixel1: //initiate the write.
-			begin
-				we <= 1'b1; // memory write enable 
-				state <= draw_pixel2 ;
-			end
-			
-			draw_pixel2: // finish the write and increment the cursor
-			begin
-				we <= 1'b0; 
-				
-				//Move cursor
-				if (x_cursor < 10'd637)
-				begin
-					x_cursor <= x_cursor + 10'd1;
-				end
-				else
-				begin
-					x_cursor <= 10'd0;
-					if (y_cursor < 9'd479)
-					begin
-						y_cursor <= y_cursor + 9'd1;
-					end
-				end
-				
-				//Compute new pixel at updated cursor, if there are more pixels
-				//otherwise just go to done and wait for reset.
-				if (x_cursor == 637 && y_cursor == 9'd479)
-				begin
-					state <= done;
-				end
-				else
-				begin
-					state <= compute_pixel_init;
-				end
-			end
-			
-			done:  //after computing all pixels in the block, just wait here.
-			begin
-			    state <= done;
-			end
-		endcase
-	end // else
-	
-end // always @ (posedge VGA_CTRL_CLK)
+
+//=========================== stage 2 computation ==================
 
 signed_mult zrs(.out(z_real_real),
                 .a(z_real),
@@ -332,6 +237,102 @@ signed_mult zcs(.out(z_comp_comp),
 signed_mult zcr(.out(z_real_comp),
                 .a(z_comp),
 					 .b(z_real));
+
+always @ (posedge VGA_CTRL_CLK) //VGA_CTRL_CLK
+begin
+	//      We avoid doing the sqrt part of getting the absolute value by squaring the RHS
+	//      of the comparison.
+	//
+	//      We can do this step with 3 fixed point multiplies.
+	//      1.  z_real*z_real
+	//      2.  z_comp*z_comp
+	//      3.  z_real*z_comp
+	
+	//Not finished, do another iteration
+	if (z_real_real + z_comp_comp < $signed({4'b0100, {33{1'b0}}}) 
+			&&  i < 10'd1000) // if (abs(z)*abs(z) < 4 && n < termination)
+	begin
+		z_real <= (z_real_real) - (z_comp_comp) + c_real;
+		z_comp <= (z_real_comp <<< 1) + c_comp;
+		i <= i + 10'd1;
+		calc_done <=1'b0;
+	end
+	
+	// Done iterating, go draw the pixel.
+	else
+	begin
+		calc_done <=1'b1;
+	end
+end
+			
+
+//=========================== stage 1 ==================
+always @ (posedge VGA_CTRL_CLK) //VGA_CTRL_CLK
+/**************************************************
+ * This section is for drawing a fully computed pixel
+ * by writing it to the proper M9K block.
+ ***************************************************/
+//register address and data for write.
+begin
+	we <= 1'b0;
+	addr_reg <= {x_cursor, y_cursor};
+	
+	//approximate log of i.
+	if (i[9] == 1)      data_reg <= 4'd10;
+	else if (i[8] == 1) data_reg <= 4'd9;
+	else if (i[7] == 1) data_reg <= 4'd8;
+	else if (i[6] == 1) data_reg <= 4'd7;
+	else if (i[5] == 1) data_reg <= 4'd6;
+	else if (i[4] == 1) data_reg <= 4'd5;
+	else if (i[3] == 1) data_reg <= 4'd4;
+	else if (i[2] == 1) data_reg <= 4'd3;
+	else if (i[1] == 1) data_reg <= 4'd2;
+	else if (i[0] == 1) data_reg <= 4'd1;
+	else                data_reg <= 4'd0;
+	
+	state <= draw_pixel1 ;	
+end
+
+//=========================== stage 1 ==================
+always @ (posedge VGA_CTRL_CLK) //VGA_CTRL_CLK
+//initiate the write.
+begin
+	we <= 1'b1; // memory write enable 
+	state <= draw_pixel2 ;
+end
+
+//=========================== stage 1 ==================
+always @ (posedge VGA_CTRL_CLK) //VGA_CTRL_CLK
+// finish the write and increment the cursor
+begin
+	we <= 1'b0; 
+	
+	//Move cursor
+	if (x_cursor < 10'd637)
+	begin
+		x_cursor <= x_cursor + 10'd1;
+	end
+	else
+	begin
+		x_cursor <= 10'd0;
+		if (y_cursor < 9'd479)
+		begin
+			y_cursor <= y_cursor + 9'd1;
+		end
+	end
+	
+	//Compute new pixel at updated cursor, if there are more pixels
+	//otherwise just go to done and wait for reset.
+	if (x_cursor == 637 && y_cursor == 9'd479)
+	begin
+		state <= done;
+	end
+	else
+	begin
+		state <= compute_pixel_init;
+	end
+end
+
 endmodule
 
 //3.33 fixed point signed multiply.
