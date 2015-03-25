@@ -104,8 +104,6 @@ wire signed [36:0] z_real_real;
 wire signed [36:0] z_comp_comp;
 wire signed [36:0] z_real_comp;
 
-wire signed [3:0] z_real_watch;
-wire signed [3:0] z_comp_watch;
 assign z_real_watch = z_real[36:33];
 assign z_comp_watch = z_comp[36:33];
 
