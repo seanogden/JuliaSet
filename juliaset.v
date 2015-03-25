@@ -100,12 +100,16 @@ reg signed 	[36:0] z_real;  //real part of z 3.33 fixed point
 reg signed [36:0] z_comp;  //complex part of z 3.33 fixed point
 reg signed [36:0] c_real;
 reg signed [36:0] c_comp;
-wire signed [36:0] z_real_real;
-wire signed [36:0] z_comp_comp;
-wire signed [36:0] z_real_comp;
+wire signed [39:0] z_real_real;
+wire signed [39:0] z_comp_comp;
+wire signed [39:0] z_real_comp;
 
-assign z_real_watch = z_real[36:33];
-assign z_comp_watch = z_comp[36:33];
+
+reg signed [60:0] real_test;
+reg signed [60:0] real_final_test;
+reg signed [60:0] comp_test;
+reg signed [60:0] real_test_org;
+
 
 //TODO:  We only need to store 4 bits, because we just want 
 //       log of the # of iterations, and there are only up to
@@ -169,8 +173,8 @@ begin
 		we <= 1'b1;								//write some memory
 		data_reg <= 4'd0;	//write all zeros (black)	
 		//init a randwalker to just left of center
-		x_cursor <= 10'd279;
-		y_cursor <= 9'd249;
+		x_cursor <= 10'd318;
+		y_cursor <= 9'd50;
 		c_real <= -37'd6871947673;  // -0.8
 		c_comp <=  37'd1340029796;  //  0.156
 		z_real <= 37'd0;
@@ -200,8 +204,8 @@ begin
 				//4/480/2^-33 = 35791394.1, so this is our increment on y.
 				//We round it down.  Note that we don't need to do an actual
 				//fixed point multiply because this will never overflow by design.
-				z_real <= $signed({-4'd2, {33{1'b0}}}) + $signed(37'd53771108 * x_cursor);  //-2.0 + x*increment
-				z_comp <= $signed({-4'd2, {33{1'b0}}}) + $signed(37'd71732230 * y_cursor); //-1.0 + y*increment
+				z_real <= $signed({-4'd2, {33{1'b0}}}) + $signed(37'd53687091 * x_cursor);  //-2.0 + x*(increment=4/640)
+				z_comp <= $signed({-4'd2, {33{1'b0}}}) + $signed(37'd71732230 * y_cursor); //-1.0 + y*(increment=4/480)
 				//NOTE: We can increment this at the bottom to avoid this multiply.
 				//TODO:  Make the increment numbers a function of the range of x and y.
 				
@@ -326,8 +330,8 @@ module signed_mult (out, a, b);
 	output	[36:0]	out;
 	input 	signed	[36:0] 	a;//3.33 37bit
 	input 	signed	[36:0] 	b;
-	wire	signed	[36:0]	out;
+	wire	signed	[39:0]	out;
 	wire 	signed	[73:0]	mult_out;
 	assign mult_out = a * b;
-	assign out = {mult_out[73], mult_out[68:33]}; //1+36
+	assign out = {mult_out[73], mult_out[71:33]}; //1+39
 endmodule

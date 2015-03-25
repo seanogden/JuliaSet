@@ -1,12 +1,12 @@
-Fitter Status : Successful - Wed Mar 25 12:22:31 2015
+Fitter Status : Successful - Wed Mar 25 16:28:47 2015
 Quartus II 64-Bit Version : 11.0 Build 157 04/27/2011 SJ Full Version
 Revision Name : juliaset
 Top-level Entity Name : juliaset
 Family : Cyclone IV E
 Device : EP4CE115F29C7
 Timing Models : Final
-Total logic elements : 1,512 / 114,480 ( 1 % )
-    Total combinational functions : 1,505 / 114,480 ( 1 % )
+Total logic elements : 1,486 / 114,480 ( 1 % )
+    Total combinational functions : 1,479 / 114,480 ( 1 % )
     Dedicated logic registers : 144 / 114,480 ( < 1 % )
 Total registers : 144
 Total pins : 71 / 529 ( 13 % )

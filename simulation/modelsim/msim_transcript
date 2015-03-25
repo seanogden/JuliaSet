@@ -94,7 +94,167 @@
 # Time: 0  Instance: testbench.DUT.display.altsyncram_component
 #  Note : Cyclone IV E PLL locked to incoming clock
 # Time: 70000  Instance: testbench.DUT.p1.altpll_component.cycloneiii_pll.pll3
+# Break key hit 
 restart
+run -all
+# Warning: read_during_write_mode_mixed_ports is assumed as   OLD_DATA
+# Time: 0  Instance: testbench.DUT.display.altsyncram_component
+#  Note : Cyclone IV E PLL locked to incoming clock
+# Time: 70000  Instance: testbench.DUT.p1.altpll_component.cycloneiii_pll.pll3
+restart
+run -all
+# Warning: read_during_write_mode_mixed_ports is assumed as   OLD_DATA
+# Time: 0  Instance: testbench.DUT.display.altsyncram_component
+#  Note : Cyclone IV E PLL locked to incoming clock
+# Time: 70000  Instance: testbench.DUT.p1.altpll_component.cycloneiii_pll.pll3
+# Break key hit 
+# Break key hit 
+restart
+run -all
+# Warning: read_during_write_mode_mixed_ports is assumed as   OLD_DATA
+# Time: 0  Instance: testbench.DUT.display.altsyncram_component
+#  Note : Cyclone IV E PLL locked to incoming clock
+# Time: 70000  Instance: testbench.DUT.p1.altpll_component.cycloneiii_pll.pll3
+vlog -reportprogress 300 -work work C:/JuliaSet/JuliaSet/juliaset.v
+# Model Technology ModelSim ALTERA vlog 6.6d Compiler 2010.11 Nov  2 2010
+# -- Compiling module juliaset
+# -- Compiling module signed_mult
+# 
+# Top level modules:
+# 	juliaset
+restart
+# Loading work.juliaset
+# Loading work.signed_mult
+run -all
+# Warning: read_during_write_mode_mixed_ports is assumed as   OLD_DATA
+# Time: 0  Instance: testbench.DUT.display.altsyncram_component
+#  Note : Cyclone IV E PLL locked to incoming clock
+# Time: 70000  Instance: testbench.DUT.p1.altpll_component.cycloneiii_pll.pll3
+vlog -reportprogress 300 -work work C:/JuliaSet/JuliaSet/juliaset.v
+# Model Technology ModelSim ALTERA vlog 6.6d Compiler 2010.11 Nov  2 2010
+# -- Compiling module juliaset
+# ** Error: C:/JuliaSet/JuliaSet/juliaset.v(205): Undefined variable: fixed.
+# ** Error: C:/JuliaSet/JuliaSet/juliaset.v(205): near "point": syntax error, unexpected "IDENTIFIER"
+# -- Compiling module signed_mult
+vlog -reportprogress 300 -work work C:/JuliaSet/JuliaSet/juliaset.v
+# Model Technology ModelSim ALTERA vlog 6.6d Compiler 2010.11 Nov  2 2010
+# -- Compiling module juliaset
+# -- Compiling module signed_mult
+# 
+# Top level modules:
+# 	juliaset
+vlog -reportprogress 30 -work work C:/JuliaSet/JuliaSet/juliaset.v
+# Model Technology ModelSim ALTERA vlog 6.6d Compiler 2010.11 Nov  2 2010
+# -- Compiling module juliaset
+# -- Compiling module signed_mult
+# 
+# Top level modules:
+# 	juliaset
+vlog -reportprogress 30 -work work C:/JuliaSet/JuliaSet/juliaset.v
+# Model Technology ModelSim ALTERA vlog 6.6d Compiler 2010.11 Nov  2 2010
+# -- Compiling module juliaset
+# -- Compiling module signed_mult
+# 
+# Top level modules:
+# 	juliaset
+restart
+# Loading work.juliaset
+# Loading work.signed_mult
+run -all
+# Warning: read_during_write_mode_mixed_ports is assumed as   OLD_DATA
+# Time: 0  Instance: testbench.DUT.display.altsyncram_component
+#  Note : Cyclone IV E PLL locked to incoming clock
+# Time: 70000  Instance: testbench.DUT.p1.altpll_component.cycloneiii_pll.pll3
+vlog -reportprogress 300 -work work C:/JuliaSet/JuliaSet/juliaset.v
+# Model Technology ModelSim ALTERA vlog 6.6d Compiler 2010.11 Nov  2 2010
+# -- Compiling module juliaset
+# ** Error: C:/JuliaSet/JuliaSet/juliaset.v(209): Undefined variable: real__final_test.
+# -- Compiling module signed_mult
+vlog -reportprogress 300 -work work C:/JuliaSet/JuliaSet/juliaset.v
+# Model Technology ModelSim ALTERA vlog 6.6d Compiler 2010.11 Nov  2 2010
+# -- Compiling module juliaset
+# -- Compiling module signed_mult
+# 
+# Top level modules:
+# 	juliaset
+vlog -reportprogress 30 -work work C:/JuliaSet/JuliaSet/juliaset.v
+# Model Technology ModelSim ALTERA vlog 6.6d Compiler 2010.11 Nov  2 2010
+# -- Compiling module juliaset
+# -- Compiling module signed_mult
+# 
+# Top level modules:
+# 	juliaset
+vlog -reportprogress 30 -work work C:/JuliaSet/JuliaSet/juliaset.v
+# Model Technology ModelSim ALTERA vlog 6.6d Compiler 2010.11 Nov  2 2010
+# -- Compiling module juliaset
+# -- Compiling module signed_mult
+# 
+# Top level modules:
+# 	juliaset
+vlog -reportprogress 300 -work work C:/JuliaSet/JuliaSet/juliaset.v
+# Model Technology ModelSim ALTERA vlog 6.6d Compiler 2010.11 Nov  2 2010
+# -- Compiling module juliaset
+# -- Compiling module signed_mult
+# 
+# Top level modules:
+# 	juliaset
+restart
+# Loading work.juliaset
+# Loading work.signed_mult
+run -all
+# Warning: read_during_write_mode_mixed_ports is assumed as   OLD_DATA
+# Time: 0  Instance: testbench.DUT.display.altsyncram_component
+#  Note : Cyclone IV E PLL locked to incoming clock
+# Time: 70000  Instance: testbench.DUT.p1.altpll_component.cycloneiii_pll.pll3
+vlog -reportprogress 300 -work work C:/JuliaSet/JuliaSet/juliaset.v
+# Model Technology ModelSim ALTERA vlog 6.6d Compiler 2010.11 Nov  2 2010
+# -- Compiling module juliaset
+# -- Compiling module signed_mult
+# 
+# Top level modules:
+# 	juliaset
+restart
+# Loading work.juliaset
+# Loading work.signed_mult
+run -all
+# Warning: read_during_write_mode_mixed_ports is assumed as   OLD_DATA
+# Time: 0  Instance: testbench.DUT.display.altsyncram_component
+#  Note : Cyclone IV E PLL locked to incoming clock
+# Time: 70000  Instance: testbench.DUT.p1.altpll_component.cycloneiii_pll.pll3
+# WARNING: No extended dataflow license exists
+vlog -reportprogress 300 -work work C:/JuliaSet/JuliaSet/juliaset.v
+# Model Technology ModelSim ALTERA vlog 6.6d Compiler 2010.11 Nov  2 2010
+# -- Compiling module juliaset
+# -- Compiling module signed_mult
+# 
+# Top level modules:
+# 	juliaset
+restart
+# Loading work.juliaset
+# Loading work.signed_mult
+run -all
+# Warning: read_during_write_mode_mixed_ports is assumed as   OLD_DATA
+# Time: 0  Instance: testbench.DUT.display.altsyncram_component
+#  Note : Cyclone IV E PLL locked to incoming clock
+# Time: 70000  Instance: testbench.DUT.p1.altpll_component.cycloneiii_pll.pll3
+restart
+vlog -reportprogress 300 -work work C:/JuliaSet/JuliaSet/juliaset.v
+# Model Technology ModelSim ALTERA vlog 6.6d Compiler 2010.11 Nov  2 2010
+# -- Compiling module juliaset
+# -- Compiling module signed_mult
+# 
+# Top level modules:
+# 	juliaset
+vlog -reportprogress 30 -work work C:/JuliaSet/JuliaSet/juliaset.v
+# Model Technology ModelSim ALTERA vlog 6.6d Compiler 2010.11 Nov  2 2010
+# -- Compiling module juliaset
+# -- Compiling module signed_mult
+# 
+# Top level modules:
+# 	juliaset
+restart
+# Loading work.juliaset
+# Loading work.signed_mult
 run -all
 # Warning: read_during_write_mode_mixed_ports is assumed as   OLD_DATA
 # Time: 0  Instance: testbench.DUT.display.altsyncram_component
@@ -137,7 +297,15 @@ run -all
 # Time: 0  Instance: testbench.DUT.display.altsyncram_component
 #  Note : Cyclone IV E PLL locked to incoming clock
 # Time: 70000  Instance: testbench.DUT.p1.altpll_component.cycloneiii_pll.pll3
+run -all
 vlog -reportprogress 300 -work work C:/JuliaSet/JuliaSet/juliaset.v
+# Model Technology ModelSim ALTERA vlog 6.6d Compiler 2010.11 Nov  2 2010
+# -- Compiling module juliaset
+# -- Compiling module signed_mult
+# 
+# Top level modules:
+# 	juliaset
+vlog -reportprogress 30 -work work C:/JuliaSet/JuliaSet/juliaset.v
 # Model Technology ModelSim ALTERA vlog 6.6d Compiler 2010.11 Nov  2 2010
 # -- Compiling module juliaset
 # -- Compiling module signed_mult
