@@ -346,10 +346,11 @@ signed_mult zcr(.out(z_real_comp),
                 .a(z_comp),
 					 .b(z_real));
 					 
+/* 
+					 
 /*LCD CODE*/
 wire [32*8-1:0] lcd_text;
-assign lcd_text = "HELLO WORLD";
-assign LCD_BLON = 1'b0;
+assign LCD_BLON = 1'b1;
 assign LCD_ON = 1'b1;
 
 asc_to_lcd asc(
@@ -380,44 +381,46 @@ timer t1(
 );
 
 /*7SEG display code to show mseconds and useconds in hex.*/
+wire [3:0] uhundreds;
+wire [3:0] utens;
+wire [3:0] uones;
+wire [3:0] mhundreds;
+wire [3:0] mtens;
+wire [3:0] mones;
 
-seven_segment(.number(useconds[3:0]), .data(HEX0));
-seven_segment(.number(useconds[7:4]), .data(HEX1));
-seven_segment(.number({2'd0,useconds[9:8]}), .data(HEX2));
+bcd bcd_u(.binary({2'd0,useconds}),
+			.hundreds(uhundreds),
+			.tens(utens),
+			.ones(uones));
+bcd bcd_m(.binary({2'd0,mseconds}),
+			.hundreds(mhundreds),
+			.tens(mtens),
+			.ones(mones));
+			
+seven_segment(.number(uones), .data(HEX0));
+seven_segment(.number(utens), .data(HEX1));
+seven_segment(.number(uhundreds), .data(HEX2));
 assign HEX3 = 7'b1111111;
-seven_segment(.number(mseconds[3:0]), .data(HEX4));
-seven_segment(.number(mseconds[7:4]), .data(HEX5));
-seven_segment(.number({2'd0,mseconds[9:8]}), .data(HEX6));
+seven_segment(.number(mones), .data(HEX4));
+seven_segment(.number(mtens), .data(HEX5));
+seven_segment(.number(mhundreds), .data(HEX6));
 assign HEX7 = 7'b1111111;
 
+/* IO from the switches */
+reg [17:0] c_real_reg;
+wire [17:0] c_real_wire = c_real_reg;
 
-/* UART Communication with the terminal */
-assign UART_RTS = 1'b0;
-wire UART_CTRL_CLOCK;
+io io1(
+	.clock(CLOCK_50),
+	.reset(reset),
+	.enter(~KEY[2]),
+	.confirm(~KEY[1]),
+	.c_real(c_real_wire),
+	.lcd_text(lcd_text)
+);
 
-UART_PLL pll2(
-	.areset(reset),
-	.inclk0(CLOCK2_50),
-	.c0(UART_CTRL_CLOCK)
-);
-	
-uart_hw_test uart1(
-	.clk(UART_CTRL_CLOCK),
-	.rst_n(reset),
-	.txd(UART_TXD),
-	.rxd(UART_RXD)
-);
-	
 endmodule
 
-//3.33 fixed point signed multiply.
-module signed_mult (out, a, b);
-	output	[39:0]	out;
-	input 	signed	[36:0] 	a;//3.33 37bit
-	input 	signed	[36:0] 	b;
-	wire	signed	[39:0]	out;
-	wire 	signed	[73:0]	mult_out;
-	assign mult_out = a * b;
-	assign out = {mult_out[73], mult_out[71:33]}; //1+39
-endmodule
+
+
 
