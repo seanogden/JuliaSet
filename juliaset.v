@@ -339,7 +339,7 @@ signed_mult zcr(.out(z_real_comp),
 /*LCD CODE*/
 wire [32*8-1:0] lcd_text;
 assign lcd_text = "HELLO WORLD";
-assign LCD_BLON = 1'b1;
+assign LCD_BLON = 1'b0;
 assign LCD_ON = 1'b1;
 
 asc_to_lcd asc(
@@ -351,6 +351,35 @@ asc_to_lcd asc(
 	.lcd_rs(LCD_RS),
 	.disp_text(lcd_text)
 );
+
+/* System Timer code */
+wire [9:0] useconds;
+wire [9:0] mseconds;
+wire usecond_pulse;
+wire msecond_pulse;
+defparam t1.CLOCK_MHZ = 50; //input clock frequency.
+
+timer t1(
+	.clk(CLOCK_50),
+	.rst(reset),
+	.pause(~KEY[3]),
+	.usecond_cntr(useconds),
+	.msecond_cntr(mseconds),
+	.usecond_pulse(usecond_pulse),
+	.msecond_pulse(msecond_pulse)
+);
+
+/*7SEG display code to show mseconds and useconds in hex.*/
+
+seven_segment(.number(useconds[3:0]), .data(HEX0));
+seven_segment(.number(useconds[7:4]), .data(HEX1));
+seven_segment(.number({2'd0,useconds[9:8]}), .data(HEX2));
+assign HEX3 = 7'b1111111;
+seven_segment(.number(mseconds[3:0]), .data(HEX4));
+seven_segment(.number(mseconds[7:4]), .data(HEX5));
+seven_segment(.number({2'd0,mseconds[9:8]}), .data(HEX6));
+assign HEX7 = 7'b1111111;
+
 
 endmodule
 

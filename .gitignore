@@ -22,10 +22,6 @@
 # or you create an own submodule in the folder to keep binary files out of your
 # design.
 
-# ignore hdl source files in top level directory
-*.vhd
-*.v
-
 # ignore Quartus II generated files
 *sopc_*
 *.jdi
@@ -56,8 +52,10 @@
 *.pin
 *.mif
 *.hex
+*.cnx
 
 # ignore Quartus II generated folders
 db/
 incremental_db/
 simulation/
+greybox_tmp/
