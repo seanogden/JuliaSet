@@ -42,12 +42,6 @@ juliaset DUT(
 .LCD_RS(),
 .LCD_RW(),
 
-	//////////// RS232 //////////
-.UART_CTS(1'b0),
-.UART_RTS(),
-.UART_RXD(),
-.UART_TXD(),
-
 	//////////// VGA //////////
 .VGA_B(),
 .VGA_BLANK_N(),
