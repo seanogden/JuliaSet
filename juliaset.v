@@ -109,6 +109,8 @@ reg signed [9:0] x_start;
 reg signed [9:0] x_end;
 reg signed [8:0] y_start;
 reg signed [8:0] y_end;
+reg pause;
+wire pause_signal = pause;
 
 reg signed 	[36:0] z_real;  //real part of z 3.33 fixed point
 reg signed [36:0] z_comp;  //complex part of z 3.33 fixed point
@@ -193,6 +195,7 @@ begin
 		z_comp <= 37'd0;
 		i <= 10'd0;
 		state <= compute_pixel_init;	//first state in regular state machine 
+		pause <= 1'b0;
 	end
 	
 	//begin state machine to modify display 
@@ -318,6 +321,7 @@ begin
 			done:  //after computing all pixels in the block, just wait here.
 			begin
 			    state <= done;
+				 pause <= 1'b1;
 			end
 		endcase
 	end // else
@@ -362,7 +366,7 @@ defparam t1.CLOCK_MHZ = 50; //input clock frequency.
 timer t1(
 	.clk(CLOCK_50),
 	.rst(reset),
-	.pause(~KEY[3]),
+	.pause(pause_signal),
 	.usecond_cntr(useconds),
 	.msecond_cntr(mseconds),
 	.usecond_pulse(usecond_pulse),
