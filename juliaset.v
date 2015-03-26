@@ -183,29 +183,55 @@ begin
 	endcase
 end
 
+reg signed [73:0] x_increment;
+reg signed [73:0] y_increment;
 
 /* IO from the switches */
-wire [17:0] c_real_wire;
-wire [17:0] c_comp_wire;
-wire [17:0] center_x_wire;
-wire [17:0] center_y_wire;
-wire [17:0] z_scale_wire;
-
-//c_real <= -37'd6871947673;  // -0.8
-//c_comp <=  37'd1340029796;  //  0.156
+reg signed [36:0] c_real_reg;
+wire signed [17:0] c_real_wire;
+reg signed [36:0] c_comp_reg;
+wire signed [17:0] c_comp_wire;
+reg signed [36:0] x_reg;
+wire signed [17:0] x_wire;
+reg signed [36:0] y_reg;
+wire signed [17:0] y_wire;
+reg signed [36:0] scale_reg; //distance from origin to any side
+wire signed [17:0] scale_wire;
+wire valid;
 
 io io1(
 	.clock(CLOCK_50),
 	.reset(reset),
 	.enter(~KEY[2]),
 	.confirm(~KEY[1]),
+	.valid(valid),
 	.c_real(c_real_wire),
+	.c_comp(c_comp_wire),
+	.x(x_wire),
+	.y(y_wire),
+	.scale(scale_wire),
 	.lcd_text(lcd_text)
 );
 
 always @ (posedge VGA_CTRL_CLK) //VGA_CTRL_CLK
 begin
-	if (reset)		//synch reset assumes KEY0 is held down 1/60 second
+	if (reset)
+	begin
+		c_real_reg <= -37'd6871947673;  // -0.8
+		c_comp_reg <= 37'd1340029796;  //  0.156
+		x_reg <= 37'd0;
+		y_reg <= 37'd0;
+		scale_reg <= $signed({4'd2, {33{1'b0}}});
+	end
+	else if (valid)
+	begin
+		c_real_reg <= {c_real_wire, 19'b0};
+		c_comp_reg <= {c_comp_wire, 19'b0};
+		x_reg <= {x_wire, 19'b0};
+		y_reg <= {y_wire, 19'b0};
+		scale_reg <= {scale_wire, 19'b0};
+	end
+	else if (KEY[3])		//synch reset assumes KEY0 is held down 1/60 second
 	begin
 		//clear the screen
 		addr_reg <= {Coord_X[9:0],Coord_Y[8:0]} ;	// [17:0]
@@ -214,8 +240,10 @@ begin
 		//init a randwalker to just left of center
 		x_cursor <= 10'd0;
 		y_cursor <= 9'd0;
-		c_real <= c_real_wire;  // -0.8
-		c_comp <= c_comp_wire;  //  0.156
+		x_increment <= ((37'd13421772 * scale_reg)<<<1);
+		y_increment <= ((37'd17895697 * scale_reg)<<<1);
+		c_real <= c_real_reg;
+		c_comp <= c_comp_reg;
 		z_real <= 37'd0;
 		z_comp <= 37'd0;
 		i <= 10'd0;
@@ -244,8 +272,8 @@ begin
 				//4/480/2^-33 = 35791394.1, so this is our increment on y.
 				//We round it down.  Note that we don't need to do an actual
 				//fixed point multiply because this will never overflow by design.
-				z_real <= $signed({-4'd2, {33{1'b0}}}) + $signed(37'd13421772 * 4* x_cursor);  //-2.0 + x*(increment=4/640)
-				z_comp <= $signed({-4'd2, {33{1'b0}}}) + $signed(37'd17895697 * 4* y_cursor); //-1.0 + y*(increment=4/480)
+				z_real <= x_reg - scale_reg + $signed(x_increment[72:33]* x_cursor);  //-2.0 + x*(increment=2*scale/640)
+				z_comp <= x_reg - scale_reg + $signed(y_increment[72:33]* y_cursor);  //-2.0 + y*(increment=2*scale/480)
 				//NOTE: We can increment this at the bottom to avoid this multiply.
 				//TODO:  Make the increment numbers a function of the range of x and y.
 				
@@ -424,6 +452,7 @@ seven_segment(.number(mones), .data(HEX4));
 seven_segment(.number(mtens), .data(HEX5));
 seven_segment(.number(mhundreds), .data(HEX6));
 assign HEX7 = 7'b1111111;
+
 
 endmodule
 
