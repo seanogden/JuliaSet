@@ -15,7 +15,7 @@ module julia_set_stripe(input clock,
 parameter start_row = 9'd0;
 parameter end_row = 9'd479;
 parameter start_col = 10'd0;
-parameter end_col = 10'd637;
+parameter end_col = 10'd320;
 
 //state names
 parameter
@@ -114,8 +114,8 @@ begin
 		we <= 1'b1;								//write some memory
 		data_reg <= 4'd0;	//write all zeros (black)	
 		//init a randwalker to just left of center
-		x_cursor <= 10'd0;
-		y_cursor <= 9'd0;
+		x_cursor <= start_col;
+		y_cursor <= start_row;
 		c_real <= c_real_reg;
 		c_comp <= c_comp_reg;
 		z_real <= 37'd0;
@@ -226,7 +226,7 @@ begin
 				end
 				else
 				begin
-					x_cursor <= 10'd0;
+					x_cursor <= start_col;
 					if (y_cursor < end_row)
 					begin
 						y_cursor <= y_cursor + 9'd1;
