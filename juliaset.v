@@ -183,9 +183,28 @@ begin
 	endcase
 end
 
+
+/* IO from the switches */
+wire [17:0] c_real_wire;
+wire [17:0] c_comp_wire;
+wire [17:0] center_x_wire;
+wire [17:0] center_y_wire;
+wire [17:0] z_scale_wire;
+
+//c_real <= -37'd6871947673;  // -0.8
+//c_comp <=  37'd1340029796;  //  0.156
+
+io io1(
+	.clock(CLOCK_50),
+	.reset(reset),
+	.enter(~KEY[2]),
+	.confirm(~KEY[1]),
+	.c_real(c_real_wire),
+	.lcd_text(lcd_text)
+);
+
 always @ (posedge VGA_CTRL_CLK) //VGA_CTRL_CLK
 begin
-
 	if (reset)		//synch reset assumes KEY0 is held down 1/60 second
 	begin
 		//clear the screen
@@ -193,10 +212,10 @@ begin
 		we <= 1'b1;								//write some memory
 		data_reg <= 4'd0;	//write all zeros (black)	
 		//init a randwalker to just left of center
-		x_cursor <= 10'd318;
-		y_cursor <= 9'd50;
-		c_real <= -37'd6871947673;  // -0.8
-		c_comp <=  37'd1340029796;  //  0.156
+		x_cursor <= 10'd0;
+		y_cursor <= 9'd0;
+		c_real <= c_real_wire;  // -0.8
+		c_comp <= c_comp_wire;  //  0.156
 		z_real <= 37'd0;
 		z_comp <= 37'd0;
 		i <= 10'd0;
@@ -405,19 +424,6 @@ seven_segment(.number(mones), .data(HEX4));
 seven_segment(.number(mtens), .data(HEX5));
 seven_segment(.number(mhundreds), .data(HEX6));
 assign HEX7 = 7'b1111111;
-
-/* IO from the switches */
-reg [17:0] c_real_reg;
-wire [17:0] c_real_wire = c_real_reg;
-
-io io1(
-	.clock(CLOCK_50),
-	.reset(reset),
-	.enter(~KEY[2]),
-	.confirm(~KEY[1]),
-	.c_real(c_real_wire),
-	.lcd_text(lcd_text)
-);
 
 endmodule
 
