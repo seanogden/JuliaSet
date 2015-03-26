@@ -22,6 +22,16 @@ module juliaset(
 	//////////// SW //////////
 	input 		    [17:0]		SW,
 
+	//////////// SEG7 //////////
+	output		     [6:0]		HEX0,
+	output		     [6:0]		HEX1,
+	output		     [6:0]		HEX2,
+	output		     [6:0]		HEX3,
+	output		     [6:0]		HEX4,
+	output		     [6:0]		HEX5,
+	output		     [6:0]		HEX6,
+	output		     [6:0]		HEX7,
+
 	//////////// LCD //////////
 	output		          		LCD_BLON,
 	inout 		     [7:0]		LCD_DATA,
@@ -29,12 +39,6 @@ module juliaset(
 	output		          		LCD_ON,
 	output		          		LCD_RS,
 	output		          		LCD_RW,
-
-	//////////// RS232 //////////
-	input 		          		UART_CTS,
-	output		          		UART_RTS,
-	input 		          		UART_RXD,
-	output		          		UART_TXD,
 
 	//////////// VGA //////////
 	output		     [7:0]		VGA_B,

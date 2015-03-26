@@ -1,5 +1,5 @@
 EDA Netlist Writer report for juliaset
-Thu Mar 26 00:51:55 2015
+Thu Mar 26 01:04:15 2015
 Quartus II 64-Bit Version 11.0 Build 157 04/27/2011 SJ Full Version
 
 
@@ -36,7 +36,7 @@ applicable agreement for further details.
 +-------------------------------------------------------------------+
 ; EDA Netlist Writer Summary                                        ;
 +---------------------------+---------------------------------------+
-; EDA Netlist Writer Status ; Successful - Thu Mar 26 00:51:55 2015 ;
+; EDA Netlist Writer Status ; Successful - Thu Mar 26 01:04:15 2015 ;
 ; Revision Name             ; juliaset                              ;
 ; Top-level Entity Name     ; juliaset                              ;
 ; Family                    ; Cyclone IV E                          ;
@@ -88,7 +88,7 @@ applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit EDA Netlist Writer
     Info: Version 11.0 Build 157 04/27/2011 SJ Full Version
-    Info: Processing started: Thu Mar 26 00:51:49 2015
+    Info: Processing started: Thu Mar 26 01:04:09 2015
 Info: Command: quartus_eda --read_settings_files=off --write_settings_files=off juliaset -c juliaset
 Info: Generated simulation netlist will be non-hierarchical because the design has SignalTap II partitions, termination control logic and/or a design partition that contains bidirectional ports
 Info: Generated file juliaset_7_1200mv_85c_slow.vo in folder "C:/JuliaSet/JuliaSet/simulation/modelsim/" for EDA simulation tool
@@ -100,8 +100,8 @@ Info: Generated file juliaset_7_1200mv_0c_v_slow.sdo in folder "C:/JuliaSet/Juli
 Info: Generated file juliaset_min_1200mv_0c_v_fast.sdo in folder "C:/JuliaSet/JuliaSet/simulation/modelsim/" for EDA simulation tool
 Info: Generated file juliaset_v.sdo in folder "C:/JuliaSet/JuliaSet/simulation/modelsim/" for EDA simulation tool
 Info: Quartus II 64-Bit EDA Netlist Writer was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 347 megabytes
-    Info: Processing ended: Thu Mar 26 00:51:55 2015
+    Info: Peak virtual memory: 346 megabytes
+    Info: Processing ended: Thu Mar 26 01:04:15 2015
     Info: Elapsed time: 00:00:06
     Info: Total CPU time (on all processors): 00:00:05
 

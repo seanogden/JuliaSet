@@ -32,8 +32,6 @@ LCD_DATA[4] <> asc_to_lcd:asc.lcd_data
 LCD_DATA[5] <> asc_to_lcd:asc.lcd_data
 LCD_DATA[6] <> asc_to_lcd:asc.lcd_data
 LCD_DATA[7] <> asc_to_lcd:asc.lcd_data
-UART_CTS => ~NO_FANOUT~
-UART_RXD => ~NO_FANOUT~
 
 
 |juliaset|Reset_Delay:r0

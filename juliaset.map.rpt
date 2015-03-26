@@ -1,5 +1,5 @@
 Analysis & Synthesis report for juliaset
-Thu Mar 26 00:51:11 2015
+Thu Mar 26 01:03:27 2015
 Quartus II 64-Bit Version 11.0 Build 157 04/27/2011 SJ Full Version
 
 
@@ -28,11 +28,11 @@ Quartus II 64-Bit Version 11.0 Build 157 04/27/2011 SJ Full Version
  20. Parameter Settings for User Entity Instance: VGA_Controller:u1
  21. Parameter Settings for User Entity Instance: video_buffer:display|altsyncram:altsyncram_component
  22. Parameter Settings for User Entity Instance: asc_to_lcd:asc
- 23. Parameter Settings for Inferred Entity Instance: signed_mult:zcs|lpm_mult:Mult0_rtl_0
- 24. Parameter Settings for Inferred Entity Instance: signed_mult:zrs|lpm_mult:Mult0_rtl_1
- 25. Parameter Settings for Inferred Entity Instance: lpm_mult:Mult1_rtl_2
- 26. Parameter Settings for Inferred Entity Instance: signed_mult:zcr|lpm_mult:Mult0_rtl_3
- 27. Parameter Settings for Inferred Entity Instance: lpm_mult:Mult0_rtl_4
+ 23. Parameter Settings for Inferred Entity Instance: signed_mult:zcs|lpm_mult:Mult0
+ 24. Parameter Settings for Inferred Entity Instance: signed_mult:zrs|lpm_mult:Mult0
+ 25. Parameter Settings for Inferred Entity Instance: lpm_mult:Mult1
+ 26. Parameter Settings for Inferred Entity Instance: signed_mult:zcr|lpm_mult:Mult0
+ 27. Parameter Settings for Inferred Entity Instance: lpm_mult:Mult0
  28. altpll Parameter Settings by Entity Instance
  29. altsyncram Parameter Settings by Entity Instance
  30. lpm_mult Parameter Settings by Entity Instance
@@ -68,16 +68,16 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                   ;
 +------------------------------------+-------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu Mar 26 00:51:11 2015     ;
+; Analysis & Synthesis Status        ; Successful - Thu Mar 26 01:03:27 2015     ;
 ; Quartus II 64-Bit Version          ; 11.0 Build 157 04/27/2011 SJ Full Version ;
 ; Revision Name                      ; juliaset                                  ;
 ; Top-level Entity Name              ; juliaset                                  ;
 ; Family                             ; Cyclone IV E                              ;
-; Total logic elements               ; 1,561                                     ;
-;     Total combinational functions  ; 1,542                                     ;
+; Total logic elements               ; 1,550                                     ;
+;     Total combinational functions  ; 1,531                                     ;
 ;     Dedicated logic registers      ; 256                                       ;
 ; Total registers                    ; 256                                       ;
-; Total pins                         ; 71                                        ;
+; Total pins                         ; 123                                       ;
 ; Total virtual pins                 ; 0                                         ;
 ; Total memory bits                  ; 1,310,720                                 ;
 ; Embedded Multiplier 9-bit elements ; 50                                        ;
@@ -179,11 +179,11 @@ applicable agreement for further details.
 ; Maximum allowed            ; 4           ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 1           ;
+; Maximum used               ; 4           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     1 processor            ; 100.0%      ;
-;     2-4 processors         ;   0.0%      ;
+;     2-4 processors         ; < 0.1%      ;
 +----------------------------+-------------+
 
 
@@ -251,23 +251,23 @@ applicable agreement for further details.
 +---------------------------------------------+-----------------------------------------------------------------------------------+
 ; Resource                                    ; Usage                                                                             ;
 +---------------------------------------------+-----------------------------------------------------------------------------------+
-; Estimated Total logic elements              ; 1,561                                                                             ;
+; Estimated Total logic elements              ; 1,550                                                                             ;
 ;                                             ;                                                                                   ;
-; Total combinational functions               ; 1542                                                                              ;
+; Total combinational functions               ; 1531                                                                              ;
 ; Logic element usage by number of LUT inputs ;                                                                                   ;
-;     -- 4 input functions                    ; 402                                                                               ;
-;     -- 3 input functions                    ; 754                                                                               ;
-;     -- <=2 input functions                  ; 386                                                                               ;
+;     -- 4 input functions                    ; 394                                                                               ;
+;     -- 3 input functions                    ; 750                                                                               ;
+;     -- <=2 input functions                  ; 387                                                                               ;
 ;                                             ;                                                                                   ;
 ; Logic elements by mode                      ;                                                                                   ;
-;     -- normal mode                          ; 680                                                                               ;
+;     -- normal mode                          ; 669                                                                               ;
 ;     -- arithmetic mode                      ; 862                                                                               ;
 ;                                             ;                                                                                   ;
 ; Total registers                             ; 256                                                                               ;
 ;     -- Dedicated logic registers            ; 256                                                                               ;
 ;     -- I/O registers                        ; 0                                                                                 ;
 ;                                             ;                                                                                   ;
-; I/O pins                                    ; 71                                                                                ;
+; I/O pins                                    ; 123                                                                               ;
 ; Total memory bits                           ; 1310720                                                                           ;
 ; Embedded Multiplier 9-bit elements          ; 50                                                                                ;
 ; Total PLLs                                  ; 1                                                                                 ;
@@ -275,55 +275,55 @@ applicable agreement for further details.
 ;                                             ;                                                                                   ;
 ; Maximum fan-out node                        ; VGA_PLL:p1|altpll:altpll_component|VGA_PLL_altpll:auto_generated|wire_pll1_clk[0] ;
 ; Maximum fan-out                             ; 359                                                                               ;
-; Total fan-out                               ; 11467                                                                             ;
-; Average fan-out                             ; 5.31                                                                              ;
+; Total fan-out                               ; 11477                                                                             ;
+; Average fan-out                             ; 5.09                                                                              ;
 +---------------------------------------------+-----------------------------------------------------------------------------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                ;
-+------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------------------------------------+--------------+
-; Compilation Hierarchy Node                     ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                    ; Library Name ;
-+------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------------------------------------+--------------+
-; |juliaset                                      ; 1542 (330)        ; 256 (138)    ; 1310720     ; 50           ; 2       ; 24        ; 71   ; 0            ; |juliaset                                                                                                                              ;              ;
-;    |VGA_Controller:u1|                         ; 87 (87)           ; 47 (47)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|VGA_Controller:u1                                                                                                            ;              ;
-;    |VGA_PLL:p1|                                ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|VGA_PLL:p1                                                                                                                   ;              ;
-;       |altpll:altpll_component|                ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|VGA_PLL:p1|altpll:altpll_component                                                                                           ;              ;
-;          |VGA_PLL_altpll:auto_generated|       ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|VGA_PLL:p1|altpll:altpll_component|VGA_PLL_altpll:auto_generated                                                             ;              ;
-;    |asc_to_lcd:asc|                            ; 159 (159)         ; 59 (59)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|asc_to_lcd:asc                                                                                                               ;              ;
-;    |lpm_mult:Mult0_rtl_4|                      ; 71 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult0_rtl_4                                                                                                         ;              ;
-;       |multcore:mult_core|                     ; 71 (21)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult0_rtl_4|multcore:mult_core                                                                                      ;              ;
-;          |mpar_add:padder|                     ; 50 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult0_rtl_4|multcore:mult_core|mpar_add:padder                                                                      ;              ;
-;             |lpm_add_sub:adder[0]|             ; 26 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult0_rtl_4|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]                                                 ;              ;
-;                |add_sub_lgh:auto_generated|    ; 26 (26)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult0_rtl_4|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]|add_sub_lgh:auto_generated                      ;              ;
-;             |mpar_add:sub_par_add|             ; 24 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult0_rtl_4|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add                                                 ;              ;
-;                |lpm_add_sub:adder[0]|          ; 24 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult0_rtl_4|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[0]                            ;              ;
-;                   |add_sub_pgh:auto_generated| ; 24 (24)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult0_rtl_4|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[0]|add_sub_pgh:auto_generated ;              ;
-;    |lpm_mult:Mult1_rtl_2|                      ; 55 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult1_rtl_2                                                                                                         ;              ;
-;       |multcore:mult_core|                     ; 55 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult1_rtl_2|multcore:mult_core                                                                                      ;              ;
-;          |mpar_add:padder|                     ; 55 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult1_rtl_2|multcore:mult_core|mpar_add:padder                                                                      ;              ;
-;             |lpm_add_sub:adder[0]|             ; 29 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult1_rtl_2|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]                                                 ;              ;
-;                |add_sub_mgh:auto_generated|    ; 29 (29)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult1_rtl_2|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]|add_sub_mgh:auto_generated                      ;              ;
-;             |mpar_add:sub_par_add|             ; 26 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult1_rtl_2|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add                                                 ;              ;
-;                |lpm_add_sub:adder[0]|          ; 26 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult1_rtl_2|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[0]                            ;              ;
-;                   |add_sub_qgh:auto_generated| ; 26 (26)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult1_rtl_2|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[0]|add_sub_qgh:auto_generated ;              ;
-;    |signed_mult:zcr|                           ; 168 (0)           ; 0 (0)        ; 0           ; 16           ; 0       ; 8         ; 0    ; 0            ; |juliaset|signed_mult:zcr                                                                                                              ;              ;
-;       |lpm_mult:Mult0_rtl_3|                   ; 168 (0)           ; 0 (0)        ; 0           ; 16           ; 0       ; 8         ; 0    ; 0            ; |juliaset|signed_mult:zcr|lpm_mult:Mult0_rtl_3                                                                                         ;              ;
-;          |mult_f6t:auto_generated|             ; 168 (168)         ; 0 (0)        ; 0           ; 16           ; 0       ; 8         ; 0    ; 0            ; |juliaset|signed_mult:zcr|lpm_mult:Mult0_rtl_3|mult_f6t:auto_generated                                                                 ;              ;
-;    |signed_mult:zcs|                           ; 188 (0)           ; 0 (0)        ; 0           ; 17           ; 1       ; 8         ; 0    ; 0            ; |juliaset|signed_mult:zcs                                                                                                              ;              ;
-;       |lpm_mult:Mult0_rtl_0|                   ; 188 (0)           ; 0 (0)        ; 0           ; 17           ; 1       ; 8         ; 0    ; 0            ; |juliaset|signed_mult:zcs|lpm_mult:Mult0_rtl_0                                                                                         ;              ;
-;          |mult_f6t:auto_generated|             ; 188 (188)         ; 0 (0)        ; 0           ; 17           ; 1       ; 8         ; 0    ; 0            ; |juliaset|signed_mult:zcs|lpm_mult:Mult0_rtl_0|mult_f6t:auto_generated                                                                 ;              ;
-;    |signed_mult:zrs|                           ; 188 (0)           ; 0 (0)        ; 0           ; 17           ; 1       ; 8         ; 0    ; 0            ; |juliaset|signed_mult:zrs                                                                                                              ;              ;
-;       |lpm_mult:Mult0_rtl_1|                   ; 188 (0)           ; 0 (0)        ; 0           ; 17           ; 1       ; 8         ; 0    ; 0            ; |juliaset|signed_mult:zrs|lpm_mult:Mult0_rtl_1                                                                                         ;              ;
-;          |mult_f6t:auto_generated|             ; 188 (188)         ; 0 (0)        ; 0           ; 17           ; 1       ; 8         ; 0    ; 0            ; |juliaset|signed_mult:zrs|lpm_mult:Mult0_rtl_1|mult_f6t:auto_generated                                                                 ;              ;
-;    |video_buffer:display|                      ; 296 (0)           ; 12 (0)       ; 1310720     ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|video_buffer:display                                                                                                         ;              ;
-;       |altsyncram:altsyncram_component|        ; 296 (0)           ; 12 (0)       ; 1310720     ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|video_buffer:display|altsyncram:altsyncram_component                                                                         ;              ;
-;          |altsyncram_r6i2:auto_generated|      ; 296 (160)         ; 12 (12)      ; 1310720     ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated                                          ;              ;
-;             |decode_aaa:rden_decode_a|         ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|decode_aaa:rden_decode_a                 ;              ;
-;             |decode_aaa:rden_decode_b|         ; 6 (6)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|decode_aaa:rden_decode_b                 ;              ;
-;             |decode_hua:decode2|               ; 6 (6)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|decode_hua:decode2                       ;              ;
-;             |mux_1pb:mux5|                     ; 121 (121)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|mux_1pb:mux5                             ;              ;
-+------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------------------------------------+--------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                          ;
++------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node                     ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                              ; Library Name ;
++------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------------------------------+--------------+
+; |juliaset                                      ; 1531 (335)        ; 256 (138)    ; 1310720     ; 50           ; 2       ; 24        ; 123  ; 0            ; |juliaset                                                                                                                        ;              ;
+;    |VGA_Controller:u1|                         ; 73 (73)           ; 47 (47)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|VGA_Controller:u1                                                                                                      ;              ;
+;    |VGA_PLL:p1|                                ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|VGA_PLL:p1                                                                                                             ;              ;
+;       |altpll:altpll_component|                ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|VGA_PLL:p1|altpll:altpll_component                                                                                     ;              ;
+;          |VGA_PLL_altpll:auto_generated|       ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|VGA_PLL:p1|altpll:altpll_component|VGA_PLL_altpll:auto_generated                                                       ;              ;
+;    |asc_to_lcd:asc|                            ; 157 (157)         ; 59 (59)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|asc_to_lcd:asc                                                                                                         ;              ;
+;    |lpm_mult:Mult0|                            ; 71 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult0                                                                                                         ;              ;
+;       |multcore:mult_core|                     ; 71 (21)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult0|multcore:mult_core                                                                                      ;              ;
+;          |mpar_add:padder|                     ; 50 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder                                                                      ;              ;
+;             |lpm_add_sub:adder[0]|             ; 26 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]                                                 ;              ;
+;                |add_sub_lgh:auto_generated|    ; 26 (26)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]|add_sub_lgh:auto_generated                      ;              ;
+;             |mpar_add:sub_par_add|             ; 24 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add                                                 ;              ;
+;                |lpm_add_sub:adder[0]|          ; 24 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[0]                            ;              ;
+;                   |add_sub_pgh:auto_generated| ; 24 (24)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[0]|add_sub_pgh:auto_generated ;              ;
+;    |lpm_mult:Mult1|                            ; 55 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult1                                                                                                         ;              ;
+;       |multcore:mult_core|                     ; 55 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult1|multcore:mult_core                                                                                      ;              ;
+;          |mpar_add:padder|                     ; 55 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult1|multcore:mult_core|mpar_add:padder                                                                      ;              ;
+;             |lpm_add_sub:adder[0]|             ; 29 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult1|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]                                                 ;              ;
+;                |add_sub_mgh:auto_generated|    ; 29 (29)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult1|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]|add_sub_mgh:auto_generated                      ;              ;
+;             |mpar_add:sub_par_add|             ; 26 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult1|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add                                                 ;              ;
+;                |lpm_add_sub:adder[0]|          ; 26 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult1|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[0]                            ;              ;
+;                   |add_sub_qgh:auto_generated| ; 26 (26)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult1|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[0]|add_sub_qgh:auto_generated ;              ;
+;    |signed_mult:zcr|                           ; 168 (0)           ; 0 (0)        ; 0           ; 16           ; 0       ; 8         ; 0    ; 0            ; |juliaset|signed_mult:zcr                                                                                                        ;              ;
+;       |lpm_mult:Mult0|                         ; 168 (0)           ; 0 (0)        ; 0           ; 16           ; 0       ; 8         ; 0    ; 0            ; |juliaset|signed_mult:zcr|lpm_mult:Mult0                                                                                         ;              ;
+;          |mult_f6t:auto_generated|             ; 168 (168)         ; 0 (0)        ; 0           ; 16           ; 0       ; 8         ; 0    ; 0            ; |juliaset|signed_mult:zcr|lpm_mult:Mult0|mult_f6t:auto_generated                                                                 ;              ;
+;    |signed_mult:zcs|                           ; 188 (0)           ; 0 (0)        ; 0           ; 17           ; 1       ; 8         ; 0    ; 0            ; |juliaset|signed_mult:zcs                                                                                                        ;              ;
+;       |lpm_mult:Mult0|                         ; 188 (0)           ; 0 (0)        ; 0           ; 17           ; 1       ; 8         ; 0    ; 0            ; |juliaset|signed_mult:zcs|lpm_mult:Mult0                                                                                         ;              ;
+;          |mult_f6t:auto_generated|             ; 188 (188)         ; 0 (0)        ; 0           ; 17           ; 1       ; 8         ; 0    ; 0            ; |juliaset|signed_mult:zcs|lpm_mult:Mult0|mult_f6t:auto_generated                                                                 ;              ;
+;    |signed_mult:zrs|                           ; 188 (0)           ; 0 (0)        ; 0           ; 17           ; 1       ; 8         ; 0    ; 0            ; |juliaset|signed_mult:zrs                                                                                                        ;              ;
+;       |lpm_mult:Mult0|                         ; 188 (0)           ; 0 (0)        ; 0           ; 17           ; 1       ; 8         ; 0    ; 0            ; |juliaset|signed_mult:zrs|lpm_mult:Mult0                                                                                         ;              ;
+;          |mult_f6t:auto_generated|             ; 188 (188)         ; 0 (0)        ; 0           ; 17           ; 1       ; 8         ; 0    ; 0            ; |juliaset|signed_mult:zrs|lpm_mult:Mult0|mult_f6t:auto_generated                                                                 ;              ;
+;    |video_buffer:display|                      ; 296 (0)           ; 12 (0)       ; 1310720     ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|video_buffer:display                                                                                                   ;              ;
+;       |altsyncram:altsyncram_component|        ; 296 (0)           ; 12 (0)       ; 1310720     ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|video_buffer:display|altsyncram:altsyncram_component                                                                   ;              ;
+;          |altsyncram_17e2:auto_generated|      ; 296 (160)         ; 12 (12)      ; 1310720     ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|video_buffer:display|altsyncram:altsyncram_component|altsyncram_17e2:auto_generated                                    ;              ;
+;             |decode_3aa:rden_decode_a|         ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|video_buffer:display|altsyncram:altsyncram_component|altsyncram_17e2:auto_generated|decode_3aa:rden_decode_a           ;              ;
+;             |decode_3aa:rden_decode_b|         ; 6 (6)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|video_buffer:display|altsyncram:altsyncram_component|altsyncram_17e2:auto_generated|decode_3aa:rden_decode_b           ;              ;
+;             |decode_aua:decode2|               ; 6 (6)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|video_buffer:display|altsyncram:altsyncram_component|altsyncram_17e2:auto_generated|decode_aua:decode2                 ;              ;
+;             |mux_mob:mux5|                     ; 121 (121)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|video_buffer:display|altsyncram:altsyncram_component|altsyncram_17e2:auto_generated|mux_mob:mux5                       ;              ;
++------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
@@ -332,7 +332,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +------------------------------------------------------------------------------------------------+------+----------------+--------------+--------------+--------------+--------------+---------+------+
 ; Name                                                                                           ; Type ; Mode           ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size    ; MIF  ;
 +------------------------------------------------------------------------------------------------+------+----------------+--------------+--------------+--------------+--------------+---------+------+
-; video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM ; M9K  ; True Dual Port ; 327680       ; 4            ; 327680       ; 4            ; 1310720 ; None ;
+; video_buffer:display|altsyncram:altsyncram_component|altsyncram_17e2:auto_generated|ALTSYNCRAM ; M9K  ; True Dual Port ; 327680       ; 4            ; 327680       ; 4            ; 1310720 ; None ;
 +------------------------------------------------------------------------------------------------+------+----------------+--------------+--------------+--------------+--------------+---------+------+
 
 
@@ -392,23 +392,57 @@ Encoding Type:  One-Hot
 +-------------------------+------------------------------------------------------------------+--------------------------------------------+
 
 
-+--------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                   ;
-+---------------------------------------+----------------------------------------------+
-; Register name                         ; Reason for Removal                           ;
-+---------------------------------------+----------------------------------------------+
-; color[1..6]                           ; Merged with color[0]                         ;
-; VGA_Controller:u1|Cur_Color_R[1..4]   ; Merged with VGA_Controller:u1|Cur_Color_R[0] ;
-; VGA_Controller:u1|Cur_Color_G[1..4]   ; Merged with VGA_Controller:u1|Cur_Color_G[0] ;
-; color[8,9,11..14]                     ; Merged with color[10]                        ;
-; color[17..22]                         ; Merged with color[16]                        ;
-; VGA_Controller:u1|Cur_Color_B[1..5]   ; Merged with VGA_Controller:u1|Cur_Color_B[0] ;
-; asc_to_lcd:asc|char_mux[7]            ; Stuck at GND due to stuck port data_in       ;
-; VGA_Controller:u1|Cur_Color_R[0,5]    ; Merged with VGA_Controller:u1|Cur_Color_R[6] ;
-; VGA_Controller:u1|Cur_Color_G[0,5]    ; Merged with VGA_Controller:u1|Cur_Color_G[6] ;
-; VGA_Controller:u1|Cur_Color_B[0]      ; Merged with VGA_Controller:u1|Cur_Color_B[6] ;
-; Total Number of Removed Registers = 1 ;                                              ;
-+---------------------------------------+----------------------------------------------+
++----------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                     ;
++-----------------------------------------+----------------------------------------------+
+; Register name                           ; Reason for Removal                           ;
++-----------------------------------------+----------------------------------------------+
+; c_comp[0,1]                             ; Stuck at GND due to stuck port data_in       ;
+; c_comp[2]                               ; Stuck at VCC due to stuck port data_in       ;
+; c_comp[3,4]                             ; Stuck at GND due to stuck port data_in       ;
+; c_comp[5,6]                             ; Stuck at VCC due to stuck port data_in       ;
+; c_comp[7]                               ; Stuck at GND due to stuck port data_in       ;
+; c_comp[8,9]                             ; Stuck at VCC due to stuck port data_in       ;
+; c_comp[10]                              ; Stuck at GND due to stuck port data_in       ;
+; c_comp[11..13]                          ; Stuck at VCC due to stuck port data_in       ;
+; c_comp[14,15]                           ; Stuck at GND due to stuck port data_in       ;
+; c_comp[16..20]                          ; Stuck at VCC due to stuck port data_in       ;
+; c_comp[21]                              ; Stuck at GND due to stuck port data_in       ;
+; c_comp[22..27]                          ; Stuck at VCC due to stuck port data_in       ;
+; c_comp[28,29]                           ; Stuck at GND due to stuck port data_in       ;
+; c_comp[30]                              ; Stuck at VCC due to stuck port data_in       ;
+; c_comp[31..36]                          ; Stuck at GND due to stuck port data_in       ;
+; c_real[0..2]                            ; Stuck at VCC due to stuck port data_in       ;
+; c_real[3,4]                             ; Stuck at GND due to stuck port data_in       ;
+; c_real[5,6]                             ; Stuck at VCC due to stuck port data_in       ;
+; c_real[7,8]                             ; Stuck at GND due to stuck port data_in       ;
+; c_real[9,10]                            ; Stuck at VCC due to stuck port data_in       ;
+; c_real[11,12]                           ; Stuck at GND due to stuck port data_in       ;
+; c_real[13,14]                           ; Stuck at VCC due to stuck port data_in       ;
+; c_real[15,16]                           ; Stuck at GND due to stuck port data_in       ;
+; c_real[17,18]                           ; Stuck at VCC due to stuck port data_in       ;
+; c_real[19,20]                           ; Stuck at GND due to stuck port data_in       ;
+; c_real[21,22]                           ; Stuck at VCC due to stuck port data_in       ;
+; c_real[23,24]                           ; Stuck at GND due to stuck port data_in       ;
+; c_real[25,26]                           ; Stuck at VCC due to stuck port data_in       ;
+; c_real[27,28]                           ; Stuck at GND due to stuck port data_in       ;
+; c_real[29,30]                           ; Stuck at VCC due to stuck port data_in       ;
+; c_real[31,32]                           ; Stuck at GND due to stuck port data_in       ;
+; c_real[33..36]                          ; Stuck at VCC due to stuck port data_in       ;
+; color[1..6]                             ; Merged with color[0]                         ;
+; VGA_Controller:u1|Cur_Color_G[1..6]     ; Merged with VGA_Controller:u1|Cur_Color_G[0] ;
+; color[8,9,11..14]                       ; Merged with color[10]                        ;
+; color[17..22]                           ; Merged with color[16]                        ;
+; VGA_Controller:u1|Cur_Color_R[1..6]     ; Merged with VGA_Controller:u1|Cur_Color_R[0] ;
+; VGA_Controller:u1|Cur_Color_B[1..6]     ; Merged with VGA_Controller:u1|Cur_Color_B[0] ;
+; asc_to_lcd:asc|char_mux[7]              ; Stuck at GND due to stuck port data_in       ;
+; z_comp[0]                               ; Stuck at GND due to stuck port data_in       ;
+; state~2                                 ; Lost fanout                                  ;
+; state~3                                 ; Lost fanout                                  ;
+; state~4                                 ; Lost fanout                                  ;
+; state~5                                 ; Lost fanout                                  ;
+; Total Number of Removed Registers = 116 ;                                              ;
++-----------------------------------------+----------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -431,20 +465,20 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------------------------------------+----------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered                               ; Example Multiplexer Output ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------------------------------------+----------------------------+
-; 3:1                ; 19 bits   ; 38 LEs        ; 19 LEs               ; 19 LEs                 ; |juliaset|addr_reg[12]                   ;                            ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; |juliaset|asc_to_lcd:asc|ns_cntr[1]      ;                            ;
-; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; |juliaset|asc_to_lcd:asc|us_cntr[0]      ;                            ;
+; 3:1                ; 19 bits   ; 38 LEs        ; 19 LEs               ; 19 LEs                 ; |juliaset|addr_reg[13]                   ;                            ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; |juliaset|asc_to_lcd:asc|ns_cntr[0]      ;                            ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; |juliaset|asc_to_lcd:asc|us_cntr[3]      ;                            ;
 ; 17:1               ; 6 bits    ; 66 LEs        ; 48 LEs               ; 18 LEs                 ; |juliaset|color[7]                       ;                            ;
-; 33:1               ; 7 bits    ; 154 LEs       ; 35 LEs               ; 119 LEs                ; |juliaset|asc_to_lcd:asc|lcd_data[0]     ;                            ;
-; 33:1               ; 5 bits    ; 110 LEs       ; 5 LEs                ; 105 LEs                ; |juliaset|asc_to_lcd:asc|char_ptr[4]     ;                            ;
-; 7:1                ; 5 bits    ; 20 LEs        ; 20 LEs               ; 0 LEs                  ; |juliaset|asc_to_lcd:asc|timer[12]       ;                            ;
+; 33:1               ; 7 bits    ; 154 LEs       ; 35 LEs               ; 119 LEs                ; |juliaset|asc_to_lcd:asc|lcd_data[2]     ;                            ;
+; 33:1               ; 5 bits    ; 110 LEs       ; 5 LEs                ; 105 LEs                ; |juliaset|asc_to_lcd:asc|char_ptr[1]     ;                            ;
+; 7:1                ; 5 bits    ; 20 LEs        ; 20 LEs               ; 0 LEs                  ; |juliaset|asc_to_lcd:asc|timer[3]        ;                            ;
 ; 35:1               ; 4 bits    ; 92 LEs        ; 28 LEs               ; 64 LEs                 ; |juliaset|asc_to_lcd:asc|return_state[1] ;                            ;
-; 6:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; |juliaset|asc_to_lcd:asc|timer[10]       ;                            ;
-; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; |juliaset|asc_to_lcd:asc|timer[1]        ;                            ;
-; 6:1                ; 4 bits    ; 16 LEs        ; 12 LEs               ; 4 LEs                  ; |juliaset|asc_to_lcd:asc|timer[7]        ;                            ;
-; 4:1                ; 10 bits   ; 20 LEs        ; 20 LEs               ; 0 LEs                  ; |juliaset|x_cursor[2]                    ;                            ;
-; 4:1                ; 9 bits    ; 18 LEs        ; 9 LEs                ; 9 LEs                  ; |juliaset|y_cursor[3]                    ;                            ;
-; 5:1                ; 68 bits   ; 204 LEs       ; 136 LEs              ; 68 LEs                 ; |juliaset|z_comp[14]                     ;                            ;
+; 6:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; |juliaset|asc_to_lcd:asc|timer[8]        ;                            ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; |juliaset|asc_to_lcd:asc|timer[0]        ;                            ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 12 LEs               ; 4 LEs                  ; |juliaset|asc_to_lcd:asc|timer[2]        ;                            ;
+; 4:1                ; 10 bits   ; 20 LEs        ; 20 LEs               ; 0 LEs                  ; |juliaset|x_cursor[9]                    ;                            ;
+; 4:1                ; 9 bits    ; 18 LEs        ; 9 LEs                ; 9 LEs                  ; |juliaset|y_cursor[8]                    ;                            ;
+; 5:1                ; 68 bits   ; 204 LEs       ; 136 LEs              ; 68 LEs                 ; |juliaset|z_comp[17]                     ;                            ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------------------------------------+----------------------------+
 
 
@@ -982,78 +1016,78 @@ Note: In order to hide this table in the UI and the text report file, please set
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+---------------------------------------------------------------------------------------+
-; Parameter Settings for Inferred Entity Instance: signed_mult:zcs|lpm_mult:Mult0_rtl_0 ;
-+------------------------------------------------+--------------+-----------------------+
-; Parameter Name                                 ; Value        ; Type                  ;
-+------------------------------------------------+--------------+-----------------------+
-; AUTO_CARRY_CHAINS                              ; ON           ; AUTO_CARRY            ;
-; IGNORE_CARRY_BUFFERS                           ; OFF          ; IGNORE_CARRY          ;
-; AUTO_CASCADE_CHAINS                            ; ON           ; AUTO_CASCADE          ;
-; IGNORE_CASCADE_BUFFERS                         ; OFF          ; IGNORE_CASCADE        ;
-; LPM_WIDTHA                                     ; 37           ; Untyped               ;
-; LPM_WIDTHB                                     ; 37           ; Untyped               ;
-; LPM_WIDTHP                                     ; 74           ; Untyped               ;
-; LPM_WIDTHR                                     ; 74           ; Untyped               ;
-; LPM_WIDTHS                                     ; 1            ; Untyped               ;
-; LPM_REPRESENTATION                             ; SIGNED       ; Untyped               ;
-; LPM_PIPELINE                                   ; 0            ; Untyped               ;
-; LATENCY                                        ; 0            ; Untyped               ;
-; INPUT_A_IS_CONSTANT                            ; NO           ; Untyped               ;
-; INPUT_B_IS_CONSTANT                            ; NO           ; Untyped               ;
-; USE_EAB                                        ; OFF          ; Untyped               ;
-; MAXIMIZE_SPEED                                 ; 5            ; Untyped               ;
-; DEVICE_FAMILY                                  ; Cyclone IV E ; Untyped               ;
-; CARRY_CHAIN                                    ; MANUAL       ; Untyped               ;
-; APEX20K_TECHNOLOGY_MAPPER                      ; LUT          ; TECH_MAPPER_APEX20K   ;
-; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO         ; Untyped               ;
-; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0            ; Untyped               ;
-; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0            ; Untyped               ;
-; CBXI_PARAMETER                                 ; mult_f6t     ; Untyped               ;
-; INPUT_A_FIXED_VALUE                            ; Bx           ; Untyped               ;
-; INPUT_B_FIXED_VALUE                            ; Bx           ; Untyped               ;
-; USE_AHDL_IMPLEMENTATION                        ; OFF          ; Untyped               ;
-+------------------------------------------------+--------------+-----------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+---------------------------------------------------------------------------------------+
-; Parameter Settings for Inferred Entity Instance: signed_mult:zrs|lpm_mult:Mult0_rtl_1 ;
-+------------------------------------------------+--------------+-----------------------+
-; Parameter Name                                 ; Value        ; Type                  ;
-+------------------------------------------------+--------------+-----------------------+
-; AUTO_CARRY_CHAINS                              ; ON           ; AUTO_CARRY            ;
-; IGNORE_CARRY_BUFFERS                           ; OFF          ; IGNORE_CARRY          ;
-; AUTO_CASCADE_CHAINS                            ; ON           ; AUTO_CASCADE          ;
-; IGNORE_CASCADE_BUFFERS                         ; OFF          ; IGNORE_CASCADE        ;
-; LPM_WIDTHA                                     ; 37           ; Untyped               ;
-; LPM_WIDTHB                                     ; 37           ; Untyped               ;
-; LPM_WIDTHP                                     ; 74           ; Untyped               ;
-; LPM_WIDTHR                                     ; 74           ; Untyped               ;
-; LPM_WIDTHS                                     ; 1            ; Untyped               ;
-; LPM_REPRESENTATION                             ; SIGNED       ; Untyped               ;
-; LPM_PIPELINE                                   ; 0            ; Untyped               ;
-; LATENCY                                        ; 0            ; Untyped               ;
-; INPUT_A_IS_CONSTANT                            ; NO           ; Untyped               ;
-; INPUT_B_IS_CONSTANT                            ; NO           ; Untyped               ;
-; USE_EAB                                        ; OFF          ; Untyped               ;
-; MAXIMIZE_SPEED                                 ; 5            ; Untyped               ;
-; DEVICE_FAMILY                                  ; Cyclone IV E ; Untyped               ;
-; CARRY_CHAIN                                    ; MANUAL       ; Untyped               ;
-; APEX20K_TECHNOLOGY_MAPPER                      ; LUT          ; TECH_MAPPER_APEX20K   ;
-; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO         ; Untyped               ;
-; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0            ; Untyped               ;
-; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0            ; Untyped               ;
-; CBXI_PARAMETER                                 ; mult_f6t     ; Untyped               ;
-; INPUT_A_FIXED_VALUE                            ; Bx           ; Untyped               ;
-; INPUT_B_FIXED_VALUE                            ; Bx           ; Untyped               ;
-; USE_AHDL_IMPLEMENTATION                        ; OFF          ; Untyped               ;
-+------------------------------------------------+--------------+-----------------------+
++-------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: signed_mult:zcs|lpm_mult:Mult0     ;
++------------------------------------------------+--------------+---------------------+
+; Parameter Name                                 ; Value        ; Type                ;
++------------------------------------------------+--------------+---------------------+
+; AUTO_CARRY_CHAINS                              ; ON           ; AUTO_CARRY          ;
+; IGNORE_CARRY_BUFFERS                           ; OFF          ; IGNORE_CARRY        ;
+; AUTO_CASCADE_CHAINS                            ; ON           ; AUTO_CASCADE        ;
+; IGNORE_CASCADE_BUFFERS                         ; OFF          ; IGNORE_CASCADE      ;
+; LPM_WIDTHA                                     ; 37           ; Untyped             ;
+; LPM_WIDTHB                                     ; 37           ; Untyped             ;
+; LPM_WIDTHP                                     ; 74           ; Untyped             ;
+; LPM_WIDTHR                                     ; 74           ; Untyped             ;
+; LPM_WIDTHS                                     ; 1            ; Untyped             ;
+; LPM_REPRESENTATION                             ; SIGNED       ; Untyped             ;
+; LPM_PIPELINE                                   ; 0            ; Untyped             ;
+; LATENCY                                        ; 0            ; Untyped             ;
+; INPUT_A_IS_CONSTANT                            ; NO           ; Untyped             ;
+; INPUT_B_IS_CONSTANT                            ; NO           ; Untyped             ;
+; USE_EAB                                        ; OFF          ; Untyped             ;
+; MAXIMIZE_SPEED                                 ; 5            ; Untyped             ;
+; DEVICE_FAMILY                                  ; Cyclone IV E ; Untyped             ;
+; CARRY_CHAIN                                    ; MANUAL       ; Untyped             ;
+; APEX20K_TECHNOLOGY_MAPPER                      ; LUT          ; TECH_MAPPER_APEX20K ;
+; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO         ; Untyped             ;
+; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0            ; Untyped             ;
+; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0            ; Untyped             ;
+; CBXI_PARAMETER                                 ; mult_f6t     ; Untyped             ;
+; INPUT_A_FIXED_VALUE                            ; Bx           ; Untyped             ;
+; INPUT_B_FIXED_VALUE                            ; Bx           ; Untyped             ;
+; USE_AHDL_IMPLEMENTATION                        ; OFF          ; Untyped             ;
++------------------------------------------------+--------------+---------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
 +-------------------------------------------------------------------------------------+
-; Parameter Settings for Inferred Entity Instance: lpm_mult:Mult1_rtl_2               ;
+; Parameter Settings for Inferred Entity Instance: signed_mult:zrs|lpm_mult:Mult0     ;
++------------------------------------------------+--------------+---------------------+
+; Parameter Name                                 ; Value        ; Type                ;
++------------------------------------------------+--------------+---------------------+
+; AUTO_CARRY_CHAINS                              ; ON           ; AUTO_CARRY          ;
+; IGNORE_CARRY_BUFFERS                           ; OFF          ; IGNORE_CARRY        ;
+; AUTO_CASCADE_CHAINS                            ; ON           ; AUTO_CASCADE        ;
+; IGNORE_CASCADE_BUFFERS                         ; OFF          ; IGNORE_CASCADE      ;
+; LPM_WIDTHA                                     ; 37           ; Untyped             ;
+; LPM_WIDTHB                                     ; 37           ; Untyped             ;
+; LPM_WIDTHP                                     ; 74           ; Untyped             ;
+; LPM_WIDTHR                                     ; 74           ; Untyped             ;
+; LPM_WIDTHS                                     ; 1            ; Untyped             ;
+; LPM_REPRESENTATION                             ; SIGNED       ; Untyped             ;
+; LPM_PIPELINE                                   ; 0            ; Untyped             ;
+; LATENCY                                        ; 0            ; Untyped             ;
+; INPUT_A_IS_CONSTANT                            ; NO           ; Untyped             ;
+; INPUT_B_IS_CONSTANT                            ; NO           ; Untyped             ;
+; USE_EAB                                        ; OFF          ; Untyped             ;
+; MAXIMIZE_SPEED                                 ; 5            ; Untyped             ;
+; DEVICE_FAMILY                                  ; Cyclone IV E ; Untyped             ;
+; CARRY_CHAIN                                    ; MANUAL       ; Untyped             ;
+; APEX20K_TECHNOLOGY_MAPPER                      ; LUT          ; TECH_MAPPER_APEX20K ;
+; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO         ; Untyped             ;
+; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0            ; Untyped             ;
+; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0            ; Untyped             ;
+; CBXI_PARAMETER                                 ; mult_f6t     ; Untyped             ;
+; INPUT_A_FIXED_VALUE                            ; Bx           ; Untyped             ;
+; INPUT_B_FIXED_VALUE                            ; Bx           ; Untyped             ;
+; USE_AHDL_IMPLEMENTATION                        ; OFF          ; Untyped             ;
++------------------------------------------------+--------------+---------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_mult:Mult1                     ;
 +------------------------------------------------+--------------+---------------------+
 ; Parameter Name                                 ; Value        ; Type                ;
 +------------------------------------------------+--------------+---------------------+
@@ -1087,43 +1121,43 @@ Note: In order to hide this table in the UI and the text report file, please set
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+---------------------------------------------------------------------------------------+
-; Parameter Settings for Inferred Entity Instance: signed_mult:zcr|lpm_mult:Mult0_rtl_3 ;
-+------------------------------------------------+--------------+-----------------------+
-; Parameter Name                                 ; Value        ; Type                  ;
-+------------------------------------------------+--------------+-----------------------+
-; AUTO_CARRY_CHAINS                              ; ON           ; AUTO_CARRY            ;
-; IGNORE_CARRY_BUFFERS                           ; OFF          ; IGNORE_CARRY          ;
-; AUTO_CASCADE_CHAINS                            ; ON           ; AUTO_CASCADE          ;
-; IGNORE_CASCADE_BUFFERS                         ; OFF          ; IGNORE_CASCADE        ;
-; LPM_WIDTHA                                     ; 37           ; Untyped               ;
-; LPM_WIDTHB                                     ; 37           ; Untyped               ;
-; LPM_WIDTHP                                     ; 74           ; Untyped               ;
-; LPM_WIDTHR                                     ; 74           ; Untyped               ;
-; LPM_WIDTHS                                     ; 1            ; Untyped               ;
-; LPM_REPRESENTATION                             ; SIGNED       ; Untyped               ;
-; LPM_PIPELINE                                   ; 0            ; Untyped               ;
-; LATENCY                                        ; 0            ; Untyped               ;
-; INPUT_A_IS_CONSTANT                            ; NO           ; Untyped               ;
-; INPUT_B_IS_CONSTANT                            ; NO           ; Untyped               ;
-; USE_EAB                                        ; OFF          ; Untyped               ;
-; MAXIMIZE_SPEED                                 ; 5            ; Untyped               ;
-; DEVICE_FAMILY                                  ; Cyclone IV E ; Untyped               ;
-; CARRY_CHAIN                                    ; MANUAL       ; Untyped               ;
-; APEX20K_TECHNOLOGY_MAPPER                      ; LUT          ; TECH_MAPPER_APEX20K   ;
-; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO         ; Untyped               ;
-; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0            ; Untyped               ;
-; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0            ; Untyped               ;
-; CBXI_PARAMETER                                 ; mult_f6t     ; Untyped               ;
-; INPUT_A_FIXED_VALUE                            ; Bx           ; Untyped               ;
-; INPUT_B_FIXED_VALUE                            ; Bx           ; Untyped               ;
-; USE_AHDL_IMPLEMENTATION                        ; OFF          ; Untyped               ;
-+------------------------------------------------+--------------+-----------------------+
++-------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: signed_mult:zcr|lpm_mult:Mult0     ;
++------------------------------------------------+--------------+---------------------+
+; Parameter Name                                 ; Value        ; Type                ;
++------------------------------------------------+--------------+---------------------+
+; AUTO_CARRY_CHAINS                              ; ON           ; AUTO_CARRY          ;
+; IGNORE_CARRY_BUFFERS                           ; OFF          ; IGNORE_CARRY        ;
+; AUTO_CASCADE_CHAINS                            ; ON           ; AUTO_CASCADE        ;
+; IGNORE_CASCADE_BUFFERS                         ; OFF          ; IGNORE_CASCADE      ;
+; LPM_WIDTHA                                     ; 37           ; Untyped             ;
+; LPM_WIDTHB                                     ; 37           ; Untyped             ;
+; LPM_WIDTHP                                     ; 74           ; Untyped             ;
+; LPM_WIDTHR                                     ; 74           ; Untyped             ;
+; LPM_WIDTHS                                     ; 1            ; Untyped             ;
+; LPM_REPRESENTATION                             ; SIGNED       ; Untyped             ;
+; LPM_PIPELINE                                   ; 0            ; Untyped             ;
+; LATENCY                                        ; 0            ; Untyped             ;
+; INPUT_A_IS_CONSTANT                            ; NO           ; Untyped             ;
+; INPUT_B_IS_CONSTANT                            ; NO           ; Untyped             ;
+; USE_EAB                                        ; OFF          ; Untyped             ;
+; MAXIMIZE_SPEED                                 ; 5            ; Untyped             ;
+; DEVICE_FAMILY                                  ; Cyclone IV E ; Untyped             ;
+; CARRY_CHAIN                                    ; MANUAL       ; Untyped             ;
+; APEX20K_TECHNOLOGY_MAPPER                      ; LUT          ; TECH_MAPPER_APEX20K ;
+; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO         ; Untyped             ;
+; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0            ; Untyped             ;
+; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0            ; Untyped             ;
+; CBXI_PARAMETER                                 ; mult_f6t     ; Untyped             ;
+; INPUT_A_FIXED_VALUE                            ; Bx           ; Untyped             ;
+; INPUT_B_FIXED_VALUE                            ; Bx           ; Untyped             ;
+; USE_AHDL_IMPLEMENTATION                        ; OFF          ; Untyped             ;
++------------------------------------------------+--------------+---------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
 +-------------------------------------------------------------------------------------+
-; Parameter Settings for Inferred Entity Instance: lpm_mult:Mult0_rtl_4               ;
+; Parameter Settings for Inferred Entity Instance: lpm_mult:Mult0                     ;
 +------------------------------------------------+--------------+---------------------+
 ; Parameter Name                                 ; Value        ; Type                ;
 +------------------------------------------------+--------------+---------------------+
@@ -1194,68 +1228,68 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-------------------------------------------+------------------------------------------------------+
 
 
-+------------------------------------------------------------------------------+
-; lpm_mult Parameter Settings by Entity Instance                               ;
-+---------------------------------------+--------------------------------------+
-; Name                                  ; Value                                ;
-+---------------------------------------+--------------------------------------+
-; Number of entity instances            ; 5                                    ;
-; Entity Instance                       ; signed_mult:zcs|lpm_mult:Mult0_rtl_0 ;
-;     -- LPM_WIDTHA                     ; 37                                   ;
-;     -- LPM_WIDTHB                     ; 37                                   ;
-;     -- LPM_WIDTHP                     ; 74                                   ;
-;     -- LPM_REPRESENTATION             ; SIGNED                               ;
-;     -- INPUT_A_IS_CONSTANT            ; NO                                   ;
-;     -- INPUT_B_IS_CONSTANT            ; NO                                   ;
-;     -- USE_EAB                        ; OFF                                  ;
-;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                                 ;
-;     -- INPUT_A_FIXED_VALUE            ; Bx                                   ;
-;     -- INPUT_B_FIXED_VALUE            ; Bx                                   ;
-; Entity Instance                       ; signed_mult:zrs|lpm_mult:Mult0_rtl_1 ;
-;     -- LPM_WIDTHA                     ; 37                                   ;
-;     -- LPM_WIDTHB                     ; 37                                   ;
-;     -- LPM_WIDTHP                     ; 74                                   ;
-;     -- LPM_REPRESENTATION             ; SIGNED                               ;
-;     -- INPUT_A_IS_CONSTANT            ; NO                                   ;
-;     -- INPUT_B_IS_CONSTANT            ; NO                                   ;
-;     -- USE_EAB                        ; OFF                                  ;
-;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                                 ;
-;     -- INPUT_A_FIXED_VALUE            ; Bx                                   ;
-;     -- INPUT_B_FIXED_VALUE            ; Bx                                   ;
-; Entity Instance                       ; lpm_mult:Mult1_rtl_2                 ;
-;     -- LPM_WIDTHA                     ; 27                                   ;
-;     -- LPM_WIDTHB                     ; 9                                    ;
-;     -- LPM_WIDTHP                     ; 36                                   ;
-;     -- LPM_REPRESENTATION             ; UNSIGNED                             ;
-;     -- INPUT_A_IS_CONSTANT            ; YES                                  ;
-;     -- INPUT_B_IS_CONSTANT            ; NO                                   ;
-;     -- USE_EAB                        ; OFF                                  ;
-;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                                 ;
-;     -- INPUT_A_FIXED_VALUE            ; Bx                                   ;
-;     -- INPUT_B_FIXED_VALUE            ; Bx                                   ;
-; Entity Instance                       ; signed_mult:zcr|lpm_mult:Mult0_rtl_3 ;
-;     -- LPM_WIDTHA                     ; 37                                   ;
-;     -- LPM_WIDTHB                     ; 37                                   ;
-;     -- LPM_WIDTHP                     ; 74                                   ;
-;     -- LPM_REPRESENTATION             ; SIGNED                               ;
-;     -- INPUT_A_IS_CONSTANT            ; NO                                   ;
-;     -- INPUT_B_IS_CONSTANT            ; NO                                   ;
-;     -- USE_EAB                        ; OFF                                  ;
-;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                                 ;
-;     -- INPUT_A_FIXED_VALUE            ; Bx                                   ;
-;     -- INPUT_B_FIXED_VALUE            ; Bx                                   ;
-; Entity Instance                       ; lpm_mult:Mult0_rtl_4                 ;
-;     -- LPM_WIDTHA                     ; 26                                   ;
-;     -- LPM_WIDTHB                     ; 10                                   ;
-;     -- LPM_WIDTHP                     ; 36                                   ;
-;     -- LPM_REPRESENTATION             ; UNSIGNED                             ;
-;     -- INPUT_A_IS_CONSTANT            ; YES                                  ;
-;     -- INPUT_B_IS_CONSTANT            ; NO                                   ;
-;     -- USE_EAB                        ; OFF                                  ;
-;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                                 ;
-;     -- INPUT_A_FIXED_VALUE            ; Bx                                   ;
-;     -- INPUT_B_FIXED_VALUE            ; Bx                                   ;
-+---------------------------------------+--------------------------------------+
++------------------------------------------------------------------------+
+; lpm_mult Parameter Settings by Entity Instance                         ;
++---------------------------------------+--------------------------------+
+; Name                                  ; Value                          ;
++---------------------------------------+--------------------------------+
+; Number of entity instances            ; 5                              ;
+; Entity Instance                       ; signed_mult:zcs|lpm_mult:Mult0 ;
+;     -- LPM_WIDTHA                     ; 37                             ;
+;     -- LPM_WIDTHB                     ; 37                             ;
+;     -- LPM_WIDTHP                     ; 74                             ;
+;     -- LPM_REPRESENTATION             ; SIGNED                         ;
+;     -- INPUT_A_IS_CONSTANT            ; NO                             ;
+;     -- INPUT_B_IS_CONSTANT            ; NO                             ;
+;     -- USE_EAB                        ; OFF                            ;
+;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                           ;
+;     -- INPUT_A_FIXED_VALUE            ; Bx                             ;
+;     -- INPUT_B_FIXED_VALUE            ; Bx                             ;
+; Entity Instance                       ; signed_mult:zrs|lpm_mult:Mult0 ;
+;     -- LPM_WIDTHA                     ; 37                             ;
+;     -- LPM_WIDTHB                     ; 37                             ;
+;     -- LPM_WIDTHP                     ; 74                             ;
+;     -- LPM_REPRESENTATION             ; SIGNED                         ;
+;     -- INPUT_A_IS_CONSTANT            ; NO                             ;
+;     -- INPUT_B_IS_CONSTANT            ; NO                             ;
+;     -- USE_EAB                        ; OFF                            ;
+;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                           ;
+;     -- INPUT_A_FIXED_VALUE            ; Bx                             ;
+;     -- INPUT_B_FIXED_VALUE            ; Bx                             ;
+; Entity Instance                       ; lpm_mult:Mult1                 ;
+;     -- LPM_WIDTHA                     ; 27                             ;
+;     -- LPM_WIDTHB                     ; 9                              ;
+;     -- LPM_WIDTHP                     ; 36                             ;
+;     -- LPM_REPRESENTATION             ; UNSIGNED                       ;
+;     -- INPUT_A_IS_CONSTANT            ; YES                            ;
+;     -- INPUT_B_IS_CONSTANT            ; NO                             ;
+;     -- USE_EAB                        ; OFF                            ;
+;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                           ;
+;     -- INPUT_A_FIXED_VALUE            ; Bx                             ;
+;     -- INPUT_B_FIXED_VALUE            ; Bx                             ;
+; Entity Instance                       ; signed_mult:zcr|lpm_mult:Mult0 ;
+;     -- LPM_WIDTHA                     ; 37                             ;
+;     -- LPM_WIDTHB                     ; 37                             ;
+;     -- LPM_WIDTHP                     ; 74                             ;
+;     -- LPM_REPRESENTATION             ; SIGNED                         ;
+;     -- INPUT_A_IS_CONSTANT            ; NO                             ;
+;     -- INPUT_B_IS_CONSTANT            ; NO                             ;
+;     -- USE_EAB                        ; OFF                            ;
+;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                           ;
+;     -- INPUT_A_FIXED_VALUE            ; Bx                             ;
+;     -- INPUT_B_FIXED_VALUE            ; Bx                             ;
+; Entity Instance                       ; lpm_mult:Mult0                 ;
+;     -- LPM_WIDTHA                     ; 26                             ;
+;     -- LPM_WIDTHB                     ; 10                             ;
+;     -- LPM_WIDTHP                     ; 36                             ;
+;     -- LPM_REPRESENTATION             ; UNSIGNED                       ;
+;     -- INPUT_A_IS_CONSTANT            ; YES                            ;
+;     -- INPUT_B_IS_CONSTANT            ; NO                             ;
+;     -- USE_EAB                        ; OFF                            ;
+;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                           ;
+;     -- INPUT_A_FIXED_VALUE            ; Bx                             ;
+;     -- INPUT_B_FIXED_VALUE            ; Bx                             ;
++---------------------------------------+--------------------------------+
 
 
 +------------------------------------------------------+
@@ -1367,7 +1401,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:13     ;
+; Top            ; 00:00:14     ;
 +----------------+--------------+
 
 
@@ -1377,7 +1411,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 11.0 Build 157 04/27/2011 SJ Full Version
-    Info: Processing started: Thu Mar 26 00:50:56 2015
+    Info: Processing started: Thu Mar 26 01:03:12 2015
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off juliaset -c juliaset
 Info: Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info: Found 1 design units, including 1 entities, in source file vga_controller.v
@@ -1396,10 +1430,16 @@ Info: Found 1 design units, including 1 entities, in source file testbench.v
 Info: Found 1 design units, including 1 entities, in source file asc_to_lcd.v
     Info: Found entity 1: asc_to_lcd
 Info: Elaborating entity "juliaset" for the top level hierarchy
-Warning (10230): Verilog HDL assignment warning at juliaset.v(239): truncated value with size 40 to match size of target (37)
-Warning (10230): Verilog HDL assignment warning at juliaset.v(240): truncated value with size 40 to match size of target (37)
-Warning (10034): Output port "UART_RTS" at juliaset.v(35) has no driver
-Warning (10034): Output port "UART_TXD" at juliaset.v(37) has no driver
+Warning (10230): Verilog HDL assignment warning at juliaset.v(243): truncated value with size 40 to match size of target (37)
+Warning (10230): Verilog HDL assignment warning at juliaset.v(244): truncated value with size 40 to match size of target (37)
+Warning (10034): Output port "HEX0" at juliaset.v(26) has no driver
+Warning (10034): Output port "HEX1" at juliaset.v(27) has no driver
+Warning (10034): Output port "HEX2" at juliaset.v(28) has no driver
+Warning (10034): Output port "HEX3" at juliaset.v(29) has no driver
+Warning (10034): Output port "HEX4" at juliaset.v(30) has no driver
+Warning (10034): Output port "HEX5" at juliaset.v(31) has no driver
+Warning (10034): Output port "HEX6" at juliaset.v(32) has no driver
+Warning (10034): Output port "HEX7" at juliaset.v(33) has no driver
 Info: Elaborating entity "Reset_Delay" for hierarchy "Reset_Delay:r0"
 Warning (10230): Verilog HDL assignment warning at Reset_Delay.v(10): truncated value with size 32 to match size of target (20)
 Info: Elaborating entity "VGA_PLL" for hierarchy "VGA_PLL:p1"
@@ -1516,14 +1556,17 @@ Info: Elaborating entity "mux_mob" for hierarchy "video_buffer:display|altsyncra
 Info: Elaborating entity "signed_mult" for hierarchy "signed_mult:zrs"
 Info: Elaborating entity "asc_to_lcd" for hierarchy "asc_to_lcd:asc"
 Info: Starting Rapid Recompile for partition "Top"
+Info: Skipping Rapid Recompile in synthesis for partition "Top" because of one of the following reasons:
+    Info: Rapid Recompile could not find previous synthesis results for this partition
+    Info: Rapid Recompile has determined that this partition will benefit from full synthesis optimization
 Info: Inferred 5 megafunctions from design logic
-    Info: Inferred multiplier megafunction ("lpm_mult") from the following logic: "signed_mult:zcs|Mult0~0"
-    Info: Inferred multiplier megafunction ("lpm_mult") from the following logic: "signed_mult:zrs|Mult0~0"
-    Info: Inferred multiplier megafunction ("lpm_mult") from the following logic: "Mult1~0"
-    Info: Inferred multiplier megafunction ("lpm_mult") from the following logic: "signed_mult:zcr|Mult0~0"
-    Info: Inferred multiplier megafunction ("lpm_mult") from the following logic: "Mult0~0"
-Info: Elaborated megafunction instantiation "signed_mult:zcs|lpm_mult:Mult0_rtl_0"
-Info: Instantiated megafunction "signed_mult:zcs|lpm_mult:Mult0_rtl_0" with the following parameter:
+    Info: Inferred multiplier megafunction ("lpm_mult") from the following logic: "signed_mult:zcs|Mult0"
+    Info: Inferred multiplier megafunction ("lpm_mult") from the following logic: "signed_mult:zrs|Mult0"
+    Info: Inferred multiplier megafunction ("lpm_mult") from the following logic: "Mult1"
+    Info: Inferred multiplier megafunction ("lpm_mult") from the following logic: "signed_mult:zcr|Mult0"
+    Info: Inferred multiplier megafunction ("lpm_mult") from the following logic: "Mult0"
+Info: Elaborated megafunction instantiation "signed_mult:zcs|lpm_mult:Mult0"
+Info: Instantiated megafunction "signed_mult:zcs|lpm_mult:Mult0" with the following parameter:
     Info: Parameter "LPM_WIDTHA" = "37"
     Info: Parameter "LPM_WIDTHB" = "37"
     Info: Parameter "LPM_WIDTHP" = "74"
@@ -1535,8 +1578,8 @@ Info: Instantiated megafunction "signed_mult:zcs|lpm_mult:Mult0_rtl_0" with the 
     Info: Parameter "MAXIMIZE_SPEED" = "5"
 Info: Found 1 design units, including 1 entities, in source file db/mult_f6t.tdf
     Info: Found entity 1: mult_f6t
-Info: Elaborated megafunction instantiation "signed_mult:zrs|lpm_mult:Mult0_rtl_1"
-Info: Instantiated megafunction "signed_mult:zrs|lpm_mult:Mult0_rtl_1" with the following parameter:
+Info: Elaborated megafunction instantiation "signed_mult:zrs|lpm_mult:Mult0"
+Info: Instantiated megafunction "signed_mult:zrs|lpm_mult:Mult0" with the following parameter:
     Info: Parameter "LPM_WIDTHA" = "37"
     Info: Parameter "LPM_WIDTHB" = "37"
     Info: Parameter "LPM_WIDTHP" = "74"
@@ -1546,8 +1589,8 @@ Info: Instantiated megafunction "signed_mult:zrs|lpm_mult:Mult0_rtl_1" with the 
     Info: Parameter "INPUT_A_IS_CONSTANT" = "NO"
     Info: Parameter "INPUT_B_IS_CONSTANT" = "NO"
     Info: Parameter "MAXIMIZE_SPEED" = "5"
-Info: Elaborated megafunction instantiation "lpm_mult:Mult1_rtl_2"
-Info: Instantiated megafunction "lpm_mult:Mult1_rtl_2" with the following parameter:
+Info: Elaborated megafunction instantiation "lpm_mult:Mult1"
+Info: Instantiated megafunction "lpm_mult:Mult1" with the following parameter:
     Info: Parameter "LPM_WIDTHA" = "27"
     Info: Parameter "LPM_WIDTHB" = "9"
     Info: Parameter "LPM_WIDTHP" = "36"
@@ -1557,18 +1600,18 @@ Info: Instantiated megafunction "lpm_mult:Mult1_rtl_2" with the following parame
     Info: Parameter "INPUT_A_IS_CONSTANT" = "YES"
     Info: Parameter "INPUT_B_IS_CONSTANT" = "NO"
     Info: Parameter "MAXIMIZE_SPEED" = "5"
-Info: Elaborated megafunction instantiation "lpm_mult:Mult1_rtl_2|multcore:mult_core", which is child of megafunction instantiation "lpm_mult:Mult1_rtl_2"
-Info: Elaborated megafunction instantiation "lpm_mult:Mult1_rtl_2|multcore:mult_core|mpar_add:padder", which is child of megafunction instantiation "lpm_mult:Mult1_rtl_2"
-Info: Elaborated megafunction instantiation "lpm_mult:Mult1_rtl_2|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]", which is child of megafunction instantiation "lpm_mult:Mult1_rtl_2"
+Info: Elaborated megafunction instantiation "lpm_mult:Mult1|multcore:mult_core", which is child of megafunction instantiation "lpm_mult:Mult1"
+Info: Elaborated megafunction instantiation "lpm_mult:Mult1|multcore:mult_core|mpar_add:padder", which is child of megafunction instantiation "lpm_mult:Mult1"
+Info: Elaborated megafunction instantiation "lpm_mult:Mult1|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]", which is child of megafunction instantiation "lpm_mult:Mult1"
 Info: Found 1 design units, including 1 entities, in source file db/add_sub_mgh.tdf
     Info: Found entity 1: add_sub_mgh
-Info: Elaborated megafunction instantiation "lpm_mult:Mult1_rtl_2|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add", which is child of megafunction instantiation "lpm_mult:Mult1_rtl_2"
-Info: Elaborated megafunction instantiation "lpm_mult:Mult1_rtl_2|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[0]", which is child of megafunction instantiation "lpm_mult:Mult1_rtl_2"
+Info: Elaborated megafunction instantiation "lpm_mult:Mult1|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add", which is child of megafunction instantiation "lpm_mult:Mult1"
+Info: Elaborated megafunction instantiation "lpm_mult:Mult1|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[0]", which is child of megafunction instantiation "lpm_mult:Mult1"
 Info: Found 1 design units, including 1 entities, in source file db/add_sub_qgh.tdf
     Info: Found entity 1: add_sub_qgh
-Info: Elaborated megafunction instantiation "lpm_mult:Mult1_rtl_2|altshift:external_latency_ffs", which is child of megafunction instantiation "lpm_mult:Mult1_rtl_2"
-Info: Elaborated megafunction instantiation "signed_mult:zcr|lpm_mult:Mult0_rtl_3"
-Info: Instantiated megafunction "signed_mult:zcr|lpm_mult:Mult0_rtl_3" with the following parameter:
+Info: Elaborated megafunction instantiation "lpm_mult:Mult1|altshift:external_latency_ffs", which is child of megafunction instantiation "lpm_mult:Mult1"
+Info: Elaborated megafunction instantiation "signed_mult:zcr|lpm_mult:Mult0"
+Info: Instantiated megafunction "signed_mult:zcr|lpm_mult:Mult0" with the following parameter:
     Info: Parameter "LPM_WIDTHA" = "37"
     Info: Parameter "LPM_WIDTHB" = "37"
     Info: Parameter "LPM_WIDTHP" = "74"
@@ -1578,8 +1621,8 @@ Info: Instantiated megafunction "signed_mult:zcr|lpm_mult:Mult0_rtl_3" with the 
     Info: Parameter "INPUT_A_IS_CONSTANT" = "NO"
     Info: Parameter "INPUT_B_IS_CONSTANT" = "NO"
     Info: Parameter "MAXIMIZE_SPEED" = "5"
-Info: Elaborated megafunction instantiation "lpm_mult:Mult0_rtl_4"
-Info: Instantiated megafunction "lpm_mult:Mult0_rtl_4" with the following parameter:
+Info: Elaborated megafunction instantiation "lpm_mult:Mult0"
+Info: Instantiated megafunction "lpm_mult:Mult0" with the following parameter:
     Info: Parameter "LPM_WIDTHA" = "26"
     Info: Parameter "LPM_WIDTHB" = "10"
     Info: Parameter "LPM_WIDTHP" = "36"
@@ -1589,15 +1632,21 @@ Info: Instantiated megafunction "lpm_mult:Mult0_rtl_4" with the following parame
     Info: Parameter "INPUT_A_IS_CONSTANT" = "YES"
     Info: Parameter "INPUT_B_IS_CONSTANT" = "NO"
     Info: Parameter "MAXIMIZE_SPEED" = "5"
-Info: Elaborated megafunction instantiation "lpm_mult:Mult0_rtl_4|multcore:mult_core", which is child of megafunction instantiation "lpm_mult:Mult0_rtl_4"
-Info: Elaborated megafunction instantiation "lpm_mult:Mult0_rtl_4|multcore:mult_core|mpar_add:padder", which is child of megafunction instantiation "lpm_mult:Mult0_rtl_4"
-Info: Elaborated megafunction instantiation "lpm_mult:Mult0_rtl_4|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]", which is child of megafunction instantiation "lpm_mult:Mult0_rtl_4"
+Info: Elaborated megafunction instantiation "lpm_mult:Mult0|multcore:mult_core", which is child of megafunction instantiation "lpm_mult:Mult0"
+Info: Elaborated megafunction instantiation "lpm_mult:Mult0|multcore:mult_core|mpar_add:padder", which is child of megafunction instantiation "lpm_mult:Mult0"
+Info: Elaborated megafunction instantiation "lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]", which is child of megafunction instantiation "lpm_mult:Mult0"
 Info: Found 1 design units, including 1 entities, in source file db/add_sub_lgh.tdf
     Info: Found entity 1: add_sub_lgh
-Info: Elaborated megafunction instantiation "lpm_mult:Mult0_rtl_4|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add", which is child of megafunction instantiation "lpm_mult:Mult0_rtl_4"
-Info: Elaborated megafunction instantiation "lpm_mult:Mult0_rtl_4|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[0]", which is child of megafunction instantiation "lpm_mult:Mult0_rtl_4"
+Info: Elaborated megafunction instantiation "lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add", which is child of megafunction instantiation "lpm_mult:Mult0"
+Info: Elaborated megafunction instantiation "lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[0]", which is child of megafunction instantiation "lpm_mult:Mult0"
 Info: Found 1 design units, including 1 entities, in source file db/add_sub_pgh.tdf
     Info: Found entity 1: add_sub_pgh
+Warning: Synthesized away the following node(s):
+    Warning: Synthesized away the following DSP element node(s):
+        Warning (14320): Synthesized away node "signed_mult:zcr|lpm_mult:Mult0|mult_f6t:auto_generated|mac_mult17"
+        Warning (14320): Synthesized away node "signed_mult:zcr|lpm_mult:Mult0|mult_f6t:auto_generated|mac_out18"
+Info: Ignored 1477 buffer(s)
+    Info: Ignored 1477 SOFT buffer(s)
 Warning: The following nodes have both tri-state and non-tri-state drivers
     Warning: Inserted always-enabled tri-state buffer between "LCD_DATA[0]" and its non-tri-state driver.
     Warning: Inserted always-enabled tri-state buffer between "LCD_DATA[1]" and its non-tri-state driver.
@@ -1617,56 +1666,116 @@ Warning: TRI or OPNDRN buffers permanently enabled
     Warning: Node "LCD_DATA[6]~synth"
     Warning: Node "LCD_DATA[7]~synth"
 Warning: Output pins are stuck at VCC or GND
+    Warning (13410): Pin "HEX0[0]" is stuck at GND
+    Warning (13410): Pin "HEX0[1]" is stuck at GND
+    Warning (13410): Pin "HEX0[2]" is stuck at GND
+    Warning (13410): Pin "HEX0[3]" is stuck at GND
+    Warning (13410): Pin "HEX0[4]" is stuck at GND
+    Warning (13410): Pin "HEX0[5]" is stuck at GND
+    Warning (13410): Pin "HEX0[6]" is stuck at GND
+    Warning (13410): Pin "HEX1[0]" is stuck at GND
+    Warning (13410): Pin "HEX1[1]" is stuck at GND
+    Warning (13410): Pin "HEX1[2]" is stuck at GND
+    Warning (13410): Pin "HEX1[3]" is stuck at GND
+    Warning (13410): Pin "HEX1[4]" is stuck at GND
+    Warning (13410): Pin "HEX1[5]" is stuck at GND
+    Warning (13410): Pin "HEX1[6]" is stuck at GND
+    Warning (13410): Pin "HEX2[0]" is stuck at GND
+    Warning (13410): Pin "HEX2[1]" is stuck at GND
+    Warning (13410): Pin "HEX2[2]" is stuck at GND
+    Warning (13410): Pin "HEX2[3]" is stuck at GND
+    Warning (13410): Pin "HEX2[4]" is stuck at GND
+    Warning (13410): Pin "HEX2[5]" is stuck at GND
+    Warning (13410): Pin "HEX2[6]" is stuck at GND
+    Warning (13410): Pin "HEX3[0]" is stuck at GND
+    Warning (13410): Pin "HEX3[1]" is stuck at GND
+    Warning (13410): Pin "HEX3[2]" is stuck at GND
+    Warning (13410): Pin "HEX3[3]" is stuck at GND
+    Warning (13410): Pin "HEX3[4]" is stuck at GND
+    Warning (13410): Pin "HEX3[5]" is stuck at GND
+    Warning (13410): Pin "HEX3[6]" is stuck at GND
+    Warning (13410): Pin "HEX4[0]" is stuck at GND
+    Warning (13410): Pin "HEX4[1]" is stuck at GND
+    Warning (13410): Pin "HEX4[2]" is stuck at GND
+    Warning (13410): Pin "HEX4[3]" is stuck at GND
+    Warning (13410): Pin "HEX4[4]" is stuck at GND
+    Warning (13410): Pin "HEX4[5]" is stuck at GND
+    Warning (13410): Pin "HEX4[6]" is stuck at GND
+    Warning (13410): Pin "HEX5[0]" is stuck at GND
+    Warning (13410): Pin "HEX5[1]" is stuck at GND
+    Warning (13410): Pin "HEX5[2]" is stuck at GND
+    Warning (13410): Pin "HEX5[3]" is stuck at GND
+    Warning (13410): Pin "HEX5[4]" is stuck at GND
+    Warning (13410): Pin "HEX5[5]" is stuck at GND
+    Warning (13410): Pin "HEX5[6]" is stuck at GND
+    Warning (13410): Pin "HEX6[0]" is stuck at GND
+    Warning (13410): Pin "HEX6[1]" is stuck at GND
+    Warning (13410): Pin "HEX6[2]" is stuck at GND
+    Warning (13410): Pin "HEX6[3]" is stuck at GND
+    Warning (13410): Pin "HEX6[4]" is stuck at GND
+    Warning (13410): Pin "HEX6[5]" is stuck at GND
+    Warning (13410): Pin "HEX6[6]" is stuck at GND
+    Warning (13410): Pin "HEX7[0]" is stuck at GND
+    Warning (13410): Pin "HEX7[1]" is stuck at GND
+    Warning (13410): Pin "HEX7[2]" is stuck at GND
+    Warning (13410): Pin "HEX7[3]" is stuck at GND
+    Warning (13410): Pin "HEX7[4]" is stuck at GND
+    Warning (13410): Pin "HEX7[5]" is stuck at GND
+    Warning (13410): Pin "HEX7[6]" is stuck at GND
     Warning (13410): Pin "LCD_BLON" is stuck at VCC
     Warning (13410): Pin "LCD_ON" is stuck at VCC
     Warning (13410): Pin "LCD_RW" is stuck at GND
-    Warning (13410): Pin "UART_RTS" is stuck at GND
-    Warning (13410): Pin "UART_TXD" is stuck at GND
     Warning (13410): Pin "VGA_SYNC_N" is stuck at GND
+Info: Timing-Driven Synthesis is running
+Info: 4 registers lost all their fanouts during netlist optimizations. The first 4 are displayed below.
+    Info: Register "state~2" lost all its fanouts during netlist optimizations.
+    Info: Register "state~3" lost all its fanouts during netlist optimizations.
+    Info: Register "state~4" lost all its fanouts during netlist optimizations.
+    Info: Register "state~5" lost all its fanouts during netlist optimizations.
 Info: Found the following redundant logic cells in design
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis37"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis36"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis35"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis38"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis32"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis33"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis31"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis34"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis20"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis21"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis19"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis22"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis16"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis17"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis15"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis18"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis24"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis23"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis26"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis25"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis28"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis27"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis30"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis29"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis4"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis5"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis3"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis6"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis0"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis1"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis2"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis8"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis7"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis10"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis9"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis12"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis11"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis14"
-    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_r6i2:auto_generated|ALTSYNCRAM~PORTBWEllis13"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_17e2:auto_generated|ALTSYNCRAM~PORTBWEllis37"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_17e2:auto_generated|ALTSYNCRAM~PORTBWEllis36"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_17e2:auto_generated|ALTSYNCRAM~PORTBWEllis35"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_17e2:auto_generated|ALTSYNCRAM~PORTBWEllis38"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_17e2:auto_generated|ALTSYNCRAM~PORTBWEllis32"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_17e2:auto_generated|ALTSYNCRAM~PORTBWEllis33"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_17e2:auto_generated|ALTSYNCRAM~PORTBWEllis31"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_17e2:auto_generated|ALTSYNCRAM~PORTBWEllis34"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_17e2:auto_generated|ALTSYNCRAM~PORTBWEllis20"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_17e2:auto_generated|ALTSYNCRAM~PORTBWEllis21"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_17e2:auto_generated|ALTSYNCRAM~PORTBWEllis19"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_17e2:auto_generated|ALTSYNCRAM~PORTBWEllis22"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_17e2:auto_generated|ALTSYNCRAM~PORTBWEllis16"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_17e2:auto_generated|ALTSYNCRAM~PORTBWEllis17"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_17e2:auto_generated|ALTSYNCRAM~PORTBWEllis15"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_17e2:auto_generated|ALTSYNCRAM~PORTBWEllis18"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_17e2:auto_generated|ALTSYNCRAM~PORTBWEllis24"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_17e2:auto_generated|ALTSYNCRAM~PORTBWEllis23"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_17e2:auto_generated|ALTSYNCRAM~PORTBWEllis26"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_17e2:auto_generated|ALTSYNCRAM~PORTBWEllis25"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_17e2:auto_generated|ALTSYNCRAM~PORTBWEllis28"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_17e2:auto_generated|ALTSYNCRAM~PORTBWEllis27"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_17e2:auto_generated|ALTSYNCRAM~PORTBWEllis30"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_17e2:auto_generated|ALTSYNCRAM~PORTBWEllis29"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_17e2:auto_generated|ALTSYNCRAM~PORTBWEllis4"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_17e2:auto_generated|ALTSYNCRAM~PORTBWEllis5"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_17e2:auto_generated|ALTSYNCRAM~PORTBWEllis3"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_17e2:auto_generated|ALTSYNCRAM~PORTBWEllis6"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_17e2:auto_generated|ALTSYNCRAM~PORTBWEllis0"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_17e2:auto_generated|ALTSYNCRAM~PORTBWEllis1"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_17e2:auto_generated|ALTSYNCRAM~PORTBWEllis"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_17e2:auto_generated|ALTSYNCRAM~PORTBWEllis2"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_17e2:auto_generated|ALTSYNCRAM~PORTBWEllis8"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_17e2:auto_generated|ALTSYNCRAM~PORTBWEllis7"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_17e2:auto_generated|ALTSYNCRAM~PORTBWEllis10"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_17e2:auto_generated|ALTSYNCRAM~PORTBWEllis9"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_17e2:auto_generated|ALTSYNCRAM~PORTBWEllis12"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_17e2:auto_generated|ALTSYNCRAM~PORTBWEllis11"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_17e2:auto_generated|ALTSYNCRAM~PORTBWEllis14"
+    Info (17048): Logic cell "video_buffer:display|altsyncram:altsyncram_component|altsyncram_17e2:auto_generated|ALTSYNCRAM~PORTBWEllis13"
 Info: Generating hard_block partition "hard_block:auto_generated_inst"
     Info: Adding node "VGA_PLL:p1|altpll:altpll_component|VGA_PLL_altpll:auto_generated|pll1"
-Warning: Design contains 24 input pin(s) that do not drive logic
+Warning: Design contains 22 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "CLOCK2_50"
     Warning (15610): No output dependent on input pin "CLOCK3_50"
     Warning (15610): No output dependent on input pin "KEY[2]"
@@ -1689,20 +1798,18 @@ Warning: Design contains 24 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "SW[15]"
     Warning (15610): No output dependent on input pin "SW[16]"
     Warning (15610): No output dependent on input pin "SW[17]"
-    Warning (15610): No output dependent on input pin "UART_CTS"
-    Warning (15610): No output dependent on input pin "UART_RXD"
-Info: Implemented 1844 device resources after synthesis - the final resource count might be different
-    Info: Implemented 27 input pins
-    Info: Implemented 36 output pins
+Info: Implemented 1885 device resources after synthesis - the final resource count might be different
+    Info: Implemented 25 input pins
+    Info: Implemented 90 output pins
     Info: Implemented 8 bidirectional pins
-    Info: Implemented 1562 logic cells
+    Info: Implemented 1551 logic cells
     Info: Implemented 160 RAM segments
     Info: Implemented 1 PLLs
     Info: Implemented 50 DSP elements
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 58 warnings
-    Info: Peak virtual memory: 425 megabytes
-    Info: Processing ended: Thu Mar 26 00:51:11 2015
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 120 warnings
+    Info: Peak virtual memory: 430 megabytes
+    Info: Processing ended: Thu Mar 26 01:03:27 2015
     Info: Elapsed time: 00:00:15
-    Info: Total CPU time (on all processors): 00:00:15
+    Info: Total CPU time (on all processors): 00:00:14
 
 

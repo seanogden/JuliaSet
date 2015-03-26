@@ -1,14 +1,14 @@
 <?xml version="1.0" ?>
 <LOG_ROOT>
 	<PROJECT NAME="juliaset">
-		<CBX_INST_ENTRY INSTANCE_NAME="|juliaset|lpm_mult:Mult0_rtl_4|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]" CBX_FILE_NAME="add_sub_lgh.tdf"/>
-		<CBX_INST_ENTRY INSTANCE_NAME="|juliaset|signed_mult:zcs|lpm_mult:Mult0_rtl_0" CBX_FILE_NAME="mult_f6t.tdf"/>
-		<CBX_INST_ENTRY INSTANCE_NAME="|juliaset|signed_mult:zrs|lpm_mult:Mult0_rtl_1" CBX_FILE_NAME="mult_f6t.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|juliaset|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]" CBX_FILE_NAME="add_sub_lgh.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|juliaset|signed_mult:zcs|lpm_mult:Mult0" CBX_FILE_NAME="mult_f6t.tdf"/>
 		<CBX_INST_ENTRY INSTANCE_NAME="|juliaset|VGA_PLL:p1|altpll:altpll_component" CBX_FILE_NAME="VGA_PLL_altpll.v"/>
-		<CBX_INST_ENTRY INSTANCE_NAME="|juliaset|lpm_mult:Mult1_rtl_2|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]" CBX_FILE_NAME="add_sub_mgh.tdf"/>
-		<CBX_INST_ENTRY INSTANCE_NAME="|juliaset|lpm_mult:Mult1_rtl_2|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[0]" CBX_FILE_NAME="add_sub_qgh.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|juliaset|lpm_mult:Mult1|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]" CBX_FILE_NAME="add_sub_mgh.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|juliaset|lpm_mult:Mult1|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[0]" CBX_FILE_NAME="add_sub_qgh.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|juliaset|signed_mult:zcr|lpm_mult:Mult0" CBX_FILE_NAME="mult_f6t.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|juliaset|signed_mult:zrs|lpm_mult:Mult0" CBX_FILE_NAME="mult_f6t.tdf"/>
 		<CBX_INST_ENTRY INSTANCE_NAME="|juliaset|video_buffer:display|altsyncram:altsyncram_component" CBX_FILE_NAME="altsyncram_17e2.tdf"/>
-		<CBX_INST_ENTRY INSTANCE_NAME="|juliaset|lpm_mult:Mult0_rtl_4|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[0]" CBX_FILE_NAME="add_sub_pgh.tdf"/>
-		<CBX_INST_ENTRY INSTANCE_NAME="|juliaset|signed_mult:zcr|lpm_mult:Mult0_rtl_3" CBX_FILE_NAME="mult_f6t.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|juliaset|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[0]" CBX_FILE_NAME="add_sub_pgh.tdf"/>
 	</PROJECT>
 </LOG_ROOT>
