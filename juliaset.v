@@ -61,10 +61,10 @@ wire [7:0]	mVGA_R;				//memory output to VGA
 wire [7:0]	mVGA_G;
 wire [7:0]	mVGA_B;
 wire [9:0]  Coord_X, Coord_Y;	//display coods
-wire [3:0] mem_bit [1:0]; //current data from m4k to VGA
+wire [3:0] mem_bit [6:0]; //current data from m4k to VGA
 reg [23:0] color;
 wire reset = ~KEY[0];
-wire [1:0] pause;
+wire [6:0] pause;
 
 Reset_Delay			r0	(	.iCLK(CLOCK_50),.oRESET(DLY_RST)	);
 
@@ -106,9 +106,13 @@ wire valid;
 wire [32*8-1:0] lcd_text;
 assign LEDR = scale_wire;
 
-defparam js1.start_col = 10'd0;
-defparam js1.end_col = 10'd320;
-julia_set_stripe js1(.clock(CLOCK_50), .reset(reset),
+genvar i;
+generate
+	for (i=0; i<7; i=i+1)
+	begin: d
+		defparam js.start_col = (i==0) ? 0 : 92*i - 1;
+		defparam js.end_col = 92*(i+1); 
+		julia_set_stripe js(.clock(CLOCK_50), .reset(reset),
 					  .c_real_wire(c_real_wire),
 					  .c_comp_wire(c_comp_wire),
 					  .x_wire(x_wire),
@@ -117,38 +121,36 @@ julia_set_stripe js1(.clock(CLOCK_50), .reset(reset),
 					  .valid(valid),
 					  .pixel_address({Coord_X[9:0],Coord_Y[8:0]}),
 					  .vga_clock(VGA_CTRL_CLK),
-					  .mem_bit(mem_bit[0]),
+					  .mem_bit(mem_bit[i]),
 					  .update(~KEY[3]),
-					  .pause_signal(pause[0]));
-
-defparam js2.start_col = 10'd320;
-defparam js2.end_col = 10'd640;	  
-julia_set_stripe js2(.clock(CLOCK_50), .reset(reset),
-					  .c_real_wire(c_real_wire),
-					  .c_comp_wire(c_comp_wire),
-					  .x_wire(x_wire),
-					  .y_wire(y_wire),
-					  .scale_wire(scale_wire),
-					  .valid(valid),
-					  .pixel_address({Coord_X[9:0],Coord_Y[8:0]}),
-					  .vga_clock(VGA_CTRL_CLK),
-					  .mem_bit(mem_bit[1]),
-					  .update(~KEY[3]),
-					  .pause_signal(pause[1]));
-
+					  .pause_signal(pause[i]));
+	end
+endgenerate
 
 // Color translation
 assign  mVGA_R = color[23:16];
 assign  mVGA_G = color[15:8];
 assign  mVGA_B = color[7:0];
-	
+
+reg [3:0] mb;
+
+always @ (posedge CLOCK_50) begin
+	if (Coord_X < 93) mb <= mem_bit[0];
+	else if (Coord_X < 10'd185) mb <= mem_bit[1];
+	else if (Coord_X < 10'd277) mb <= mem_bit[2];
+	else if (Coord_X < 10'd369) mb <= mem_bit[3];
+	else if (Coord_X < 10'd461) mb <= mem_bit[4];
+	else if (Coord_X < 10'd553) mb <= mem_bit[5];
+	else mb <= mem_bit[6];
+end
+
 always @ (negedge CLOCK_50)
 begin
 	// register the m4k output for better timing on VGA
 	// negedge seems to work better than posedge
 	if (reset) color <= 24'd0;
-	if (Coord_X < 10'd320) begin
-		case(mem_bit[0])
+	else begin
+		case(mb)
 			4'd0: color <= 24'd000000;
 			4'd1: color <= 24'h7f00ff;
 			4'd2: color <= 24'h0000ff;
@@ -162,19 +164,6 @@ begin
 			4'd10: color <= 24'hff0000;
 		endcase
 	end
-	else case(mem_bit[1])
-		4'd0: color <= 24'd000000;
-		4'd1: color <= 24'h7f00ff;
-		4'd2: color <= 24'h0000ff;
-		4'd3: color <= 24'h0080ff;
-		4'd4: color <= 24'h00ffff;
-		4'd5: color <= 24'h00ff80;
-		4'd6: color <= 24'h00ff00;
-		4'd7: color <= 24'h80ff00;
-		4'd8: color <= 24'hffff00;
-		4'd9: color <= 24'hff8000;
-		4'd10: color <= 24'hff0000;
-	endcase
 end
 
 io io1(

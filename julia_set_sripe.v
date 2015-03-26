@@ -32,7 +32,7 @@ reg [3:0] state;	//state machine
 reg [23:0] color;
 wire [3:0] state_bit ; // current data from m4k to state machine
 reg we ; // write enable for a
-reg [18:0] addr_reg ; // for a
+reg [16:0] addr_reg ; // for a
 reg signed [3:0] data_reg ; // for a
 reg [9:0] x_cursor;
 reg [8:0] y_cursor;
@@ -43,7 +43,7 @@ reg signed [8:0] y_start;
 reg signed [8:0] y_end;
 reg pause;
 assign pause_signal = pause;
-
+wire [15:0] pixel_address_fixed = {pixel_address[17:9] - start_col,pixel_address[8:0]};
 reg signed 	[36:0] z_real;  //real part of z 3.33 fixed point
 reg signed [36:0] z_comp;  //complex part of z 3.33 fixed point
 reg signed [36:0] c_real;
@@ -62,7 +62,7 @@ reg signed [36:0] scale_reg;
 
 video_buffer display(
 	.address_a (addr_reg) , 
-	.address_b (pixel_address), // vga current address
+	.address_b (pixel_address_fixed), // vga current address
 	.clock_a (clock),
 	.clock_b (vga_clock),
 	.data_a (data_reg),
@@ -150,7 +150,6 @@ begin
 				z_comp <= x_reg - scale_reg + $signed(y_increment[72:33]* y_cursor);  //-2.0 + y*(increment=2*scale/480)
 				//NOTE: We can increment this at the bottom to avoid this multiply.
 				//TODO:  Make the increment numbers a function of the range of x and y.
-				
 				i <= 10'd0;
 				state <= compute_pixel_loop;
 			end
@@ -191,7 +190,7 @@ begin
 			draw_pixel: //register address and data for write.
 			begin
 			   we <= 1'b0;
-				addr_reg <= {x_cursor, y_cursor};
+				addr_reg <= {x_cursor - start_col, y_cursor};
 				
 				//approximate log of i.
 				if (i[9] == 1)      data_reg <= 4'd10;
