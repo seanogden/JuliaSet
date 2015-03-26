@@ -3,11 +3,12 @@ module io (input clock,
 			  input [17:0] sw,
 			  input enter,
 			  input confirm,
+			  output valid,
 			  output reg [17:0] c_real, 
 			  output reg [17:0] c_comp,
-			  output reg [17:0] z_real,
-			  output reg [17:0] z_comp,
-			  output reg [17:0] z_scale,
+			  output reg [17:0] x,
+			  output reg [17:0] y,
+			  output reg [17:0] scale,
 			  output reg [32*8-1:0] lcd_text);
 	
 	reg [3:0] state;
@@ -31,6 +32,30 @@ module io (input clock,
 		confirm_z_scale=4'd12
 		;
   
+  `define 	state_transition(FROM, TO) \
+		enter_c_real: begin \
+			if (enter) begin \
+				state <= confirm_c_real ; \
+				lcd_text <= "Display "; \
+				c_real <= switches; \
+			end \
+			else begin \
+				state <= enter_c_real ; \
+				lcd_text <= "Enter c_real."; \
+			end \
+		end \
+		confirm_c_real : \
+		begin \
+			if (confirm) begin \
+				state <= enter_c_comp ; \
+				lcd_text <= "Enter c_comp."; \
+			end \
+			else begin \
+				state <= confirm_c_real ; \
+				lcd_text <= "Display c_real."; \
+			end \
+		end
+				
 	always @(posedge clock) begin
 	//always @* begin
 		if (reset)
@@ -39,12 +64,13 @@ module io (input clock,
 			lcd_text <="Enter c_real.";
 			c_real <= 18'd0;
 			c_comp <= 18'd0;
-			z_real <= 18'd0;
-			z_comp <= 18'd0;
+			x <= 18'd0;
+			y <= 18'd0;
 		end
 		else
 		begin
 			case (state)
+			  /*
 				enter_c_real:
 				begin
 					if (enter)
@@ -52,9 +78,6 @@ module io (input clock,
 						state <= confirm_c_real;
 						lcd_text <= "Display c_real";
 						c_real <= switches;
-						c_comp <= c_comp;
-						z_real <= z_real;
-						z_comp <= z_comp;
 					end
 					else
 					begin
@@ -68,14 +91,18 @@ module io (input clock,
 					if (confirm)
 					begin
 						state <= enter_z_real;
-						lcd_text <= "Enter z_real.";
+						lcd_text <= "Enter c_comp.";
 					end
 					else
 					begin
 						state <= confirm_c_real;
 						lcd_text <= "Display c_real.";
 					end
-				end
+				end*/
+				
+				`state_transition(c_real, c_comp)
+				
+				
 				
 				enter_z_real:
 				begin

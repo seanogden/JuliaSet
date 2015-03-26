@@ -409,13 +409,28 @@ assign HEX7 = 7'b1111111;
 /* IO from the switches */
 reg [17:0] c_real_reg;
 wire [17:0] c_real_wire = c_real_reg;
+reg [17:0] c_comp_reg;
+wire [17:0] c_comp_wire = c_comp_reg;
+reg [17:0] x_reg;
+wire [17:0] x_wire = x_reg;
+reg [17:0] y_reg;
+wire [17:0] y_wire = y_reg;
+reg [17:0] scale_reg;
+wire [17:0] scale_wire = scale_reg;
+wire valid;
+
 
 io io1(
 	.clock(CLOCK_50),
 	.reset(reset),
 	.enter(~KEY[2]),
 	.confirm(~KEY[1]),
+	.valid(valid),
 	.c_real(c_real_wire),
+	.c_comp(c_comp_wire),
+	.x(x_wire),
+	.y(y_wire),
+	.scale(scale_wire),
 	.lcd_text(lcd_text)
 );
 
