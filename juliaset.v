@@ -10,11 +10,14 @@ adjust clock speed
 //=======================================================
 
 module juliaset(
-
 	//////////// CLOCK //////////
 	input 		          		CLOCK_50,
 	input 		          		CLOCK2_50,
 	input 		          		CLOCK3_50,
+
+	//////////// LED //////////
+	output		     [8:0]		LEDG,
+	output		    [17:0]		LEDR,
 
 	//////////// KEY //////////
 	input 		     [3:0]		KEY,
@@ -40,12 +43,6 @@ module juliaset(
 	output		          		LCD_RS,
 	output		          		LCD_RW,
 
-	//////////// RS232 //////////
-	input 		          		UART_CTS,
-	output		          		UART_RTS,
-	input 		          		UART_RXD,
-	output		          		UART_TXD,
-
 	//////////// VGA //////////
 	output		     [7:0]		VGA_B,
 	output		          		VGA_BLANK_N,
@@ -67,7 +64,7 @@ wire [9:0]  Coord_X, Coord_Y;	//display coods
 
 Reset_Delay			r0	(	.iCLK(CLOCK_50),.oRESET(DLY_RST)	);
 
-VGA_PLL p1 (.areset(~KEY[1]), .inclk0(CLOCK_50), .c0(VGA_CTRL_CLK), .c1(VGA_CLK));
+VGA_PLL p1 (.areset(~DLY_RST), .inclk0(CLOCK_50), .c0(VGA_CTRL_CLK), .c1(VGA_CLK));
 
 VGA_Controller		u1	(	//	Host Side
 							.iCursor_RGB_EN(4'b0111),
@@ -128,8 +125,7 @@ wire signed [39:0] z_real_comp;
 wire signed [39:0] x_increament;
 wire signed [39:0] y_increament;
 
-
-
+assign LEDR = scale_wire;
 
 //TODO:  We only need to store 4 bits, because we just want 
 //       log of the # of iterations, and there are only up to
@@ -204,6 +200,7 @@ io io1(
 	.reset(reset),
 	.enter(~KEY[2]),
 	.confirm(~KEY[1]),
+	.sw(SW),
 	.valid(valid),
 	.c_real(c_real_wire),
 	.c_comp(c_comp_wire),
@@ -222,17 +219,33 @@ begin
 		x_reg <= 37'd0;
 		y_reg <= 37'd0;
 		scale_reg <= $signed({4'd2, {33{1'b0}}});
+		x_increment <= ((37'd13421772 * {4'd2, {33{1'b0}}})<<<1);
+		y_increment <= ((37'd17895697 * {4'd2, {33{1'b0}}})<<<1);
+		
+		addr_reg <= {Coord_X[9:0],Coord_Y[8:0]} ;	// [17:0]
+		we <= 1'b1;								//write some memory
+		data_reg <= 4'd0;	//write all zeros (black)	
+		//init a randwalker to just left of center
+		x_cursor <= 10'd0;
+		y_cursor <= 9'd0;
+		c_real <= c_real_reg;
+		c_comp <= c_comp_reg;
+		z_real <= 37'd0;
+		z_comp <= 37'd0;
+		i <= 10'd0;
+		state <= compute_pixel_init;	//first state in regular state machine 
+		pause <= 1'b0;
 	end
-	else if (valid)
+	else if (valid&& ~KEY[3])
 	begin
-		c_real_reg <= {c_real_wire, 19'b0};
-		c_comp_reg <= {c_comp_wire, 19'b0};
+		c_real_reg <= {c_real_wire, 19'b0};//c_real_reg;//
+		c_comp_reg <= {c_comp_wire, 19'b0};//c_comp_reg;//
 		x_reg <= {x_wire, 19'b0};
 		y_reg <= {y_wire, 19'b0};
 		scale_reg <= {scale_wire, 19'b0};
-	end
-	else if (KEY[3])		//synch reset assumes KEY0 is held down 1/60 second
-	begin
+		x_increment <= ((37'd13421772 * {scale_wire, 19'b0})<<<1);
+		y_increment <= ((37'd17895697 * {scale_wire, 19'b0})<<<1);
+		
 		//clear the screen
 		addr_reg <= {Coord_X[9:0],Coord_Y[8:0]} ;	// [17:0]
 		we <= 1'b1;								//write some memory
@@ -240,8 +253,6 @@ begin
 		//init a randwalker to just left of center
 		x_cursor <= 10'd0;
 		y_cursor <= 9'd0;
-		x_increment <= ((37'd13421772 * scale_reg)<<<1);
-		y_increment <= ((37'd17895697 * scale_reg)<<<1);
 		c_real <= c_real_reg;
 		c_comp <= c_comp_reg;
 		z_real <= 37'd0;

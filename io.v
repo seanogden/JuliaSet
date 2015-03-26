@@ -32,30 +32,7 @@ module io (input clock,
 		confirm_scale=4'd12
 		;
   
-  `define state_transition(FROM, TO) \
-		enter_``FROM: begin \
-			if (enter) begin \
-				state <= confirm_c_real ; \
-				lcd_text <= "Display "; \
-				c_real <= switches; \
-			end \
-			else begin \
-				state <= enter_c_real ; \
-				lcd_text <= "Enter c_real."; \
-			end \
-		end \
-		confirm_c_real : \
-		begin \
-			if (confirm) begin \
-				state <= enter_c_comp ; \
-				lcd_text <= "Enter c_comp."; \
-			end \
-			else begin \
-				state <= confirm_c_real ; \
-				lcd_text <= "Display c_real."; \
-			end \
-		end
-				
+
 	always @(posedge clock) begin
 		if (reset)
 		begin
@@ -107,7 +84,7 @@ module io (input clock,
 					begin
 						state <= confirm_c_comp;
 						lcd_text <= "Display c_comp";
-						c_real <= switches;
+						c_comp <= switches;
 					end
 					else
 					begin
