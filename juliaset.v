@@ -40,6 +40,12 @@ module juliaset(
 	output		          		LCD_RS,
 	output		          		LCD_RW,
 
+	//////////// RS232 //////////
+	input 		          		UART_CTS,
+	output		          		UART_RTS,
+	input 		          		UART_RXD,
+	output		          		UART_TXD,
+
 	//////////// VGA //////////
 	output		     [7:0]		VGA_B,
 	output		          		VGA_BLANK_N,
@@ -385,6 +391,23 @@ seven_segment(.number({2'd0,mseconds[9:8]}), .data(HEX6));
 assign HEX7 = 7'b1111111;
 
 
+/* UART Communication with the terminal */
+assign UART_RTS = 1'b0;
+wire UART_CTRL_CLOCK;
+
+UART_PLL pll2(
+	.areset(reset),
+	.inclk0(CLOCK2_50),
+	.c0(UART_CTRL_CLOCK)
+);
+	
+uart_hw_test uart1(
+	.clk(UART_CTRL_CLOCK),
+	.rst_n(reset),
+	.txd(UART_TXD),
+	.rxd(UART_RXD)
+);
+	
 endmodule
 
 //3.33 fixed point signed multiply.
@@ -397,3 +420,4 @@ module signed_mult (out, a, b);
 	assign mult_out = a * b;
 	assign out = {mult_out[73], mult_out[71:33]}; //1+39
 endmodule
+
