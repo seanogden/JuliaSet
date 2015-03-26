@@ -47,7 +47,6 @@ module juliaset(
 	output		          		VGA_VS
 );
 
-assign LCD_DATA = 8'bzzzzzzzz;
 wire	VGA_CTRL_CLK;
 wire	AUD_CTRL_CLK;
 wire	DLY_RST;
@@ -332,11 +331,28 @@ signed_mult zcs(.out(z_comp_comp),
 signed_mult zcr(.out(z_real_comp),
                 .a(z_comp),
 					 .b(z_real));
+					 
+/*LCD CODE*/
+wire [32*8-1:0] lcd_text;
+assign lcd_text = "HELLO WORLD";
+assign LCD_BLON = 1'b1;
+assign LCD_ON = 1'b1;
+
+asc_to_lcd asc(
+	.clk(CLOCK_50),
+	.rst(reset),
+	.lcd_data(LCD_DATA),	
+	.lcd_rnw(LCD_RW),
+	.lcd_en(LCD_EN),
+	.lcd_rs(LCD_RS),
+	.disp_text(lcd_text)
+);
+
 endmodule
 
 //3.33 fixed point signed multiply.
 module signed_mult (out, a, b);
-	output	[36:0]	out;
+	output	[39:0]	out;
 	input 	signed	[36:0] 	a;//3.33 37bit
 	input 	signed	[36:0] 	b;
 	wire	signed	[39:0]	out;

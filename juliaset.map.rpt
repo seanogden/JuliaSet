@@ -1,5 +1,5 @@
 Analysis & Synthesis report for juliaset
-Wed Mar 25 17:19:40 2015
+Thu Mar 26 00:51:11 2015
 Quartus II 64-Bit Version 11.0 Build 157 04/27/2011 SJ Full Version
 
 
@@ -17,28 +17,32 @@ Quartus II 64-Bit Version 11.0 Build 157 04/27/2011 SJ Full Version
   9. Analysis & Synthesis DSP Block Usage Summary
  10. Analysis & Synthesis IP Cores Summary
  11. State Machine - |juliaset|state
- 12. Registers Removed During Synthesis
- 13. General Register Statistics
- 14. Multiplexer Restructuring Statistics (Restructuring Performed)
- 15. Source assignments for video_buffer:display|altsyncram:altsyncram_component|altsyncram_17e2:auto_generated
- 16. Parameter Settings for User Entity Instance: Top-level Entity: |juliaset
- 17. Parameter Settings for User Entity Instance: VGA_PLL:p1|altpll:altpll_component
- 18. Parameter Settings for User Entity Instance: VGA_Controller:u1
- 19. Parameter Settings for User Entity Instance: video_buffer:display|altsyncram:altsyncram_component
- 20. Parameter Settings for Inferred Entity Instance: signed_mult:zcs|lpm_mult:Mult0_rtl_0
- 21. Parameter Settings for Inferred Entity Instance: signed_mult:zrs|lpm_mult:Mult0_rtl_1
- 22. Parameter Settings for Inferred Entity Instance: lpm_mult:Mult1_rtl_2
- 23. Parameter Settings for Inferred Entity Instance: signed_mult:zcr|lpm_mult:Mult0_rtl_3
- 24. Parameter Settings for Inferred Entity Instance: lpm_mult:Mult0_rtl_4
- 25. altpll Parameter Settings by Entity Instance
- 26. altsyncram Parameter Settings by Entity Instance
- 27. lpm_mult Parameter Settings by Entity Instance
- 28. Port Connectivity Checks: "signed_mult:zcr"
- 29. Port Connectivity Checks: "video_buffer:display"
- 30. Port Connectivity Checks: "VGA_Controller:u1"
- 31. Port Connectivity Checks: "Reset_Delay:r0"
- 32. Elapsed Time Per Partition
- 33. Analysis & Synthesis Messages
+ 12. Registers Protected by Synthesis
+ 13. Registers Removed During Synthesis
+ 14. General Register Statistics
+ 15. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 16. Source assignments for video_buffer:display|altsyncram:altsyncram_component|altsyncram_17e2:auto_generated
+ 17. Source assignments for asc_to_lcd:asc
+ 18. Parameter Settings for User Entity Instance: Top-level Entity: |juliaset
+ 19. Parameter Settings for User Entity Instance: VGA_PLL:p1|altpll:altpll_component
+ 20. Parameter Settings for User Entity Instance: VGA_Controller:u1
+ 21. Parameter Settings for User Entity Instance: video_buffer:display|altsyncram:altsyncram_component
+ 22. Parameter Settings for User Entity Instance: asc_to_lcd:asc
+ 23. Parameter Settings for Inferred Entity Instance: signed_mult:zcs|lpm_mult:Mult0_rtl_0
+ 24. Parameter Settings for Inferred Entity Instance: signed_mult:zrs|lpm_mult:Mult0_rtl_1
+ 25. Parameter Settings for Inferred Entity Instance: lpm_mult:Mult1_rtl_2
+ 26. Parameter Settings for Inferred Entity Instance: signed_mult:zcr|lpm_mult:Mult0_rtl_3
+ 27. Parameter Settings for Inferred Entity Instance: lpm_mult:Mult0_rtl_4
+ 28. altpll Parameter Settings by Entity Instance
+ 29. altsyncram Parameter Settings by Entity Instance
+ 30. lpm_mult Parameter Settings by Entity Instance
+ 31. Port Connectivity Checks: "asc_to_lcd:asc"
+ 32. Port Connectivity Checks: "signed_mult:zcr"
+ 33. Port Connectivity Checks: "video_buffer:display"
+ 34. Port Connectivity Checks: "VGA_Controller:u1"
+ 35. Port Connectivity Checks: "Reset_Delay:r0"
+ 36. Elapsed Time Per Partition
+ 37. Analysis & Synthesis Messages
 
 
 
@@ -64,15 +68,15 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                   ;
 +------------------------------------+-------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Mar 25 17:19:40 2015     ;
+; Analysis & Synthesis Status        ; Successful - Thu Mar 26 00:51:11 2015     ;
 ; Quartus II 64-Bit Version          ; 11.0 Build 157 04/27/2011 SJ Full Version ;
 ; Revision Name                      ; juliaset                                  ;
 ; Top-level Entity Name              ; juliaset                                  ;
 ; Family                             ; Cyclone IV E                              ;
-; Total logic elements               ; 1,402                                     ;
-;     Total combinational functions  ; 1,383                                     ;
-;     Dedicated logic registers      ; 197                                       ;
-; Total registers                    ; 197                                       ;
+; Total logic elements               ; 1,561                                     ;
+;     Total combinational functions  ; 1,542                                     ;
+;     Dedicated logic registers      ; 256                                       ;
+; Total registers                    ; 256                                       ;
 ; Total pins                         ; 71                                        ;
 ; Total virtual pins                 ; 0                                         ;
 ; Total memory bits                  ; 1,310,720                                 ;
@@ -194,6 +198,8 @@ applicable agreement for further details.
 ; VGA_PLL.v                        ; yes             ; User Wizard-Generated File   ; C:/JuliaSet/JuliaSet/VGA_PLL.v                                         ;
 ; video_buffer.v                   ; yes             ; User Wizard-Generated File   ; C:/JuliaSet/JuliaSet/video_buffer.v                                    ;
 ; juliaset.v                       ; yes             ; User Verilog HDL File        ; C:/JuliaSet/JuliaSet/juliaset.v                                        ;
+; asc_to_lcd.v                     ; yes             ; User Verilog HDL File        ; C:/JuliaSet/JuliaSet/asc_to_lcd.v                                      ;
+; log2.inc                         ; yes             ; User Unspecified File        ; C:/JuliaSet/JuliaSet/log2.inc                                          ;
 ; altpll.tdf                       ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/altpll.tdf              ;
 ; aglobal110.inc                   ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/aglobal110.inc          ;
 ; stratix_pll.inc                  ; yes             ; Megafunction                 ; c:/altera/11.0/quartus/libraries/megafunctions/stratix_pll.inc         ;
@@ -245,20 +251,20 @@ applicable agreement for further details.
 +---------------------------------------------+-----------------------------------------------------------------------------------+
 ; Resource                                    ; Usage                                                                             ;
 +---------------------------------------------+-----------------------------------------------------------------------------------+
-; Estimated Total logic elements              ; 1,402                                                                             ;
+; Estimated Total logic elements              ; 1,561                                                                             ;
 ;                                             ;                                                                                   ;
-; Total combinational functions               ; 1383                                                                              ;
+; Total combinational functions               ; 1542                                                                              ;
 ; Logic element usage by number of LUT inputs ;                                                                                   ;
-;     -- 4 input functions                    ; 310                                                                               ;
-;     -- 3 input functions                    ; 732                                                                               ;
-;     -- <=2 input functions                  ; 341                                                                               ;
+;     -- 4 input functions                    ; 402                                                                               ;
+;     -- 3 input functions                    ; 754                                                                               ;
+;     -- <=2 input functions                  ; 386                                                                               ;
 ;                                             ;                                                                                   ;
 ; Logic elements by mode                      ;                                                                                   ;
-;     -- normal mode                          ; 544                                                                               ;
-;     -- arithmetic mode                      ; 839                                                                               ;
+;     -- normal mode                          ; 680                                                                               ;
+;     -- arithmetic mode                      ; 862                                                                               ;
 ;                                             ;                                                                                   ;
-; Total registers                             ; 197                                                                               ;
-;     -- Dedicated logic registers            ; 197                                                                               ;
+; Total registers                             ; 256                                                                               ;
+;     -- Dedicated logic registers            ; 256                                                                               ;
 ;     -- I/O registers                        ; 0                                                                                 ;
 ;                                             ;                                                                                   ;
 ; I/O pins                                    ; 71                                                                                ;
@@ -269,8 +275,8 @@ applicable agreement for further details.
 ;                                             ;                                                                                   ;
 ; Maximum fan-out node                        ; VGA_PLL:p1|altpll:altpll_component|VGA_PLL_altpll:auto_generated|wire_pll1_clk[0] ;
 ; Maximum fan-out                             ; 359                                                                               ;
-; Total fan-out                               ; 10739                                                                             ;
-; Average fan-out                             ; 5.53                                                                              ;
+; Total fan-out                               ; 11467                                                                             ;
+; Average fan-out                             ; 5.31                                                                              ;
 +---------------------------------------------+-----------------------------------------------------------------------------------+
 
 
@@ -279,11 +285,12 @@ applicable agreement for further details.
 +------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node                     ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                    ; Library Name ;
 +------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------------------------------------+--------------+
-; |juliaset                                      ; 1383 (330)        ; 197 (138)    ; 1310720     ; 50           ; 2       ; 24        ; 71   ; 0            ; |juliaset                                                                                                                              ;              ;
+; |juliaset                                      ; 1542 (330)        ; 256 (138)    ; 1310720     ; 50           ; 2       ; 24        ; 71   ; 0            ; |juliaset                                                                                                                              ;              ;
 ;    |VGA_Controller:u1|                         ; 87 (87)           ; 47 (47)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|VGA_Controller:u1                                                                                                            ;              ;
 ;    |VGA_PLL:p1|                                ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|VGA_PLL:p1                                                                                                                   ;              ;
 ;       |altpll:altpll_component|                ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|VGA_PLL:p1|altpll:altpll_component                                                                                           ;              ;
 ;          |VGA_PLL_altpll:auto_generated|       ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|VGA_PLL:p1|altpll:altpll_component|VGA_PLL_altpll:auto_generated                                                             ;              ;
+;    |asc_to_lcd:asc|                            ; 159 (159)         ; 59 (59)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|asc_to_lcd:asc                                                                                                               ;              ;
 ;    |lpm_mult:Mult0_rtl_4|                      ; 71 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult0_rtl_4                                                                                                         ;              ;
 ;       |multcore:mult_core|                     ; 71 (21)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult0_rtl_4|multcore:mult_core                                                                                      ;              ;
 ;          |mpar_add:padder|                     ; 50 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |juliaset|lpm_mult:Mult0_rtl_4|multcore:mult_core|mpar_add:padder                                                                      ;              ;
@@ -372,6 +379,19 @@ Encoding Type:  One-Hot
 +--------------------------+------------+-------------------+-------------------+------------------+--------------------------+--------------------------+
 
 
++-----------------------------------------------------------------------------------------------------------------------------------------+
+; Registers Protected by Synthesis                                                                                                        ;
++-------------------------+------------------------------------------------------------------+--------------------------------------------+
+; Register Name           ; Protected by Synthesis Attribute or Preserve Register Assignment ; Not to be Touched by Netlist Optimizations ;
++-------------------------+------------------------------------------------------------------+--------------------------------------------+
+; asc_to_lcd:asc|state[2] ; yes                                                              ; yes                                        ;
+; asc_to_lcd:asc|state[1] ; yes                                                              ; yes                                        ;
+; asc_to_lcd:asc|state[4] ; yes                                                              ; yes                                        ;
+; asc_to_lcd:asc|state[0] ; yes                                                              ; yes                                        ;
+; asc_to_lcd:asc|state[3] ; yes                                                              ; yes                                        ;
++-------------------------+------------------------------------------------------------------+--------------------------------------------+
+
+
 +--------------------------------------------------------------------------------------+
 ; Registers Removed During Synthesis                                                   ;
 +---------------------------------------+----------------------------------------------+
@@ -383,10 +403,11 @@ Encoding Type:  One-Hot
 ; color[8,9,11..14]                     ; Merged with color[10]                        ;
 ; color[17..22]                         ; Merged with color[16]                        ;
 ; VGA_Controller:u1|Cur_Color_B[1..5]   ; Merged with VGA_Controller:u1|Cur_Color_B[0] ;
+; asc_to_lcd:asc|char_mux[7]            ; Stuck at GND due to stuck port data_in       ;
 ; VGA_Controller:u1|Cur_Color_R[0,5]    ; Merged with VGA_Controller:u1|Cur_Color_R[6] ;
 ; VGA_Controller:u1|Cur_Color_G[0,5]    ; Merged with VGA_Controller:u1|Cur_Color_G[6] ;
 ; VGA_Controller:u1|Cur_Color_B[0]      ; Merged with VGA_Controller:u1|Cur_Color_B[6] ;
-; Total Number of Removed Registers = 0 ;                                              ;
+; Total Number of Removed Registers = 1 ;                                              ;
 +---------------------------------------+----------------------------------------------+
 
 
@@ -395,27 +416,36 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 197   ;
-; Number of registers using Synchronous Clear  ; 115   ;
-; Number of registers using Synchronous Load   ; 20    ;
+; Total registers                              ; 256   ;
+; Number of registers using Synchronous Clear  ; 160   ;
+; Number of registers using Synchronous Load   ; 23    ;
 ; Number of registers using Asynchronous Clear ; 47    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 141   ;
+; Number of registers using Clock Enable       ; 170   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                       ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------------------+----------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered             ; Example Multiplexer Output ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------------------+----------------------------+
-; 3:1                ; 19 bits   ; 38 LEs        ; 19 LEs               ; 19 LEs                 ; |juliaset|addr_reg[12] ;                            ;
-; 17:1               ; 6 bits    ; 66 LEs        ; 48 LEs               ; 18 LEs                 ; |juliaset|color[16]    ;                            ;
-; 4:1                ; 10 bits   ; 20 LEs        ; 20 LEs               ; 0 LEs                  ; |juliaset|x_cursor[3]  ;                            ;
-; 4:1                ; 9 bits    ; 18 LEs        ; 9 LEs                ; 9 LEs                  ; |juliaset|y_cursor[6]  ;                            ;
-; 5:1                ; 68 bits   ; 204 LEs       ; 136 LEs              ; 68 LEs                 ; |juliaset|z_real[36]   ;                            ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------------------+----------------------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                         ;
++--------------------+-----------+---------------+----------------------+------------------------+------------------------------------------+----------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered                               ; Example Multiplexer Output ;
++--------------------+-----------+---------------+----------------------+------------------------+------------------------------------------+----------------------------+
+; 3:1                ; 19 bits   ; 38 LEs        ; 19 LEs               ; 19 LEs                 ; |juliaset|addr_reg[12]                   ;                            ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; |juliaset|asc_to_lcd:asc|ns_cntr[1]      ;                            ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; |juliaset|asc_to_lcd:asc|us_cntr[0]      ;                            ;
+; 17:1               ; 6 bits    ; 66 LEs        ; 48 LEs               ; 18 LEs                 ; |juliaset|color[7]                       ;                            ;
+; 33:1               ; 7 bits    ; 154 LEs       ; 35 LEs               ; 119 LEs                ; |juliaset|asc_to_lcd:asc|lcd_data[0]     ;                            ;
+; 33:1               ; 5 bits    ; 110 LEs       ; 5 LEs                ; 105 LEs                ; |juliaset|asc_to_lcd:asc|char_ptr[4]     ;                            ;
+; 7:1                ; 5 bits    ; 20 LEs        ; 20 LEs               ; 0 LEs                  ; |juliaset|asc_to_lcd:asc|timer[12]       ;                            ;
+; 35:1               ; 4 bits    ; 92 LEs        ; 28 LEs               ; 64 LEs                 ; |juliaset|asc_to_lcd:asc|return_state[1] ;                            ;
+; 6:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; |juliaset|asc_to_lcd:asc|timer[10]       ;                            ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; |juliaset|asc_to_lcd:asc|timer[1]        ;                            ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 12 LEs               ; 4 LEs                  ; |juliaset|asc_to_lcd:asc|timer[7]        ;                            ;
+; 4:1                ; 10 bits   ; 20 LEs        ; 20 LEs               ; 0 LEs                  ; |juliaset|x_cursor[2]                    ;                            ;
+; 4:1                ; 9 bits    ; 18 LEs        ; 9 LEs                ; 9 LEs                  ; |juliaset|y_cursor[3]                    ;                            ;
+; 5:1                ; 68 bits   ; 204 LEs       ; 136 LEs              ; 68 LEs                 ; |juliaset|z_comp[14]                     ;                            ;
++--------------------+-----------+---------------+----------------------+------------------------+------------------------------------------+----------------------------+
 
 
 +------------------------------------------------------------------------------------------------------------+
@@ -425,6 +455,19 @@ Encoding Type:  One-Hot
 +---------------------------------+--------------------+------+----------------------------------------------+
 ; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                            ;
 +---------------------------------+--------------------+------+----------------------------------------------+
+
+
++---------------------------------------------+
+; Source assignments for asc_to_lcd:asc       ;
++-------------------+-------+------+----------+
+; Assignment        ; Value ; From ; To       ;
++-------------------+-------+------+----------+
+; PRESERVE_REGISTER ; on    ; -    ; state[0] ;
+; PRESERVE_REGISTER ; on    ; -    ; state[1] ;
+; PRESERVE_REGISTER ; on    ; -    ; state[2] ;
+; PRESERVE_REGISTER ; on    ; -    ; state[3] ;
+; PRESERVE_REGISTER ; on    ; -    ; state[4] ;
++-------------------+-------+------+----------+
 
 
 +--------------------------------------------------------------------------+
@@ -897,6 +940,48 @@ Note: In order to hide this table in the UI and the text report file, please set
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
++-------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: asc_to_lcd:asc ;
++-------------------+-------+---------------------------------+
+; Parameter Name    ; Value ; Type                            ;
++-------------------+-------+---------------------------------+
+; CLOCK_MHZ         ; 50    ; Signed Integer                  ;
+; ST_INIT           ; 00000 ; Unsigned Binary                 ;
+; ST_INIT1          ; 00001 ; Unsigned Binary                 ;
+; ST_INIT2          ; 00010 ; Unsigned Binary                 ;
+; ST_INIT3          ; 00011 ; Unsigned Binary                 ;
+; ST_INIT4          ; 00100 ; Unsigned Binary                 ;
+; ST_INIT5          ; 00101 ; Unsigned Binary                 ;
+; ST_INIT6          ; 00110 ; Unsigned Binary                 ;
+; ST_INIT7          ; 00111 ; Unsigned Binary                 ;
+; ST_INIT8          ; 01000 ; Unsigned Binary                 ;
+; ST_INIT9          ; 01001 ; Unsigned Binary                 ;
+; ST_INIT10         ; 01010 ; Unsigned Binary                 ;
+; ST_INIT11         ; 01011 ; Unsigned Binary                 ;
+; ST_INIT12         ; 01100 ; Unsigned Binary                 ;
+; ST_INIT13         ; 01101 ; Unsigned Binary                 ;
+; ST_INIT14         ; 01110 ; Unsigned Binary                 ;
+; ST_LINE_ONE       ; 01111 ; Unsigned Binary                 ;
+; ST_LINE_ONE_CHARS ; 10000 ; Unsigned Binary                 ;
+; ST_LINE_TWO       ; 10001 ; Unsigned Binary                 ;
+; ST_LINE_TWO_CHARS ; 10010 ; Unsigned Binary                 ;
+; ST_WRITE          ; 10011 ; Unsigned Binary                 ;
+; ST_WRITE1         ; 10100 ; Unsigned Binary                 ;
+; ST_WRITE2         ; 10101 ; Unsigned Binary                 ;
+; ST_WRITE3         ; 10110 ; Unsigned Binary                 ;
+; ST_WRITE4         ; 10111 ; Unsigned Binary                 ;
+; ST_WRITE5         ; 11000 ; Unsigned Binary                 ;
+; ST_WRITE6         ; 11001 ; Unsigned Binary                 ;
+; ST_WRITE7         ; 11010 ; Unsigned Binary                 ;
+; ST_WRITE8         ; 11011 ; Unsigned Binary                 ;
+; ST_WRITE9         ; 11100 ; Unsigned Binary                 ;
+; ST_BUSY_WAIT      ; 11101 ; Unsigned Binary                 ;
+; ST_BUSY_WAIT1     ; 11110 ; Unsigned Binary                 ;
+; ST_BUSY_WAIT2     ; 11111 ; Unsigned Binary                 ;
++-------------------+-------+---------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
 +---------------------------------------------------------------------------------------+
 ; Parameter Settings for Inferred Entity Instance: signed_mult:zcs|lpm_mult:Mult0_rtl_0 ;
 +------------------------------------------------+--------------+-----------------------+
@@ -1173,6 +1258,63 @@ Note: In order to hide this table in the UI and the text report file, please set
 +---------------------------------------+--------------------------------------+
 
 
++------------------------------------------------------+
+; Port Connectivity Checks: "asc_to_lcd:asc"           ;
++--------------------+-------+----------+--------------+
+; Port               ; Type  ; Severity ; Details      ;
++--------------------+-------+----------+--------------+
+; disp_text[67..66]  ; Input ; Info     ; Stuck at VCC ;
+; disp_text[59..58]  ; Input ; Info     ; Stuck at VCC ;
+; disp_text[51..48]  ; Input ; Info     ; Stuck at VCC ;
+; disp_text[34..32]  ; Input ; Info     ; Stuck at VCC ;
+; disp_text[27..24]  ; Input ; Info     ; Stuck at VCC ;
+; disp_text[11..10]  ; Input ; Info     ; Stuck at VCC ;
+; disp_text[255..87] ; Input ; Info     ; Stuck at GND ;
+; disp_text[85..84]  ; Input ; Info     ; Stuck at GND ;
+; disp_text[82..79]  ; Input ; Info     ; Stuck at GND ;
+; disp_text[77..75]  ; Input ; Info     ; Stuck at GND ;
+; disp_text[69..68]  ; Input ; Info     ; Stuck at GND ;
+; disp_text[65..63]  ; Input ; Info     ; Stuck at GND ;
+; disp_text[61..60]  ; Input ; Info     ; Stuck at GND ;
+; disp_text[57..55]  ; Input ; Info     ; Stuck at GND ;
+; disp_text[53..52]  ; Input ; Info     ; Stuck at GND ;
+; disp_text[47..46]  ; Input ; Info     ; Stuck at GND ;
+; disp_text[44..39]  ; Input ; Info     ; Stuck at GND ;
+; disp_text[29..28]  ; Input ; Info     ; Stuck at GND ;
+; disp_text[19..18]  ; Input ; Info     ; Stuck at GND ;
+; disp_text[16..15]  ; Input ; Info     ; Stuck at GND ;
+; disp_text[13..12]  ; Input ; Info     ; Stuck at GND ;
+; disp_text[9..7]    ; Input ; Info     ; Stuck at GND ;
+; disp_text[5..3]    ; Input ; Info     ; Stuck at GND ;
+; disp_text[1..0]    ; Input ; Info     ; Stuck at GND ;
+; disp_text[86]      ; Input ; Info     ; Stuck at VCC ;
+; disp_text[83]      ; Input ; Info     ; Stuck at VCC ;
+; disp_text[78]      ; Input ; Info     ; Stuck at VCC ;
+; disp_text[74]      ; Input ; Info     ; Stuck at VCC ;
+; disp_text[73]      ; Input ; Info     ; Stuck at GND ;
+; disp_text[72]      ; Input ; Info     ; Stuck at VCC ;
+; disp_text[71]      ; Input ; Info     ; Stuck at GND ;
+; disp_text[70]      ; Input ; Info     ; Stuck at VCC ;
+; disp_text[62]      ; Input ; Info     ; Stuck at VCC ;
+; disp_text[54]      ; Input ; Info     ; Stuck at VCC ;
+; disp_text[45]      ; Input ; Info     ; Stuck at VCC ;
+; disp_text[38]      ; Input ; Info     ; Stuck at VCC ;
+; disp_text[37]      ; Input ; Info     ; Stuck at GND ;
+; disp_text[36]      ; Input ; Info     ; Stuck at VCC ;
+; disp_text[35]      ; Input ; Info     ; Stuck at GND ;
+; disp_text[31]      ; Input ; Info     ; Stuck at GND ;
+; disp_text[30]      ; Input ; Info     ; Stuck at VCC ;
+; disp_text[23]      ; Input ; Info     ; Stuck at GND ;
+; disp_text[22]      ; Input ; Info     ; Stuck at VCC ;
+; disp_text[21]      ; Input ; Info     ; Stuck at GND ;
+; disp_text[20]      ; Input ; Info     ; Stuck at VCC ;
+; disp_text[17]      ; Input ; Info     ; Stuck at VCC ;
+; disp_text[14]      ; Input ; Info     ; Stuck at VCC ;
+; disp_text[6]       ; Input ; Info     ; Stuck at VCC ;
+; disp_text[2]       ; Input ; Info     ; Stuck at VCC ;
++--------------------+-------+----------+--------------+
+
+
 +-------------------------------------------------------------------------------------------------------------------+
 ; Port Connectivity Checks: "signed_mult:zcr"                                                                       ;
 +---------+--------+----------+-------------------------------------------------------------------------------------+
@@ -1225,7 +1367,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:12     ;
+; Top            ; 00:00:13     ;
 +----------------+--------------+
 
 
@@ -1235,7 +1377,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 11.0 Build 157 04/27/2011 SJ Full Version
-    Info: Processing started: Wed Mar 25 17:19:26 2015
+    Info: Processing started: Thu Mar 26 00:50:56 2015
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off juliaset -c juliaset
 Info: Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info: Found 1 design units, including 1 entities, in source file vga_controller.v
@@ -1251,14 +1393,11 @@ Info: Found 2 design units, including 2 entities, in source file juliaset.v
     Info: Found entity 2: signed_mult
 Info: Found 1 design units, including 1 entities, in source file testbench.v
     Info: Found entity 1: testbench
+Info: Found 1 design units, including 1 entities, in source file asc_to_lcd.v
+    Info: Found entity 1: asc_to_lcd
 Info: Elaborating entity "juliaset" for the top level hierarchy
-Warning (10230): Verilog HDL assignment warning at juliaset.v(237): truncated value with size 40 to match size of target (37)
-Warning (10230): Verilog HDL assignment warning at juliaset.v(238): truncated value with size 40 to match size of target (37)
-Warning (10034): Output port "LCD_BLON" at juliaset.v(26) has no driver
-Warning (10034): Output port "LCD_EN" at juliaset.v(28) has no driver
-Warning (10034): Output port "LCD_ON" at juliaset.v(29) has no driver
-Warning (10034): Output port "LCD_RS" at juliaset.v(30) has no driver
-Warning (10034): Output port "LCD_RW" at juliaset.v(31) has no driver
+Warning (10230): Verilog HDL assignment warning at juliaset.v(239): truncated value with size 40 to match size of target (37)
+Warning (10230): Verilog HDL assignment warning at juliaset.v(240): truncated value with size 40 to match size of target (37)
 Warning (10034): Output port "UART_RTS" at juliaset.v(35) has no driver
 Warning (10034): Output port "UART_TXD" at juliaset.v(37) has no driver
 Info: Elaborating entity "Reset_Delay" for hierarchy "Reset_Delay:r0"
@@ -1375,8 +1514,7 @@ Info: Found 1 design units, including 1 entities, in source file db/mux_mob.tdf
     Info: Found entity 1: mux_mob
 Info: Elaborating entity "mux_mob" for hierarchy "video_buffer:display|altsyncram:altsyncram_component|altsyncram_17e2:auto_generated|mux_mob:mux4"
 Info: Elaborating entity "signed_mult" for hierarchy "signed_mult:zrs"
-Critical Warning (10169): Verilog HDL warning at juliaset.v(336): the port and data declarations for array port "out" do not specify the same range for each dimension
-Warning (10359): HDL warning at juliaset.v(339): see declaration for object "out"
+Info: Elaborating entity "asc_to_lcd" for hierarchy "asc_to_lcd:asc"
 Info: Starting Rapid Recompile for partition "Top"
 Info: Inferred 5 megafunctions from design logic
     Info: Inferred multiplier megafunction ("lpm_mult") from the following logic: "signed_mult:zcs|Mult0~0"
@@ -1460,11 +1598,27 @@ Info: Elaborated megafunction instantiation "lpm_mult:Mult0_rtl_4|multcore:mult_
 Info: Elaborated megafunction instantiation "lpm_mult:Mult0_rtl_4|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[0]", which is child of megafunction instantiation "lpm_mult:Mult0_rtl_4"
 Info: Found 1 design units, including 1 entities, in source file db/add_sub_pgh.tdf
     Info: Found entity 1: add_sub_pgh
+Warning: The following nodes have both tri-state and non-tri-state drivers
+    Warning: Inserted always-enabled tri-state buffer between "LCD_DATA[0]" and its non-tri-state driver.
+    Warning: Inserted always-enabled tri-state buffer between "LCD_DATA[1]" and its non-tri-state driver.
+    Warning: Inserted always-enabled tri-state buffer between "LCD_DATA[2]" and its non-tri-state driver.
+    Warning: Inserted always-enabled tri-state buffer between "LCD_DATA[3]" and its non-tri-state driver.
+    Warning: Inserted always-enabled tri-state buffer between "LCD_DATA[4]" and its non-tri-state driver.
+    Warning: Inserted always-enabled tri-state buffer between "LCD_DATA[5]" and its non-tri-state driver.
+    Warning: Inserted always-enabled tri-state buffer between "LCD_DATA[6]" and its non-tri-state driver.
+    Warning: Inserted always-enabled tri-state buffer between "LCD_DATA[7]" and its non-tri-state driver.
+Warning: TRI or OPNDRN buffers permanently enabled
+    Warning: Node "LCD_DATA[0]~synth"
+    Warning: Node "LCD_DATA[1]~synth"
+    Warning: Node "LCD_DATA[2]~synth"
+    Warning: Node "LCD_DATA[3]~synth"
+    Warning: Node "LCD_DATA[4]~synth"
+    Warning: Node "LCD_DATA[5]~synth"
+    Warning: Node "LCD_DATA[6]~synth"
+    Warning: Node "LCD_DATA[7]~synth"
 Warning: Output pins are stuck at VCC or GND
-    Warning (13410): Pin "LCD_BLON" is stuck at GND
-    Warning (13410): Pin "LCD_EN" is stuck at GND
-    Warning (13410): Pin "LCD_ON" is stuck at GND
-    Warning (13410): Pin "LCD_RS" is stuck at GND
+    Warning (13410): Pin "LCD_BLON" is stuck at VCC
+    Warning (13410): Pin "LCD_ON" is stuck at VCC
     Warning (13410): Pin "LCD_RW" is stuck at GND
     Warning (13410): Pin "UART_RTS" is stuck at GND
     Warning (13410): Pin "UART_TXD" is stuck at GND
@@ -1537,18 +1691,18 @@ Warning: Design contains 24 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "SW[17]"
     Warning (15610): No output dependent on input pin "UART_CTS"
     Warning (15610): No output dependent on input pin "UART_RXD"
-Info: Implemented 1684 device resources after synthesis - the final resource count might be different
+Info: Implemented 1844 device resources after synthesis - the final resource count might be different
     Info: Implemented 27 input pins
     Info: Implemented 36 output pins
     Info: Implemented 8 bidirectional pins
-    Info: Implemented 1402 logic cells
+    Info: Implemented 1562 logic cells
     Info: Implemented 160 RAM segments
     Info: Implemented 1 PLLs
     Info: Implemented 50 DSP elements
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 49 warnings
-    Info: Peak virtual memory: 419 megabytes
-    Info: Processing ended: Wed Mar 25 17:19:40 2015
-    Info: Elapsed time: 00:00:14
-    Info: Total CPU time (on all processors): 00:00:13
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 58 warnings
+    Info: Peak virtual memory: 425 megabytes
+    Info: Processing ended: Thu Mar 26 00:51:11 2015
+    Info: Elapsed time: 00:00:15
+    Info: Total CPU time (on all processors): 00:00:15
 
 
