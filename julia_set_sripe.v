@@ -29,7 +29,7 @@ parameter
 ////////////////////////////////////
 //DLA state machine variables
 reg [3:0] state;	//state machine
-reg [23:0] color;
+reg [22:0] color;
 wire [3:0] state_bit ; // current data from m4k to state machine
 reg we ; // write enable for a
 reg [16:0] addr_reg ; // for a
@@ -44,21 +44,21 @@ reg signed [8:0] y_end;
 reg pause;
 assign pause_signal = pause;
 wire [15:0] pixel_address_fixed = {pixel_address[17:9] - start_col,pixel_address[8:0]};
-reg signed 	[36:0] z_real;  //real part of z 3.33 fixed point
-reg signed [36:0] z_comp;  //complex part of z 3.33 fixed point
-reg signed [36:0] c_real;
-reg signed [36:0] c_comp;
-wire signed [39:0] z_real_real;
-wire signed [39:0] z_comp_comp;
-wire signed [39:0] z_real_comp;
-reg signed [73:0] x_increment;
-reg signed [73:0] y_increment;
+reg signed 	[26:0] z_real;  //real part of z 3.33 fixed point
+reg signed [26:0] z_comp;  //complex part of z 3.33 fixed point
+reg signed [26:0] c_real;
+reg signed [26:0] c_comp;
+wire signed [26:0] z_real_real;
+wire signed [26:0] z_comp_comp;
+wire signed [26:0] z_real_comp;
+reg signed [53:0] x_increment;
+reg signed [53:0] y_increment;
 
-reg signed [36:0] c_real_reg;
-reg signed [36:0] c_comp_reg;
-reg signed [36:0] x_reg;
-reg signed [36:0] y_reg;
-reg signed [36:0] scale_reg;
+reg signed [26:0] c_real_reg;
+reg signed [26:0] c_comp_reg;
+reg signed [26:0] x_reg;
+reg signed [26:0] y_reg;
+reg signed [26:0] scale_reg;
 
 video_buffer display(
 	.address_a (addr_reg) , 
@@ -77,15 +77,15 @@ always @ (posedge clock) //VGA_CTRL_CLK
 begin
 	if (reset)
 	begin
-		c_real_reg <= -37'd6871947673;  // -0.8
-		c_comp_reg <= 37'd1340029796;  //  0.156
-		x_reg <= 37'd0;
-		y_reg <= 37'd0;
-		scale_reg <= $signed({4'd2, {33{1'b0}}});
-		x_increment <= ((37'd13421772 * {4'd2, {33{1'b0}}})<<<1);
-		y_increment <= ((37'd17895697 * {4'd2, {33{1'b0}}})<<<1);
+		c_real_reg <= -27'd3355443;  // -0.8
+		c_comp_reg <= 27'd654311;  //  0.156
+		x_reg <= 27'd0;
+		y_reg <= 27'd0;
+		scale_reg <= $signed({4'd2, {22{1'b0}}});
+		x_increment <= ((27'd6553 * {5'd2, {22{1'b0}}})<<<1);
+		y_increment <= ((27'd8738 * {5'd2, {22{1'b0}}})<<<1);
 		
-		addr_reg <= pixel_address ;	// [17:0]
+		addr_reg <= pixel_address_fixed ;	// [17:0]
 		we <= 1'b1;								//write some memory
 		data_reg <= 4'd0;	//write all zeros (black)	
 		//init a randwalker to just left of center
@@ -93,24 +93,24 @@ begin
 		y_cursor <= start_row;
 		c_real <= c_real_reg;
 		c_comp <= c_comp_reg;
-		z_real <= 37'd0;
-		z_comp <= 37'd0;
+		z_real <= 27'd0;
+		z_comp <= 27'd0;
 		i <= 10'd0;
 		state <= compute_pixel_init;	//first state in regular state machine 
 		pause <= 1'b0;
 	end
 	else if (valid && update)
 	begin
-		c_real_reg <= {c_real_wire, 19'b0};//c_real_reg;//
-		c_comp_reg <= {c_comp_wire, 19'b0};//c_comp_reg;//
-		x_reg <= {x_wire, 19'b0};
-		y_reg <= {y_wire, 19'b0};
-		scale_reg <= {scale_wire, 19'b0};
-		x_increment <= ((37'd13421772 * {scale_wire, 19'b0})<<<1);
-		y_increment <= ((37'd17895697 * {scale_wire, 19'b0})<<<1);
+		c_real_reg <= {c_real_wire, 9'b0};//c_real_reg;//
+		c_comp_reg <= {c_comp_wire, 9'b0};//c_comp_reg;//
+		x_reg <= {x_wire, 9'b0};
+		y_reg <= {y_wire, 9'b0};
+		scale_reg <= {scale_wire, 9'b0};
+		x_increment <= ((27'd6553 * {scale_wire, 9'b0})<<<1);
+		y_increment <= ((27'd8738 * {scale_wire, 9'b0})<<<1);
 		
 		//clear the screen
-		addr_reg <= pixel_address ;	// [18:0]
+		addr_reg <= pixel_address_fixed ;	// [18:0]
 		we <= 1'b1;								//write some memory
 		data_reg <= 4'd0;	//write all zeros (black)	
 		//init a randwalker to just left of center
@@ -118,8 +118,8 @@ begin
 		y_cursor <= start_row;
 		c_real <= c_real_reg;
 		c_comp <= c_comp_reg;
-		z_real <= 37'd0;
-		z_comp <= 37'd0;
+		z_real <= 27'd0;
+		z_comp <= 27'd0;
 		i <= 10'd0;
 		state <= compute_pixel_init;	//first state in regular state machine 
 		pause <= 1'b0;
@@ -146,8 +146,8 @@ begin
 				//4/480/2^-33 = 35791394.1, so this is our increment on y.
 				//We round it down.  Note that we don't need to do an actual
 				//fixed point multiply because this will never overflow by design.
-				z_real <= x_reg - scale_reg + $signed(x_increment[72:33]* x_cursor);  //-2.0 + x*(increment=2*scale/640)
-				z_comp <= x_reg - scale_reg + $signed(y_increment[72:33]* y_cursor);  //-2.0 + y*(increment=2*scale/480)
+				z_real <= x_reg - scale_reg + $signed(x_increment[52:22]* x_cursor);  //-2.0 + x*(increment=2*scale/640)
+				z_comp <= x_reg - scale_reg + $signed(y_increment[52:22]* y_cursor);  //-2.0 + y*(increment=2*scale/480)
 				//NOTE: We can increment this at the bottom to avoid this multiply.
 				//TODO:  Make the increment numbers a function of the range of x and y.
 				i <= 10'd0;
@@ -166,7 +166,7 @@ begin
 				//      3.  z_real*z_comp
 				
 				//Not finished, do another iteration
-				if (z_real_real + z_comp_comp < $signed({4'b0100, {33{1'b0}}}) 
+				if (z_real_real + z_comp_comp < $signed({4'b0100, {27{1'b0}}}) 
 						&&  i < 10'd1000) // if (abs(z)*abs(z) < 4 && n < termination)
 				begin
 					z_real <= (z_real_real) - (z_comp_comp) + c_real;
@@ -265,6 +265,5 @@ signed_mult zcs(.out(z_comp_comp),
 signed_mult zcr(.out(z_real_comp),
                 .a(z_comp),
 					 .b(z_real));
-					 
 					 
 endmodule
